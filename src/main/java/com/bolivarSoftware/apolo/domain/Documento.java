@@ -7,11 +7,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
-/**
- * Created by Federico_Veron on 26/10/2017.
- */
+
 @Component
 public class Documento {
+
 
     //@Value("${filePathFolder}")
     private String filePathFolder;

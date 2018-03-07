@@ -64,7 +64,7 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://200.42.62.140:3306/apolo"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/apolo"/>
         <property name="user" value="apolo"/>
         <property name="password" value="apolo"/>
     </bean>

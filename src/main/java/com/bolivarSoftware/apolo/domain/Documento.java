@@ -13,7 +13,7 @@ import java.io.File;
 @Component
 public class Documento {
 
-    @Value("${filePathFolder}")
+    //@Value("${filePathFolder}")
     private String filePathFolder;
 
     private String carpeta;

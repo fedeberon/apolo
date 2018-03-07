@@ -23,7 +23,7 @@ import java.util.List;
 @Service
 public class DocumentoService implements IDocumentoService {
 
-    @Value("${filePathFolder}")
+    //@Value("${filePathFolder}")
     private String filePathFolder;
 
     @Override

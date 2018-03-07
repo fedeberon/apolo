@@ -1,7 +1,10 @@
 package com.bolivarSoftware.apolo.web.usuario;
 
-/**
- * Created by Damian on 07/03/2018.
- */
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("usuario")
+
+
 public class UsuarioController {
 }

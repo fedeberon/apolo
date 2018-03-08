@@ -55,8 +55,8 @@
                                     <thead class="text-warning">
                                     <th>Cod Int</th>
                                     <th>Nombre</th>
-                                    <th>Contrato</th>
                                     <th>Lugar</th>
+                                    <th>Fecha</th>
                                     </thead>
                                     <tbody>
 

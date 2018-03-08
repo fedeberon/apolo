@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="·">
+                <a href="<c:url value="/usuario/list/" />">
                     <i class="material-icons">person</i>
                     <p>Usuarios del sistema</p>
                 </a>

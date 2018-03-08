@@ -84,23 +84,23 @@
                                           <td>${evento.mail}</td>
                                       </tr>
 
-                                      <tr>
-                                          <th>Contratos</th>
-                                          <td>
-                                              <c:forEach items="contratos" var="bo">
-                                                <li><a href="${bo.url}">${bo.nombre}</a></li>
-                                              </c:forEach>
-                                          </td>
-                                      </tr>
+                                      <%--<tr>--%>
+                                          <%--<th>Contratos</th>--%>
+                                          <%--<td>--%>
+                                              <%--<c:forEach items="contratos" var="bo">--%>
+                                                <%--<li><a href="${bo.url}">${bo.nombre}</a></li>--%>
+                                              <%--</c:forEach>--%>
+                                          <%--</td>--%>
+                                      <%--</tr>--%>
 
-                                      <tr>
-                                          <th>Facturas</th>
-                                          <td>
-                                              <c:forEach items="facturas" var="bo">
-                                                  <li><a href="${bo.url}">${bo.nombre}</a></li>
-                                              </c:forEach>
-                                          </td>
-                                      </tr>
+                                      <%--<tr>--%>
+                                          <%--<th>Facturas</th>--%>
+                                          <%--<td>--%>
+                                              <%--<c:forEach items="facturas" var="bo">--%>
+                                                  <%--<li><a href="${bo.url}">${bo.nombre}</a></li>--%>
+                                              <%--</c:forEach>--%>
+                                          <%--</td>--%>
+                                      <%--</tr>--%>
 
                                     </tbody>
                                 </table>

@@ -53,9 +53,9 @@
                             <div class="card-content table-responsive">
                                 <table class="table">
                                     <thead class="text-warning">
-                                    <th>Cod Int</th>
+                                    <th>Username</th>
                                     <th>Nombre</th>
-                                    <th>Contrato</th>
+                                    <th>Apellido</th>
                                     <th>Lugar</th>
                                     </thead>
                                     <tbody>

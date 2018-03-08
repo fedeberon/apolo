@@ -24,9 +24,15 @@ public class UsuarioService implements IUsuarioService {
         return dao.get(username);
     }
 
-
     @Override
     public List<Usuario> findAll() {
         return dao.findAll();
     }
+
+    @Override
+    public Usuario save(Usuario usuario) {
+        return dao.save(usuario);
+    }
+
+
 }

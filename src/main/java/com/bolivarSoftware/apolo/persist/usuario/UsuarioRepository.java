@@ -1,11 +1,9 @@
 package com.bolivarSoftware.apolo.persist.usuario;
 
 import com.bolivarSoftware.apolo.domain.Usuario;
+import com.bolivarSoftware.apolo.persist.CloseableSession;
 import com.bolivarSoftware.apolo.persist.usuario.interfaces.IUsuarioRepository;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -45,6 +43,22 @@ public class UsuarioRepository implements IUsuarioRepository {
             if(session!= null && session.isOpen()) session.close();
         }
 
+    }
+
+    @Override
+    public Usuario save(Usuario usuario) {
+        Transaction tx = null;
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            tx = session.delegate().beginTransaction();
+            session.delegate().saveOrUpdate(usuario);
+            tx.commit();
+
+            return usuario;
+        }
+        catch (HibernateException e){
+            tx.rollback();
+            throw e;
+        }
     }
 
 }

@@ -56,7 +56,6 @@
                                     <th>Username</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
-                                    <th>Lugar</th>
                                     </thead>
                                     <tbody>
 

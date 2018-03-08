@@ -11,4 +11,6 @@ public interface IUsuarioRepository {
     Usuario get(String username);
 
     List<Usuario> findAll();
+
+    Usuario save(Usuario usuario);
 }

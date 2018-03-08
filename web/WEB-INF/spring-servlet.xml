@@ -53,6 +53,8 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.current_session_context_class">org.hibernate.context.CurrentSessionContext</prop>
+
             </props>
         </property>
         <property name="jpaPropertyMap">
@@ -60,6 +62,8 @@
         <entry key="hibernate.hbm2ddl.auto" value="update"/>
         </map>
         </property>
+
+
     </bean>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -74,6 +78,7 @@
     </bean>
 
     <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
 
 
 </beans>

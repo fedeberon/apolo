@@ -50,7 +50,7 @@ public class EventoController {
     }
 
     @RequestMapping("show")
-    public String save(@RequestParam Integer id, Model model) {
+    public String show(@RequestParam Integer id, Model model) {
         Evento evento = eventoService.get(id);
         model.addAttribute("evento", evento);
         model.addAttribute("contratos" , documentoService.getDocumentos(evento, Carpeta.CONTRATOS));

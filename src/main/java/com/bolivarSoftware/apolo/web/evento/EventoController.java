@@ -68,6 +68,13 @@ public class EventoController {
         return "evento/list";
     }
 
+    @RequestMapping("asignarServicio")
+    public String asignarServicio(@RequestParam Integer id, Model model) {
+        model.addAttribute("evento", eventoService.get(id));
+
+        return "evento/asignarServicio";
+    }
+
     @ModelAttribute
     public Evento evento() {
         return new Evento();

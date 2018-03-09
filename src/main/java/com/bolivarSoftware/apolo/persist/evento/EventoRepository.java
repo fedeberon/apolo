@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Fede Beron on 8/8/2017.
- */
+
 @Repository
 public class EventoRepository implements IEventoRepository{
 

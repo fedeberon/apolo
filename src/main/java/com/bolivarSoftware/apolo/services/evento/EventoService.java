@@ -34,7 +34,7 @@ public class EventoService implements IEventoService{
     @Override
     public Evento save(Evento evento) {
         evento.getServicios().forEach(servicioContratado -> servicioContratado.setEvento(evento));
-
+        evento.getServicios().removeIf(servicioContratado -> servicioContratado.getServicio() == null);
         evento.getServicios().forEach(servicioContratado -> {
             List<EtapaARealizar> etapas = new ArrayList<>();
 

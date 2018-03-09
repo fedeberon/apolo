@@ -27,6 +27,9 @@ public class ServicioContratado {
     @JoinColumn(name = "SEC_EVE_ID")
     private Evento evento;
 
+    @Column(name = "ETR_CANT_COMENTARIO")
+    private String comentario;
+
     public Long getId() {
         return id;
     }
@@ -66,5 +69,13 @@ public class ServicioContratado {
         Double result = Double.valueOf(cantidaDeEtapasResueltas) * 100 /  Double.valueOf(cantidadDeEtapas);
 
         return Math.round(result);
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

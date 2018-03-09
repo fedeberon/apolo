@@ -83,6 +83,7 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
             tx = session.delegate().getTransaction();
             tx.begin();
             servicio.getEtapas().forEach(etapaARealizar -> session.delegate().saveOrUpdate(etapaARealizar));
+            session.delegate().update(servicio);
             tx.commit();
 
             return servicio;

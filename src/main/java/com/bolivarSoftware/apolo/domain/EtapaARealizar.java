@@ -35,6 +35,10 @@ public class EtapaARealizar {
     @Column(name = "ETR_CANT_DIAS_LIMITE")
     private Integer cantidadDiasLimiteDeResolucion;
 
+    @Column(name = "ETR_CANT_DESCRIPCION")
+    private String descripcion;
+
+
     public EtapaARealizar() {
     }
 
@@ -98,4 +102,14 @@ public class EtapaARealizar {
     public void setCantidadDiasLimiteDeResolucion(Integer cantidadDiasLimiteDeResolucion) {
         this.cantidadDiasLimiteDeResolucion = cantidadDiasLimiteDeResolucion;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+
 }

@@ -18,4 +18,6 @@ public interface IEventoRepository {
     List<ServicioContratado> getServiciosContratados(Evento evento);
 
     List<Evento> findAllPageable(Integer page);
+
+    void remove(Integer id);
 }

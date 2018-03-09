@@ -84,4 +84,11 @@ public class EventoController {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm", locale);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
+
+    @RequestMapping("delete")
+    public String delete(@RequestParam Integer id){
+        eventoService.delete(id);
+
+        return "redirect:list";
+    }
 }

@@ -64,4 +64,9 @@ public class EventoService implements IEventoService{
     public List<Evento> findAllPageable(Integer page) {
         return dao.findAllPageable(page);
     }
+
+    @Override
+    public void delete(Integer id) {
+        dao.remove(id);
+    }
 }

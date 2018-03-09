@@ -78,6 +78,7 @@
                                         <th>Cantidad de dias</th>
                                         <th>Importancia</th>
                                         <th></th>
+                                        <th>Descripcion</th>
                                         </thead>
                                         <tbody>
 
@@ -105,17 +106,30 @@
                                                 </td>
 
                                                 <td>
-                                                    <div class="slider" id="${etapa.id}" style="width:200px;" value="${etapa.pesoEspecifico}">
+                                                    <div class="slider" id="${etapa.id}" style="width:150px;" value="${etapa.pesoEspecifico}">
                                                         <div id="custom-handle" class="ui-slider-handle"></div>
                                                     </div>
                                                 </td>
+
+                                                <td>
+                                                    <form:textarea path="etapas[${status.index}].descripcion" />
+                                                </td>
+
 
                                             </tr>
 
                                         </c:forEach>
 
+                                        <tr>
+                                            <td colspan="6">
+                                                <form:textarea path="comentario" placeholder="Comentarios" cssStyle="width: 100%" />
+                                            </td>
+                                        </tr>
+
                                         </tbody>
                                     </table>
+
+
 
                                     <button type="submit" class="btn btn-primary pull-right">Guardar</button>
 

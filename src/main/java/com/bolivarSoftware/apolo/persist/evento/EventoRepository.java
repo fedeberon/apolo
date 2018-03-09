@@ -50,6 +50,22 @@ public class EventoRepository implements IEventoRepository{
     }
 
     @Override
+    public void remove(Integer id) {
+        Transaction tx = null;
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            tx = session.delegate().getTransaction();
+            tx.begin();
+            Evento evento = (Evento) session.delegate().get(Evento.class, id);
+            session.delegate().delete(evento);
+            tx.commit();
+        }
+        catch (HibernateException e){
+            tx.rollback();
+            throw e;
+        }
+    }
+
+    @Override
     public List<Evento> findAll() {
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             return  session.delegate().createQuery("from Evento").list();

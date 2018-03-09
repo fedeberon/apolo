@@ -94,4 +94,22 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
         }
     }
 
+    @Override
+    public void remove(Long id) {
+        Transaction tx = null;
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            tx = session.delegate().getTransaction();
+            tx.begin();
+            ServicioContratado servicioContratado = (ServicioContratado) session.delegate().get(ServicioContratado.class, id);
+            Hibernate.initialize(servicioContratado.getEtapas());
+            servicioContratado.getEtapas().forEach(etapaARealizar -> session.delegate().delete(etapaARealizar));
+            session.delegate().delete(servicioContratado);
+            tx.commit();
+        }
+        catch (HibernateException e){
+            tx.rollback();
+            throw e;
+        }
+    }
+
 }

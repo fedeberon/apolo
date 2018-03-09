@@ -17,4 +17,6 @@ public interface IServicioContratadoRepository  {
     List<ServicioContratado> findAll();
 
     ServicioContratado saveEtapasDelServicio(ServicioContratado servicio);
+
+    void remove(Long id);
 }

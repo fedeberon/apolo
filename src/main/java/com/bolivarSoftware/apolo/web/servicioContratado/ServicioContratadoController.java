@@ -1,5 +1,6 @@
 package com.bolivarSoftware.apolo.web.servicioContratado;
 
+import com.bolivarSoftware.apolo.domain.Evento;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,13 @@ public class ServicioContratadoController {
         redirectAttributes.addAttribute("id", servicioContratado.getId());
 
         return "redirect:show";
+    }
+
+    @RequestMapping("delete")
+    public String delete(@RequestParam Long id, @RequestParam Integer idEvento, RedirectAttributes redirectAttributes){
+        servicioContratadoService.delete(id);
+        redirectAttributes.addAttribute("id", idEvento);
+
+        return "redirect:evento/show";
     }
 }

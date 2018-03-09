@@ -34,4 +34,9 @@ public class ServicioContratadoService  implements IServicioContratadoService{
     public ServicioContratado saveEtapasDelServicio(ServicioContratado servicioContratado) {
         return dao.saveEtapasDelServicio(servicioContratado);
     }
+
+    @Override
+    public void delete(Long id) {
+        dao.remove(id);
+    }
 }

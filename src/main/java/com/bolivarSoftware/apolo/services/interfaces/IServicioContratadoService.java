@@ -8,4 +8,6 @@ import com.bolivarSoftware.apolo.domain.ServicioContratado;
 
 public interface IServicioContratadoService extends ICommonService<ServicioContratado, Long> {
     ServicioContratado saveEtapasDelServicio(ServicioContratado servicioContratado);
+
+     void delete (Long id);
 }

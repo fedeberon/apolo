@@ -126,6 +126,7 @@
 
                             </div>
                         </div>
+                        <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
                     </div>
 
                 </div>

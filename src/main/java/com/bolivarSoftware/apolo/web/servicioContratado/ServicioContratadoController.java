@@ -47,6 +47,6 @@ public class ServicioContratadoController {
         servicioContratadoService.delete(id);
         redirectAttributes.addAttribute("id", idEvento);
 
-        return "redirect:evento/show";
+        return "redirect:/evento/show";
     }
 }

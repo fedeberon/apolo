@@ -24,8 +24,10 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
-          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+    <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -47,44 +49,73 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Proveedores</h4>
-                                <p class="category">lista</p>
+                                <h4 class="title">Evento</h4>
+                                <%--<p class="category">lista</p>--%>
                             </div>
                             <div class="card-content table-responsive">
                                 <table class="table">
                                     <thead class="text-primary">
-                                    <th>Cod Int</th>
                                     <th>Nombre</th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <td>${evento.id}</td>
+                                    </tr>
 
-                                    <c:forEach items="${proveedores}" var="bo">
-                                        <tr>
-                                            <td><a href="/apolo/proveedor/show?id=${proveedor.id}">${proveedor.id}</a></td>
-                                            <td>${bo.nombre}</td>
-                                        </tr>
-                                    </c:forEach>
                                     </tbody>
                                 </table>
 
-                                <a href="<c:url value='/proveedor/create'/>" class="btn btn-primary pull-right">Nuevo</a>
+                                <%--<a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>--%>
+
+                                <%--<!-- /.box-header -->--%>
+                                <%--<div class="box-body">--%>
+
+                                    <%--<div class="row">--%>
+
+                                        <%--<c:forEach items="${serviciosContratados}" var="bo">--%>
+                                            <%--<div class="col-xs-3 col-md-3 text-center">--%>
+                                                <%--<input type="text" class="knob" value="${bo.porcentajeCompletado}" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-skin="tron" data-thickness="0.2" data-readonly="true">--%>
+
+                                                <%--<div class="knob-label"><a href="<c:url value='/servicioContratado/show?id=${bo.id}'/>">${bo.servicio.nombre}</a></div>--%>
+                                            <%--</div>--%>
+
+                                        <%--</c:forEach>--%>
+
+                                    <%--</div>--%>
+                                    <%--<!-- /.row -->--%>
+                                <%--</div>--%>
+                                <%--<!-- /.box-body -->--%>
 
                             </div>
                         </div>
+                        <a href="<c:url value='/evento/delete?id=${proveedor.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
                     </div>
 
                 </div>
             </div>
+
+            <jsp:include page="../footer.jsp"/>
+
         </div>
-        <jsp:include page="../footer.jsp"/>
 
     </div>
-
-</div>
 </body>
 
 
 <jsp:include page="../buttom.jsp"/>
 
+<!-- jQuery Knob -->
+<script src="<c:url value='/resources/plugins/knob/jquery.knob.js'/>"></script>
+
+
+<script type="application/javascript">
+
+    $(function () {
+        $(".knob").knob();
+    });
+
+</script>
 
 </html>

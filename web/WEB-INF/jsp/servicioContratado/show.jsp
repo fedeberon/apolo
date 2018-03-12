@@ -134,7 +134,7 @@
 
 
                                     <a href="<c:url value='/servicioContratado/delete?id=${servicioContratado.id}&idEvento=${servicioContratado.evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+                                    <button type="submit" class="btn btn-primary pull-right" >Guardar</button>
 
 
                                 </form:form>

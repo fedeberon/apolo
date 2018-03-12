@@ -12,9 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Fede Beron on 14/7/2017.
- */
+
 @Repository
 public class ServicioRepository implements IServicioRepository {
 

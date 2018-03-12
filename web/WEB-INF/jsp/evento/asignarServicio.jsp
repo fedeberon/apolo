@@ -45,17 +45,18 @@
 
                     <form:form action="/apolo/evento/save" modelAttribute="evento">
 
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Nuevo Evento</h4>
-                                <p class="category">Complete los datos</p>
-                            </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="purple">
+                                    <h4 class="title">Nuevo Evento</h4>
+                                    <p class="category">Complete los datos</p>
+                                </div>
 
-                            <div class="card-content">
+                                <div class="card-content">
 
                                     <div class="row">
                                         <div class="col-md-5">
+                                            <form:hidden  path="id"/>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>
                                                 <form:input cssClass="form-control" path="nombre"/>
@@ -115,15 +116,15 @@
                                     <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
                                     <div class="clearfix"></div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                         <c:forEach items="${servicios}" var="bo" varStatus="status">
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <div class="card card-stats">
                                     <div class="card-content">
-                                            <h3>${bo.nombre}</h3>
+                                        <h3>${bo.nombre}</h3>
                                         <input type="hidden" name="servicio.id" value="${bo.id}"/>
                                         <div class="checkbox">
                                             <label>
@@ -140,7 +141,6 @@
                             </div>
 
                         </c:forEach>
-
 
                     </form:form>
 
@@ -163,11 +163,11 @@
 <script src="<c:url value='/webjarslocator/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'/>" type="text/javascript"></script>
 
 <script type="text/javascript">
-            $(function () {
-                $('.fecha').datetimepicker({
-                    locale: 'es'
-                });
-            });
+    $(function () {
+        $('.fecha').datetimepicker({
+            locale: 'es'
+        });
+    });
 </script>
 
 

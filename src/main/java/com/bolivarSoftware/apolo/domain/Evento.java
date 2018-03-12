@@ -16,28 +16,38 @@ public class    Evento {
     @Column(name = "EVE_ID")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "EVE_NOMBRE")
     private String nombre;
+
     @Column(name = "EVE_CIUDAD")
     private String ciudad;
+
     @Column(name = "EVE_DOMICILIO")
     private String domicilio;
+
     @Column(name = "EVE_TELEFONO")
     private String telefono;
+
     @Column(name = "EVE_MAIL")
     private String mail;
+<<<<<<< HEAD
     @Column(name = "EVE_LULAR")
     private String lugar;
+=======
+
+>>>>>>> 9d50e3b52c5ed1cd91cd45bd28cc1eb86588b7aa
     @Column(name = "EVE_FECHA_EVENTO")
     private Date fechaDeEvento;
+
     @Column(name = "EVE_CONTRATADO_POR")
     private String contratadoPor;
-    @Enumerated(EnumType.STRING)
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "EVE_TIPO")
     private TipoDeEvento tipoDeEvento;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "evento")
+    @OneToMany(cascade =  { CascadeType.PERSIST}, mappedBy = "evento")
     private List<ServicioContratado> servicios;
 
     public Integer getId() {

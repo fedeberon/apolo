@@ -1,5 +1,6 @@
 package com.bolivarSoftware.apolo.persist.servicioContratado;
 
+import com.bolivarSoftware.apolo.domain.EtapaARealizar;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.persist.CloseableSession;
 import com.bolivarSoftware.apolo.persist.interfaces.IServicioContratadoRepository;

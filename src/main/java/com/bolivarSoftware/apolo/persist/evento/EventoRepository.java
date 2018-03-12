@@ -56,6 +56,9 @@ public class EventoRepository implements IEventoRepository{
             tx = session.delegate().getTransaction();
             tx.begin();
             Evento evento = (Evento) session.delegate().get(Evento.class, id);
+            Hibernate.initialize(evento.getServicios());
+            evento.getServicios().forEach(servicioContratado -> servicioContratado.getEtapas().forEach(etapaARealizar -> session.delegate().delete(etapaARealizar)));
+            evento.getServicios().forEach(servicioContratado -> session.delegate().delete(servicioContratado));
             session.delegate().delete(evento);
             tx.commit();
         }

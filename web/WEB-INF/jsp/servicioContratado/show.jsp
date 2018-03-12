@@ -116,7 +116,7 @@
                                                 </td>
 
                                                 <td>
-                                                    <a href="<c:url value=''/>" class="material-icons">delete</a>
+                                                    <a href="<c:url value='/tareas/delete?id=${etapa.id}&idServicio=${servicioContratado.id}'/>" class="material-icons">delete</a>
                                                 </td>
 
                                             </tr>

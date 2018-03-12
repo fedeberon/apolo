@@ -3,6 +3,7 @@ package com.bolivarSoftware.apolo.domain;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "SERVICIOS")
@@ -66,4 +67,13 @@ public class Servicio {
         this.etapas = etapas;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Servicio)) {
+            return false;
+        }
+        Servicio servicio = (Servicio) o;
+        return id == servicio.id;
+    }
 }

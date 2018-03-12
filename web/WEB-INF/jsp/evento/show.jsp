@@ -80,7 +80,7 @@
                                       </tr>
 
                                       <tr>
-                                          <th>e Mail</th>
+                                          <th>Email</th>
                                           <td>${evento.mail}</td>
                                       </tr>
 
@@ -104,6 +104,8 @@
 
                                     </tbody>
                                 </table>
+
+                                <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
 
                                 <!-- /.box-header -->
                                 <div class="box-body">

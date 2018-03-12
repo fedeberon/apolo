@@ -31,7 +31,12 @@ public class    Evento {
 
     @Column(name = "EVE_MAIL")
     private String mail;
+<<<<<<< HEAD
+    @Column(name = "EVE_LULAR")
+    private String lugar;
+=======
 
+>>>>>>> 9d50e3b52c5ed1cd91cd45bd28cc1eb86588b7aa
     @Column(name = "EVE_FECHA_EVENTO")
     private Date fechaDeEvento;
 
@@ -123,6 +128,14 @@ public class    Evento {
 
     public void setServicios(List<ServicioContratado> servicios) {
         this.servicios = servicios;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
 

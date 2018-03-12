@@ -56,22 +56,22 @@
 
                                     <div class="row">
                                         <div class="col-md-5">
+                                            <form:hidden  path="id"/>
                                             <div class="form-group label-floating">
-                                                <form:hidden path="id"/>
                                                 <label class="control-label">Nombre</label>
-                                                <label>${evento.nombre}</label>
+                                                <form:input cssClass="form-control" path="nombre"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Fecha</label>
-                                                <label>${evento.fechaDeEvento}</label>
+                                                <form:input cssClass="form-control fecha" path="fechaDeEvento"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Ciudad</label>
-                                                <label>${evento.ciudad}</label>
+                                                <form:input cssClass="form-control" path="ciudad"/>
                                             </div>
                                         </div>
                                     </div>
@@ -80,19 +80,19 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Domicilio</label>
-                                                <label>${evento.domicilio}</label>
+                                                <form:input cssClass="form-control" path="domicilio"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Telefono</label>
-                                                <label>${evento.telefono}</label>
+                                                <form:input cssClass="date form-control" path="telefono"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Lugar</label>
-                                                <label>${evento.mail}</label>
+                                                <form:input cssClass="form-control" path="lugar"/>
                                             </div>
                                         </div>
                                     </div>
@@ -102,13 +102,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contratado por</label>
-                                                <label>${evento.contratadoPor}</label>
+                                                <form:input cssClass="date form-control" path="contratadoPor"/>
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
-                                                <input type="email" class="form-control">
+                                                <form:input cssClass="form-control" path="mail"/>
                                             </div>
                                         </div>
                                     </div>
@@ -141,7 +141,6 @@
                             </div>
 
                         </c:forEach>
-
 
                     </form:form>
 

@@ -91,7 +91,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Lugar</label>
-                                                <form:input cssClass="form-control" path="mail"/>
+                                                <form:input cssClass="form-control" path="lugar"/>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
-                                                <input type="email" class="form-control">
+                                                <form:input cssClass="form-control" path="mail"/>
                                             </div>
                                         </div>
                                     </div>

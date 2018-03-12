@@ -26,6 +26,8 @@ public class    Evento {
     private String telefono;
     @Column(name = "EVE_MAIL")
     private String mail;
+    @Column(name = "EVE_LULAR")
+    private String lugar;
     @Column(name = "EVE_FECHA_EVENTO")
     private Date fechaDeEvento;
     @Column(name = "EVE_CONTRATADO_POR")
@@ -116,6 +118,14 @@ public class    Evento {
 
     public void setServicios(List<ServicioContratado> servicios) {
         this.servicios = servicios;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
 

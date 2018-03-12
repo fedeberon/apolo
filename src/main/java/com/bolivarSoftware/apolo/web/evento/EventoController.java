@@ -70,7 +70,9 @@ public class EventoController {
 
     @RequestMapping("asignarServicio")
     public String asignarServicio(@RequestParam Integer id, Model model) {
-        model.addAttribute("evento", eventoService.get(id));
+        Evento evento = eventoService.get(id);
+        model.addAttribute("evento", evento);
+        model.addAttribute("servicios", servicioService.findAll(evento));
 
         return "evento/asignarServicio";
     }

@@ -1,6 +1,8 @@
 package com.bolivarSoftware.apolo.services.servicio;
 
+import com.bolivarSoftware.apolo.domain.Evento;
 import com.bolivarSoftware.apolo.domain.Servicio;
+import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.persist.servicio.interfaces.IServicioRepository;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.hibernate.cfg.NotYetImplementedException;
@@ -33,4 +35,22 @@ public class ServicioService implements IServicioService {
         return dao.findAll();
     }
 
+    @Override
+    public List<Servicio> findAll(Evento evento) {
+        List<Servicio> servicios = this.findAll();
+        servicios.removeIf(servicio -> this.existServicio(servicio, evento));
+
+        return servicios;
+    }
+
+    private boolean existServicio(Servicio servicio, Evento evento) {
+        List<ServicioContratado> servicioContratados = evento.getServicios();
+
+        for (int i = 0 ; i < servicioContratados.size(); i++){
+            ServicioContratado servicioContratado = servicioContratados.get(i);
+            if(servicioContratado.getServicio().equals(servicio)) return true;
+        }
+
+        return false;
+    }
 }

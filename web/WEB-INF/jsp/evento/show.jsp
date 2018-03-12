@@ -105,7 +105,7 @@
                                     </tbody>
                                 </table>
 
-                                <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Nuevo servicio</a>
+                                <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
 
                                 <!-- /.box-header -->
                                 <div class="box-body">

@@ -115,6 +115,9 @@
                                                     <form:textarea path="etapas[${status.index}].descripcion" />
                                                 </td>
 
+                                                <td>
+                                                    <a href="<c:url value='/tareas/delete?id=${etapa.id}&idServicio=${servicioContratado.id}'/>" class="material-icons">delete</a>
+                                                </td>
 
                                             </tr>
 

@@ -45,9 +45,9 @@
                 </a>
             </li>
             <li>
-                <a href="maps.html">
+                <a href="<c:url value="/maps/" />">
                     <i class="material-icons">location_on</i>
-                    <p>mapa de eventos</p>
+                    <p>Mapa de Eventos</p>
                 </a>
             </li>
             <li>

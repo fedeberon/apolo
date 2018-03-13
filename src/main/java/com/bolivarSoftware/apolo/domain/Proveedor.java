@@ -15,6 +15,15 @@ public class Proveedor {
     @Column(name = "PRO_NOMBRE")
     private String nombre;
 
+    @Column(name = "PRO_TELEFONO")
+    private String telefono;
+
+    @Column(name = "PRO_EMAIL")
+    private String email;
+
+    @Column(name = "PRO_DIRECCION")
+    private String direccion;
+
     @OneToMany(mappedBy = "proveedor")
     private List<Servicio> servicios;
 
@@ -40,5 +49,29 @@ public class Proveedor {
 
     public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

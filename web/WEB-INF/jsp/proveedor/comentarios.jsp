@@ -24,10 +24,8 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
-    <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
-
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+          type='text/css'>
 </head>
 
 <body>
@@ -40,93 +38,59 @@
 
         <jsp:include page="../menu.jsp"/>
 
-
         <div class="content">
-
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Proveedor</h4>
-                                <%--<p class="category">lista</p>--%>
+                                <h4 class="title">Nuevo Proveedor</h4>
+                                <p class="category">Complete los datos</p>
                             </div>
-                            <div class="card-content table-responsive">
+
+                            <div class="card-content">
+
                                 <table class="table">
                                     <thead class="text-primary">
-                                    <th>Nombre</th>
-                                    <th></th>
+                                    <th>Servicio</th>
+                                    <th>Evento</th>
+                                    <th>Comentarios</th>
                                     </thead>
                                     <tbody>
+
+                                    <c:forEach items="${serviciosContratados}" var="servicioContratado">
                                         <tr>
-                                            <th>Codigo</th>
-                                            <td>${proveedor.id}</td>
+                                            <td><a href="/apolo/servicioContratado/show?id=${servicioContratado.id}" target="_blank">${servicioContratado.servicio.nombre}</a></td>
+                                            <td>${servicioContratado.evento.nombre}</td>
+                                            <td>${servicioContratado.comentario}</td>
                                         </tr>
 
-                                        <tr>
-                                             <th>Nombre</th>
-                                             <td>${proveedor.nombre}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <th>Direccion</th>
-                                            <td>${proveedor.direccion}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <th>Telefono</th>
-                                            <td>${proveedor.telefono}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <th>Email</th>
-                                            <td>${proveedor.email}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <th colspan="2">Servicios</th>
-                                        </tr>
-
-                                        <c:forEach items="${proveedor.servicios}" var="servicio">
+                                        <c:forEach items="${servicioContratado.etapas}" var="etapa">
                                             <tr>
-                                                <td colspan="2">
-                                                    <li>${servicio.nombre}</li>
-                                                </td>
+                                                <td>${etapa.etapa.nombre}</td>
+                                                <td colspan="2">${etapa.descripcion}</td>
                                             </tr>
                                         </c:forEach>
 
+
+                                    </c:forEach>
                                     </tbody>
                                 </table>
 
                             </div>
                         </div>
-                        <a href="<c:url value='/servicioContratado/comentariosDeProveedor?id=${proveedor.id}'/>" class="btn btn-primary pull-right">Comentarios</a>
                     </div>
-
                 </div>
             </div>
-
-            <jsp:include page="../footer.jsp"/>
-
         </div>
 
+        <jsp:include page="../footer.jsp"/>
+
     </div>
+
+</div>
 </body>
 
-
 <jsp:include page="../buttom.jsp"/>
-
-<!-- jQuery Knob -->
-<script src="<c:url value='/resources/plugins/knob/jquery.knob.js'/>"></script>
-
-
-<script type="application/javascript">
-
-    $(function () {
-        $(".knob").knob();
-    });
-
-</script>
 
 </html>

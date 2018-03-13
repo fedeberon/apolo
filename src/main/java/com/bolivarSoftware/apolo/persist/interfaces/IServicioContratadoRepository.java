@@ -1,5 +1,6 @@
 package com.bolivarSoftware.apolo.persist.interfaces;
 
+import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface IServicioContratadoRepository  {
     ServicioContratado saveEtapasDelServicio(ServicioContratado servicio);
 
     void remove(Long id);
+
+    List<ServicioContratado> getBy(Proveedor proveedor);
 }

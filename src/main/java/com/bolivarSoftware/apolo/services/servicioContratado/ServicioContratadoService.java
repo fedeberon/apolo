@@ -1,5 +1,6 @@
 package com.bolivarSoftware.apolo.services.servicioContratado;
 
+import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.persist.interfaces.IServicioContratadoRepository;
 import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
@@ -39,4 +40,10 @@ public class ServicioContratadoService  implements IServicioContratadoService{
     public void delete(Long id) {
         dao.remove(id);
     }
+
+    @Override
+    public List<ServicioContratado> getBy(Proveedor proveedor){
+        return dao.getBy(proveedor);
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.bolivarSoftware.apolo.persist.servicioContratado;
 
-import com.bolivarSoftware.apolo.domain.EtapaARealizar;
+import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.persist.CloseableSession;
 import com.bolivarSoftware.apolo.persist.interfaces.IServicioContratadoRepository;
@@ -112,5 +112,21 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
             throw e;
         }
     }
+
+    @Override
+    public List<ServicioContratado> getBy(Proveedor proveedor) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            Query query = session.delegate().createQuery("from ServicioContratado where servicio.proveedor = :proveedor");
+            query.setParameter("proveedor", proveedor);
+            List<ServicioContratado> servicioContratados = query.list();
+            servicioContratados.forEach(servicioContratado -> Hibernate.initialize(servicioContratado.getEtapas()));
+
+            return servicioContratados;
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
+
 
 }

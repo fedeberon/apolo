@@ -80,8 +80,18 @@
                                       </tr>
 
                                       <tr>
+                                          <th>Fecha</th>
+                                          <td>${evento.fechaDeEvento}</td>
+                                      </tr>
+
+                                      <tr>
                                           <th>Email</th>
                                           <td>${evento.mail}</td>
+                                      </tr>
+
+                                      <tr>
+                                          <th>Lugar</th>
+                                          <td>${evento.lugar}</td>
                                       </tr>
 
                                       <%--<tr>--%>
@@ -105,8 +115,6 @@
                                     </tbody>
                                 </table>
 
-                                <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
-
                                 <!-- /.box-header -->
                                 <div class="box-body">
 
@@ -129,6 +137,7 @@
                             </div>
                         </div>
                         <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
+                        <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
                     </div>
 
                 </div>

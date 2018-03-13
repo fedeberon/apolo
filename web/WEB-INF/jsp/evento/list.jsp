@@ -48,7 +48,7 @@
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
                                 <h4 class="title">Eventos</h4>
-                                <p class="category">lista</p>
+                                <p class="category">Lista</p>
                             </div>
                             <div class="card-content table-responsive">
                                 <table class="table">

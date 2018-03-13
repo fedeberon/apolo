@@ -56,6 +56,22 @@
                                                 <label class="control-label">Nombre</label>
                                                 <form:input cssClass="form-control" path="nombre"/>
                                             </div>
+
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Telefono</label>
+                                                <form:input cssClass="form-control" path="telefono"/>
+                                            </div>
+
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Email</label>
+                                                <form:input cssClass="form-control" path="email"/>
+                                            </div>
+
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Direccion</label>
+                                                <form:input cssClass="form-control" path="direccion"/>
+                                            </div>
+
                                         </div>
                                     </div>
 

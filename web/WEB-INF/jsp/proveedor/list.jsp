@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Nuevo Evento </title>
+    <title>Proveedores </title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -48,7 +48,7 @@
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
                                 <h4 class="title">Proveedores</h4>
-                                <p class="category">lista</p>
+                                <p class="category">Lista</p>
                             </div>
                             <div class="card-content table-responsive">
                                 <table class="table">
@@ -60,7 +60,7 @@
 
                                     <c:forEach items="${proveedores}" var="bo">
                                         <tr>
-                                            <td><a href="/apolo/proveedor/show?id=${proveedor.id}">${proveedor.id}</a></td>
+                                            <td><a href="/apolo/proveedor/show?id=${bo.id}">${bo.id}</a></td>
                                             <td>${bo.nombre}</td>
                                         </tr>
                                     </c:forEach>

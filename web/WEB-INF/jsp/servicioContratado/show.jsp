@@ -62,7 +62,7 @@
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
                                 <h4 class="title">Servicio Contratado: ${servicioContratado.servicio.nombre}</h4>
-                                <p class="category">Evento <a href="<c:url value='/evento/show?id=${servicioContratado.evento.id}'/>">${servicioContratado.evento.nombre} - Fecha del Evento ${servicioContratado.evento.fechaDeEvento} </a></p>
+                                <p class="category"><a href="<c:url value='/evento/show?id=${servicioContratado.evento.id}'/>"> Evento ${servicioContratado.evento.nombre} - Proveedor ${servicioContratado.servicio.proveedor.nombre} </a></p>
                             </div>
                             <div class="card-content table-responsive">
 

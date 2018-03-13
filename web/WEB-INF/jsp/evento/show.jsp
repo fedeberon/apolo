@@ -84,6 +84,9 @@
                                           <td>${evento.mail}</td>
                                       </tr>
 
+
+
+
                                       <%--<tr>--%>
                                           <%--<th>Contratos</th>--%>
                                           <%--<td>--%>
@@ -120,7 +123,7 @@
                                             </div>
 
                                         </c:forEach>
-
+                                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=&quot${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
                                     </div>
                                     <!-- /.row -->
                                 </div>

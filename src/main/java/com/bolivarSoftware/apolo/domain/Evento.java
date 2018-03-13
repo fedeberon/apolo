@@ -4,6 +4,7 @@ import com.bolivarSoftware.apolo.beans.TipoDeEvento;
 import com.bolivarSoftware.apolo.domain.Servicio;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +41,12 @@ public class    Evento {
 
     @Column(name = "EVE_CONTRATADO_POR")
     private String contratadoPor;
+
+    @Column(name = "EVE_LATITUD")
+    private BigDecimal latitud;
+
+    @Column(name = "EVE_LONGITUD")
+    private BigDecimal longitud;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "EVE_TIPO")
@@ -136,5 +143,19 @@ public class    Evento {
         this.lugar = lugar;
     }
 
+    public BigDecimal getLatitud() {
+        return latitud;
+    }
 
+    public void setLatitud(BigDecimal latitud) {
+        this.latitud = latitud;
+    }
+
+    public BigDecimal getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(BigDecimal longitud) {
+        this.longitud = longitud;
+    }
 }

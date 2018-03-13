@@ -27,6 +27,14 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
     <link href="<c:url value='/webjarslocator/bootstrap-datetimepicker/2.4.2/css/bootstrap-datetimepicker.css'/>" rel="stylesheet"/>
+
+
+    <style>
+        .modal {
+            margin: -60px auto 0px auto
+        }
+    </style>
+
 </head>
 
 <body>
@@ -44,6 +52,9 @@
                 <div class="row">
 
                     <form:form action="/apolo/evento/save" modelAttribute="evento">
+
+                    <form:input path="latitud" id="latitud"/>
+                    <form:input path="longitud" id="longitud"/>
 
                     <div class="col-md-12">
                         <div class="card">
@@ -113,6 +124,7 @@
                                     </div>
 
                                     <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Geolocalizar</button>
                                     <div class="clearfix"></div>
 
                             </div>
@@ -141,7 +153,6 @@
 
                         </c:forEach>
 
-
                     </form:form>
 
                 </div>
@@ -153,6 +164,22 @@
     </div>
 
 </div>
+
+
+<!-- Large modal -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="map" style="width:100%;height:500px;margin-top: 1px;"></div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar Ubicaci&oacute;n</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 
@@ -169,6 +196,9 @@
                 });
             });
 </script>
+
+<script src="<c:url value='/resources/js/maps.js'/>" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&callback=myMap" type="text/javascript"></script>
 
 
 </html>

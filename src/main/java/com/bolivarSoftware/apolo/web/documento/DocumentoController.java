@@ -22,7 +22,7 @@ public class DocumentoController {
         documentoService.upload(documento);
         redirectAttributes.addAttribute("id", documento.getIdEvento());
 
-        return "redirect:/articulos/show";
+        return "redirect:/evento/show";
     }
 
     @ModelAttribute("documento")

@@ -33,19 +33,19 @@ public class EventoService implements IEventoService{
 
     @Override
     public Evento save(Evento evento) {
-        evento.getServicios().forEach(servicioContratado -> servicioContratado.setEvento(evento));
-        evento.getServicios().removeIf(servicioContratado -> servicioContratado.getServicio() == null);
-        evento.getServicios().forEach(servicioContratado -> {
-            List<EtapaARealizar> etapas = new ArrayList<>();
+        if(evento.getServicios() != null){
+            evento.getServicios().removeIf(servicioContratado -> servicioContratado.getServicio() == null);
+            evento.getServicios().forEach(servicioContratado -> servicioContratado.setEvento(evento));
+            evento.getServicios().forEach(servicioContratado -> {
+                List<EtapaARealizar> etapas = new ArrayList<>();
+                Servicio servicio = servicioService.get(servicioContratado.getServicio().getId());
+                servicio.getEtapas().forEach(etapa -> {
+                    etapas.add(new EtapaARealizar(etapa, servicioContratado));
+                });
 
-            Servicio servicio = servicioService.get(servicioContratado.getServicio().getId());
-            servicio.getEtapas().forEach(etapa -> {
-                etapas.add(new EtapaARealizar(etapa, servicioContratado));
+                servicioContratado.setEtapas(etapas);
             });
-
-            servicioContratado.setEtapas(etapas);
-        });
-
+        }
 
         return dao.save(evento);
     }

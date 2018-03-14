@@ -53,8 +53,8 @@
 
                     <form:form action="/apolo/evento/save" modelAttribute="evento">
 
-                    <form:input path="latitud" id="latitud"/>
-                    <form:input path="longitud" id="longitud"/>
+                    <form:hidden path="latitud" id="latitud"/>
+                    <form:hidden path="longitud" id="longitud"/>
 
                     <div class="col-md-12">
                         <div class="card">

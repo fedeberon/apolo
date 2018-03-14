@@ -28,6 +28,14 @@
 
     <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
 
+    <style>
+        .modal-content {
+            width: 645px;
+            margin: -60px auto 0px auto;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -94,6 +102,7 @@
                                         <td>${evento.lugar}</td>
                                     </tr>
 
+
                                       <%--<tr>--%>
                                           <%--<th>Contratos</th>--%>
                                           <%--<td>--%>
@@ -128,7 +137,7 @@
                                             </div>
 
                                         </c:forEach>
-                                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=&quot${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
+
                                     </div>
                                     <!-- /.row -->
                                 </div>
@@ -138,7 +147,9 @@
                         </div>
                         <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
                         <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Ver Mapa</button>
                     </div>
+
 
                 </div>
             </div>
@@ -148,6 +159,19 @@
     </div>
 
 </div>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Ubicaci&oacute;n del Evento</h4>
+                    </div>
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=&quot${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
+                </div>
+            </div>
+        </div>
+
 </body>
 
 

@@ -33,7 +33,9 @@
             width: 645px;
             margin: -60px auto 0px auto;
         }
-
+        .btn.btn-primary.pull-right.ir-mapa {
+            margin-top: -8%;
+        }
     </style>
 
 </head>
@@ -168,6 +170,7 @@
                         <h4 class="modal-title">Ubicaci&oacute;n del Evento</h4>
                     </div>
                     <img src="https://maps.googleapis.com/maps/api/staticmap?center=&quot${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
+                    <a href="<c:url value='https://www.google.com/maps/search/?api=1&query=${evento.latitud},${evento.longitud}'/>" target="_blank" class="btn btn-primary pull-right ir-mapa">Ir al Mapa</a>
                 </div>
             </div>
         </div>

@@ -63,7 +63,7 @@
                             <div class="card-content table-responsive">
                                 <table class="table">
                                     <thead class="text-primary">
-                                    <th>Nombre</th>
+                                    <th></th>
                                     <th></th>
                                     </thead>
                                     <tbody>
@@ -80,6 +80,11 @@
                                     <tr>
                                         <th>Ciudad</th>
                                         <td>${evento.ciudad}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Direccion</th>
+                                        <td>${evento.domicilio}</td>
                                     </tr>
 
                                     <tr>
@@ -102,27 +107,28 @@
                                         <td>${evento.lugar}</td>
                                     </tr>
 
+                                    <tr>
+                                        <th>Contratos</th>
+                                        <td>
+                                            <c:forEach items="${contratos}" var="bo">
+                                                <li><a href="c:${bo.url}">${bo.nombre}</a></li>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
 
-                                      <%--<tr>--%>
-                                          <%--<th>Contratos</th>--%>
-                                          <%--<td>--%>
-                                              <%--<c:forEach items="contratos" var="bo">--%>
-                                                <%--<li><a href="${bo.url}">${bo.nombre}</a></li>--%>
-                                              <%--</c:forEach>--%>
-                                          <%--</td>--%>
-                                      <%--</tr>--%>
-
-                                      <%--<tr>--%>
-                                          <%--<th>Facturas</th>--%>
-                                          <%--<td>--%>
-                                              <%--<c:forEach items="facturas" var="bo">--%>
-                                                  <%--<li><a href="${bo.url}">${bo.nombre}</a></li>--%>
-                                              <%--</c:forEach>--%>
-                                          <%--</td>--%>
-                                      <%--</tr>--%>
+                                    <tr>
+                                        <th>Facturas</th>
+                                        <td>
+                                            <c:forEach items="${facturas}" var="bo">
+                                                <li><a href="c:${bo.url}">${bo.nombre}</a></li>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
 
                                     </tbody>
                                 </table>
+
+                                <hr>
 
                                 <!-- /.box-header -->
                                 <div class="box-body">
@@ -132,7 +138,6 @@
                                         <c:forEach items="${serviciosContratados}" var="bo">
                                             <div class="col-xs-3 col-md-3 text-center">
                                                 <input type="text" class="knob" value="${bo.porcentajeCompletado}" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-skin="tron" data-thickness="0.2" data-readonly="true">
-
                                                 <div class="knob-label"><a href="<c:url value='/servicioContratado/show?id=${bo.id}'/>">${bo.servicio.nombre}</a></div>
                                             </div>
 
@@ -147,7 +152,8 @@
                         </div>
                         <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
                         <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Ver Mapa</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos">Documentos</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-mapa">Ver Mapa</button>
                     </div>
 
 
@@ -160,7 +166,7 @@
 
 </div>
 
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div  id="modal-mapa"  class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -168,6 +174,35 @@
                         <h4 class="modal-title">Ubicaci&oacute;n del Evento</h4>
                     </div>
                     <img src="https://maps.googleapis.com/maps/api/staticmap?center=&quot${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-documentos" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Documentos</h4>
+                    </div>
+
+                    <form:form  action="/apolo/documento/uploadFile" modelAttribute="documento" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+
+                            <input type="hidden" name="idEvento" value="${evento.id}"/>
+
+                            <input type="file" name="file"/>
+
+                            <input type="radio" name="carpeta" value="CONTRATOS">Contrato
+                            <input type="radio" name="carpeta" value="FACTURAS">Factura
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-default">Guadar</button>
+                        </div>
+                    </form:form>
+
                 </div>
             </div>
         </div>

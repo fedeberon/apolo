@@ -127,6 +127,15 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <th>Documentos</th>
+                                        <td>
+                                            <c:forEach items="${documentos}" var="bo">
+                                                <li><a href="c:${bo.url}">${bo.nombre}</a></li>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+
                                     </tbody>
                                 </table>
 
@@ -198,6 +207,7 @@
 
                             <input type="radio" name="carpeta" value="CONTRATOS">Contrato
                             <input type="radio" name="carpeta" value="FACTURAS">Factura
+                            <input type="radio" name="carpeta" value="DOCUMENTOS">Documento
 
                         </div>
                         <div class="modal-footer">

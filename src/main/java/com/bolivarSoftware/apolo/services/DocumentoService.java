@@ -24,7 +24,7 @@ import java.util.List;
 public class DocumentoService implements IDocumentoService {
 
     //@Value("${filePathFolder}")
-    private String filePathFolder;
+    private String filePathFolder = "/documento";
 
     @Override
     public void upload(Documento documento) {
@@ -77,13 +77,13 @@ public class DocumentoService implements IDocumentoService {
 
     @Override
     public List<Documento> getDocumentos(Evento evento, Carpeta carpeta){
-        final List<Documento> imagenes = new ArrayList<>();
+        final List<Documento> documentos = new ArrayList<>();
         try {
             Files.walkFileTree(Paths.get(filePathFolder + File.separator + carpeta + File.separator + evento.getId()), new SimpleFileVisitor<Path>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     try {
-                        imagenes.add(new Documento(carpeta, evento.getId(), file.getFileName().toString()));
+                        documentos.add(new Documento(carpeta, evento.getId(), file.getFileName().toString()));
                     }
                     finally {
                         return FileVisitResult.CONTINUE;
@@ -94,7 +94,7 @@ public class DocumentoService implements IDocumentoService {
             e.printStackTrace();
         }
 
-        return imagenes;
+        return documentos;
     }
 
  }

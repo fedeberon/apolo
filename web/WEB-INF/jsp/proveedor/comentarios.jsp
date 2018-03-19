@@ -44,8 +44,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Nuevo Proveedor</h4>
-                                <p class="category">Complete los datos</p>
+                                <h4 class="title">Comentarios</h4>
                             </div>
 
                             <div class="card-content">

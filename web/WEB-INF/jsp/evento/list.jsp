@@ -64,7 +64,7 @@
                                         <tr>
                                             <td><a href="/apolo/evento/show?id=${evento.id}">${evento.id}</a></td>
                                             <td>${evento.nombre}</td>
-                                            <td>${evento.ciudad}</td>
+                                            <td>${evento.lugar}</td>
                                             <td>${evento.fechaDeEvento}</td>
                                         </tr>
                                     </c:forEach>

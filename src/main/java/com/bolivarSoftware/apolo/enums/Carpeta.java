@@ -7,6 +7,7 @@ public enum  Carpeta {
 
     CONTRATOS,
     FACTURAS,
+    DOCUMENTOS,
     IMAGENES
 
 }

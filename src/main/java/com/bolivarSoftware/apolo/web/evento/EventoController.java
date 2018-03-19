@@ -55,6 +55,7 @@ public class EventoController {
         model.addAttribute("evento", evento);
         model.addAttribute("contratos" , documentoService.getDocumentos(evento, Carpeta.CONTRATOS));
         model.addAttribute("facturas" , documentoService.getDocumentos(evento, Carpeta.FACTURAS));
+        model.addAttribute("documentos" , documentoService.getDocumentos(evento, Carpeta.DOCUMENTOS));
         model.addAttribute("serviciosContratados", eventoService.getServiciosContratados(evento));
 
         return "evento/show";

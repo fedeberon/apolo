@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -18,11 +19,10 @@ public class DocumentoController {
 
     @RequestMapping(value = "uploadFile", method = RequestMethod.POST)
     public String uploadFile(@ModelAttribute Documento documento,
-                             RedirectAttributes redirectAttributes) {
+                             @RequestParam String urlRedirect) {
         documentoService.upload(documento);
-        redirectAttributes.addAttribute("id", documento.getIdEvento());
 
-        return "redirect:/evento/show";
+        return "redirect:/" + urlRedirect;
     }
 
     @ModelAttribute("documento")

@@ -17,31 +17,37 @@
             <li class="active">
                 <a href="<c:url value="/" />">
                     <i class="material-icons">dashboard</i>
-                    <p>tablero de actividades</p>
+                    <p>Tablero de Actividades</p>
                 </a>
             </li>
             <li>
                 <a href="<c:url value="/usuario/list/" />">
                     <i class="material-icons">person</i>
-                    <p>Usuarios del sistema</p>
+                    <p>Usuarios del Sistema</p>
                 </a>
             </li>
             <li>
                 <a href="<c:url value="/servicio/list/" />">
                     <i class="material-icons">content_paste</i>
-                    <p>servicios</p>
+                    <p>Servicios</p>
                 </a>
             </li>
             <li>
                 <a href="<c:url value="/proveedor/list/" />">
                     <i class="material-icons">library_books</i>
-                    <p>proveedores</p>
+                    <p>Proveedores</p>
                 </a>
             </li>
             <li>
                 <a href="<c:url value="/evento/list" />">
                     <i class="material-icons">bubble_chart</i>
-                    <p>eventos</p>
+                    <p>Eventos</p>
+                </a>
+            </li>
+            <li>
+                <a href="<c:url value="/salon/list" />">
+                    <i class="material-icons">location_city</i>
+                    <p>Salones</p>
                 </a>
             </li>
             <li>
@@ -50,10 +56,11 @@
                     <p>Mapa de Eventos</p>
                 </a>
             </li>
+
             <li>
                 <a href="notifications.html">
                     <i class="material-icons text-gray">notifications</i>
-                    <p>notificaciones</p>
+                    <p>Notificaciones</p>
                 </a>
             </li>
             <li class="active-pro">

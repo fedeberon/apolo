@@ -6,6 +6,7 @@ package com.bolivarSoftware.apolo.enums;
 public enum  Carpeta {
 
     CONTRATOS,
-    FACTURAS
+    FACTURAS,
+    IMAGENES
 
 }

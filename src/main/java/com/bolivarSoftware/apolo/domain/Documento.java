@@ -14,7 +14,7 @@ public class Documento {
 
     private String carpeta;
 
-    private Integer idEvento;
+    private String subCarpeta;
 
     private String nombre;
 
@@ -23,18 +23,26 @@ public class Documento {
     public Documento() {
     }
 
-    public Documento(Carpeta carpeta, Integer idEvento, String nombre) {
+    public Documento(Carpeta carpeta, String subCarpeta, String nombre) {
         this.nombre = nombre;
         this.carpeta = carpeta.name();
-        this.idEvento = idEvento;
+        this.subCarpeta = subCarpeta;
     }
 
-    public Integer getIdEvento() {
-        return idEvento;
+    public String getFilePathFolder() {
+        return filePathFolder;
     }
 
-    public void setIdEvento(Integer idEvento) {
-        this.idEvento = idEvento;
+    public void setFilePathFolder(String filePathFolder) {
+        this.filePathFolder = filePathFolder;
+    }
+
+    public String getSubCarpeta() {
+        return subCarpeta;
+    }
+
+    public void setSubCarpeta(String subCarpeta) {
+        this.subCarpeta = subCarpeta;
     }
 
     public String getNombre() {
@@ -62,6 +70,6 @@ public class Documento {
     }
 
     public String getUrl() {
-        return filePathFolder + File.separator + carpeta + File.separator + idEvento + File.separator + nombre;
+        return filePathFolder + File.separator + carpeta + File.separator + subCarpeta + File.separator + nombre;
     }
 }

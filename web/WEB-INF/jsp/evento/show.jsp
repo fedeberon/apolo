@@ -113,7 +113,7 @@
                                         <th>Contratos</th>
                                         <td>
                                             <c:forEach items="${contratos}" var="bo">
-                                                <li><a href="c:${bo.url}">${bo.nombre}</a></li>
+                                                <li><a target="_blank" href="http://glameventos.com.ar/${bo.url}">${bo.nombre}</a></li>
                                             </c:forEach>
                                         </td>
                                     </tr>
@@ -122,7 +122,7 @@
                                         <th>Facturas</th>
                                         <td>
                                             <c:forEach items="${facturas}" var="bo">
-                                                <li><a href="c:${bo.url}">${bo.nombre}</a></li>
+                                                <li><a target="_blank" href="http://glameventos.com.ar/${bo.url}">${bo.nombre}</a></li>
                                             </c:forEach>
                                         </td>
                                     </tr>
@@ -131,7 +131,7 @@
                                         <th>Documentos</th>
                                         <td>
                                             <c:forEach items="${documentos}" var="bo">
-                                                <li><a href="c:${bo.url}">${bo.nombre}</a></li>
+                                                <li><a target="_blank" href="http://glameventos.com.ar/${bo.url}">${bo.nombre}</a></li>
                                             </c:forEach>
                                         </td>
                                     </tr>
@@ -151,7 +151,6 @@
                                                 <input type="text" class="knob" value="${bo.porcentajeCompletado}" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-skin="tron" data-thickness="0.2" data-readonly="true">
                                                 <div class="knob-label"><a href="<c:url value='/servicioContratado/show?id=${bo.id}'/>">${bo.servicio.nombre}</a></div>
                                             </div>
-
                                         </c:forEach>
 
                                     </div>
@@ -164,6 +163,7 @@
                         <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
                         <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos">Documentos</button>
+                        <a href="<c:url value='/evento/timeline?id=${evento.id}'/>" class="btn btn-primary">Linea de tiempo</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-mapa">Ver Mapa</button>
                     </div>
 

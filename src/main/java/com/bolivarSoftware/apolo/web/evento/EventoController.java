@@ -5,6 +5,7 @@ import com.bolivarSoftware.apolo.domain.Servicio;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
+import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -35,6 +36,8 @@ public class EventoController {
     @Autowired
     private IDocumentoService documentoService;
 
+    @Autowired
+    private IServicioContratadoService servicioContratadoService;
 
     @RequestMapping("create")
     public String nuevoEvento() {
@@ -101,4 +104,17 @@ public class EventoController {
 
         return "redirect:list";
     }
+
+    @RequestMapping("timeline")
+    public String timeLine(@RequestParam Integer id, Model model){
+        Evento evento = eventoService.get(id);
+        model.addAttribute("evento", evento);
+        model.addAttribute("etapas", servicioContratadoService.getEtapasDelEvento(evento));
+
+
+        return "timeline/show";
+    }
+
+
+
 }

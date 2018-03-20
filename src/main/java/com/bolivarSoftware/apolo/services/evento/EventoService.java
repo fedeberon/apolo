@@ -1,21 +1,18 @@
 package com.bolivarSoftware.apolo.services.evento;
 
-import com.bolivarSoftware.apolo.domain.EtapaARealizar;
-import com.bolivarSoftware.apolo.domain.Evento;
-import com.bolivarSoftware.apolo.domain.Servicio;
-import com.bolivarSoftware.apolo.domain.ServicioContratado;
+import com.bolivarSoftware.apolo.domain.*;
 import com.bolivarSoftware.apolo.persist.interfaces.IEventoRepository;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Fede Beron on 8/8/2017.
- */
+
 @Service
 public class EventoService implements IEventoService{
 
@@ -69,4 +66,5 @@ public class EventoService implements IEventoService{
     public void delete(Integer id) {
         dao.remove(id);
     }
+
 }

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "etapaARealizar")
-public class EtapaARealizar {
+public class EtapaARealizar implements Comparable<EtapaARealizar>  {
 
     @Id
     @Column(name = "ETR_ID")
@@ -112,4 +112,9 @@ public class EtapaARealizar {
     }
 
 
+    @Override
+    public int compareTo(EtapaARealizar o) {
+        if(fecha == null || o.getFecha() == null) return 0;
+        return getFecha().compareTo(o.getFecha());
+    }
 }

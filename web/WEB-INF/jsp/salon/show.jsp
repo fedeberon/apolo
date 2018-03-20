@@ -173,7 +173,7 @@
 
                                 <c:forEach items="${imagenes}" var="imagen" varStatus="status">
                                 <div class="item   <c:if test="${status.first}">active</c:if>">
-                                    <img class="img-responsive" src="${imagen.url}" style="width: 100%; height: auto; margin:auto;" alt="...">
+                                    <img class="img-responsive" src="http://glameventos.com.ar/${imagen.url}" style="width: 100%; height: auto; margin:auto;" alt="...">
                                     <div class="carousel-caption">
                                         One Image
                                     </div>

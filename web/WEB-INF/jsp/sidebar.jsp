@@ -58,15 +58,9 @@
             </li>
 
             <li>
-                <a href="notifications.html">
-                    <i class="material-icons text-gray">notifications</i>
-                    <p>Notificaciones</p>
-                </a>
-            </li>
-            <li class="active-pro">
-                <a href="upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Bolivar Software</p>
+                <a href="<c:url value="/agenda/show" />">
+                    <i class="material-icons text-gray">today</i>
+                    <p>Agenda</p>
                 </a>
             </li>
         </ul>

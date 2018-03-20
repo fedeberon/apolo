@@ -126,7 +126,6 @@
                                     <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Geolocalizar</button>
                                     <div class="clearfix"></div>
-
                             </div>
                         </div>
                     </div>

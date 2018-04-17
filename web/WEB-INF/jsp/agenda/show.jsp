@@ -36,6 +36,12 @@
 
     <link href="<c:url value='/resources/css/agenda.css'/>" rel="stylesheet"/>
 
+    <style>
+        .fc-event-time{
+            display : none;
+        }
+        </style>
+
     <script>
 
         $(document).ready(function() {
@@ -115,9 +121,22 @@
                                 },
                                 true // make the event "stick"
                         );
+
+
+                        var fechaInicio = $.fullCalendar.formatDate(start, "yyyy-MM-dd");
+
+                        var fechaFin = $.fullCalendar.formatDate(end, "yyyy-MM-dd");
+
+//                        alert(title + " start:" + fechaInicio + " end: " + fechaFin + " all Day: " + allDay);
+
+//                        window.location.href = 'http://localhost:8080/apolo/agenda/create?titulo=' + title + '&inicio=' + fechaInicio + '&fin=' + fechaFin;
+
+                        saveEvent(title, fechaInicio);
+
                     }
                     calendar.fullCalendar('unselect');
                 },
+                displayEventTime: false,
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 drop: function(date, allDay) { // this function is called when something is dropped
 
@@ -143,57 +162,35 @@
 
                 },
 
-                events: [
+                eventSources: [
+
+                    // your event source
                     {
-                        title: 'All Day Event',
-                        start: new Date(y, m, 1)
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: new Date(y, m, d-3, 16, 0),
-                        allDay: false,
-                        className: 'info'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: new Date(y, m, d+4, 16, 0),
-                        allDay: false,
-                        className: 'info'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false,
-                        className: 'important'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        allDay: false,
-                        className: 'important'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: new Date(y, m, d+1, 19, 0),
-                        end: new Date(y, m, d+1, 22, 30),
-                        allDay: false,
-                    },
-                    {
-                        title: 'Click for Google',
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        url: 'http://google.com/',
-                        className: 'success'
+                        url: 'http://localhost:8080/apolo/agendaRest/events',
+                        type: 'POST',
+                        data: {
+                            custom_param1: 'something',
+                            custom_param2: 'somethingelse'
+                        },
+                        error: function() {
+                            alert('there was an error while fetching events!');
+                        },
+                        color: 'yellow',   // a non-ajax option
+                        textColor: 'black' // a non-ajax option
                     }
-                ],
+
+                    // any other sources...
+
+                ]
             });
-
-
         });
 
+
+        function saveEvent(title,startdate){
+            $.ajax({
+                url: "http://localhost:8080/apolo/agendaRest/save?title=" + title + "&startdate=" + startdate
+            });
+        }
     </script>
     <style>
 
@@ -266,21 +263,18 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Nuevo Evento</h4>
-                                <p class="category">Complete los datos</p>
+                                <h4 class="title">Agenda</h4>
+                                <p class="category">Cargue sus tareas</p>
                             </div>
-                                <div id='wrap'>
-
-                                    <div id='calendar'></div>
-
-                                    <div style='clear:both'></div>
-                                </div>
+                            <div class="card-content table-responsive">
+                                <div id='calendar'></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
         <jsp:include page="../footer.jsp"/>
 

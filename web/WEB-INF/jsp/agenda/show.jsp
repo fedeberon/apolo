@@ -26,7 +26,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-    <link href="<c:url value='/webjarslocator/bootstrap-datetimepicker/2.4.2/css/bootstrap-datetimepicker.css'/>" rel="stylesheet"/>
+    <link href="<c:url value='/webjarslocator/bootstrap-x   datetimepicker/2.4.2/css/bootstrap-datetimepicker.css'/>" rel="stylesheet"/>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 

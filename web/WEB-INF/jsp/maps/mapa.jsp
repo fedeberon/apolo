@@ -41,8 +41,6 @@
         <jsp:include page="../menu.jsp"/>
 
 
-
-
     <div class="content">
         <div class="row">
             <div class="col-md-12">
@@ -56,14 +54,13 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
         <jsp:include page="../footer.jsp"/>
-
     </div>
 
+    </div>
 </div>
+
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&callback=myMapCreate" type="text/javascript"></script>
 </body>

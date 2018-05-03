@@ -30,11 +30,15 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <%--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--%>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <link href="<c:url value='/resources/css/agenda.css'/>" rel="stylesheet"/>
+    <script src="<c:url value='/resources/js/gcal.js'/>" type="text/javascript"></script>
+    <script type='text/javascript' src='<c:url value='/resources/plugins/fullcalendar/fullcalendar.js'/>'></script>
+    <script type='text/javascript' src='<c:url value='/resources/js/moment.min.js'/>'></script>
+    <script type='text/javascript' src='<c:url value='/resources/js/jquery.min.js'/>'></script>
 
     <style>
         .fc-event-time{
@@ -59,6 +63,7 @@
 
             /* initialize the external events
              -----------------------------------------------------------------*/
+
 
             $('#external-events div.external-event').each(function() {
 
@@ -85,7 +90,11 @@
              -----------------------------------------------------------------*/
 
             var calendar =  $('#calendar').fullCalendar({
-
+                googleCalendarApiKey: 'AIzaSyDBlXtPNXSLV2rJRL0aZSu_RJ3rQYkd2KA',
+                events: {
+                    googleCalendarId: 'aopd21js30lmhdh3se3jtgm8e0@group.calendar.google.com',
+                    className: 'gcal-event'
+                },
                 header: {
                     left: 'title',
                     center: 'agendaDay,agendaWeek,month',
@@ -189,7 +198,7 @@
 
         function saveEvent(title,startdate){
             $.ajax({
-                url: "http://localhost:8080/apolo/agendaRest/save?title=" + title + "&startdate=" + startdate
+                url: "/apolo/agendaRest/save?title=" + title + "&startdate=" + startdate
             });
         }
     </script>
@@ -279,24 +288,24 @@
 
         <jsp:include page="../footer.jsp"/>
 
-    </div>
-
 </div>
 
 
-<!-- Large modal -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div id="map" style="width:100%;height:500px;margin-top: 1px;"></div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar Ubicaci&oacute;n</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+<%--<!-- Large modal -->--%>
+<%--<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">--%>
+    <%--<div class="modal-dialog modal-lg">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div id="map" style="width:100%;height:500px;margin-top: 1px;"></div>--%>
+
+            <%--<div class="modal-footer">--%>
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>--%>
+                <%--<button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar Ubicaci&oacute;n</button>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 </body>
 
@@ -316,7 +325,7 @@
 </script>
 
 <script src="<c:url value='/resources/js/agenda.js'/>" type="text/javascript"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&callback=myMap" type="text/javascript"></script>
+
 
 
 </html>

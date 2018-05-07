@@ -1,4 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<script type='text/javascript' src='<c:url value='/resources/fullcalendar-3.9.0/lib/moment.min.js'/>'></script>
+
 <!--   Core JS Files   -->
 <script src="<c:url value='/resources/js/jquery-3.1.0.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>" type="text/javascript"></script>
@@ -27,3 +30,5 @@
 
     });
 </script>
+
+<script type='text/javascript' src='<c:url value='/resources/fullcalendar-3.9.0/fullcalendar.js'/>'></script>

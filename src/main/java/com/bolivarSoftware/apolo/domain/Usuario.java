@@ -18,13 +18,16 @@ public class Usuario implements UserDetails {
 
     @Id
     @Column(name = "USERNAME")
-    private  String username;
+    private String username;
+
+    @Column(name = "PASSWORD")
+    private String password;
 
     @Column(name = "NOMBRE")
-    private  String nombre;
+    private String nombre;
 
     @Column(name = "APELLIDO")
-    private  String apellido;
+    private String apellido;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -33,7 +36,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
@@ -79,5 +82,9 @@ public class Usuario implements UserDetails {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

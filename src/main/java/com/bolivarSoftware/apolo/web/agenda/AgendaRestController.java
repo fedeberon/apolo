@@ -23,8 +23,8 @@ public class AgendaRestController {
     }
 
     @RequestMapping("save")
-    public void save(@RequestParam String title, @RequestParam String startdate) throws Exception{
-        agendaService.save(title, startdate, "2018-04-17");
+    public void save(@RequestParam String title, @RequestParam String startdate, @RequestParam String descripcion) throws Exception{
+        agendaService.save(title, startdate, "2018-04-17", descripcion);
     }
 
 

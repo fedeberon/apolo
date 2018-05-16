@@ -26,8 +26,8 @@ public class AgendaController {
 
 
     @RequestMapping("create")
-    public String create(@RequestParam String titulo, @RequestParam String inicio, @RequestParam String fin ){
-        agendaService.save(titulo, inicio, fin);
+    public String create(@RequestParam String titulo, @RequestParam String inicio, @RequestParam String fin, @RequestParam String descripcion){
+        agendaService.save(titulo, inicio, fin, descripcion);
 
         return "redirect:show";
     }

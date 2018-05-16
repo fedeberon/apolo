@@ -20,10 +20,10 @@ public class AgendaService implements IAgendaService {
     private IAgendaRepository dao;
 
     @Override
-    public void save(String titulo, String inicio, String fin) {
+    public void save(String titulo, String inicio, String fin, String descripcion) {
         Event event = null;
         try {
-            event = new Event(titulo, inicio, fin);
+            event = new Event(titulo, inicio, fin, descripcion);
 
         } catch (ParseException e) {
             e.printStackTrace();

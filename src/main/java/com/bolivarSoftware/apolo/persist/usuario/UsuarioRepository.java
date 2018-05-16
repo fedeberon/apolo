@@ -15,14 +15,17 @@ import java.util.List;
 @Repository
 public class UsuarioRepository implements IUsuarioRepository {
 
-
     @Autowired
     private SessionFactory sessionFactory;
 
-
     @Override
     public Usuario get(String username){
-        return (Usuario) sessionFactory.getCurrentSession().get(username, Usuario.class);
+        try (CloseableSession session = new CloseableSession(sessionFactory.openSession())) {
+            return (Usuario) session.delegate().get(Usuario.class, username);
+
+        } catch (HibernateException e) {
+            throw e;
+        }
     }
 
     @Override

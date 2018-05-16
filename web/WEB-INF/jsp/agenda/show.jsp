@@ -24,7 +24,8 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
+          type='text/css'>
 
     <!--     Full Calendar     -->
     <link href="<c:url value='/resources/fullcalendar-3.9.0/fullcalendar.min.css'/>" rel="stylesheet"/>
@@ -52,6 +53,9 @@
                             </div>
                             <div class="card-content table-responsive">
                                 <div id='calendar'></div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -60,25 +64,41 @@
         </div>
     </div>
 
-        <jsp:include page="../footer.jsp"/>
+
+    <div id="calendarModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="modalTitle" class="modal-title"></h4>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    Dia: <span id="startTime"></span><br><br>
+                    Descripcion: <p id="descripcion"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <jsp:include page="../footer.jsp"/>
 
 </div>
 
 
-
-
 <%--<!-- Large modal -->--%>
 <%--<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">--%>
-    <%--<div class="modal-dialog modal-lg">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div id="map" style="width:100%;height:500px;margin-top: 1px;"></div>--%>
+<%--<div class="modal-dialog modal-lg">--%>
+<%--<div class="modal-content">--%>
+<%--<div id="map" style="width:100%;height:500px;margin-top: 1px;"></div>--%>
 
-            <%--<div class="modal-footer">--%>
-                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>--%>
-                <%--<button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar Ubicaci&oacute;n</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
+<%--<div class="modal-footer">--%>
+<%--<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>--%>
+<%--<button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar Ubicaci&oacute;n</button>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
 <%--</div>--%>
 
 </body>
@@ -86,11 +106,12 @@
 <jsp:include page="../buttom.jsp"/>
 
 <script type='text/javascript' src='<c:url value='/resources/fullcalendar-3.9.0/gcal.js'/>'></script>
+<script type='text/javascript' src='<c:url value='/resources/fullcalendar-3.9.0/locale/es.js'/>'></script>
 
 
 <script>
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         var calendar = $('#calendar').fullCalendar({
             header: {
@@ -110,44 +131,52 @@
                     url: '../agendaRest/events',
                 },
             ],
-
+            locale: 'es',
             editable: true,
             selectable: true,
             selectHelper: true,
             droppable: true,
+            displayEventTime: false,
             axisFormat: 'h:mm',
-            select: function(start, end, jsEvent, view) {
-                var title = prompt('Event Title:');
+            eventClick: function(event, jsEvent, view) {
+                $('#modalTitle').html(event.title);
+                $('#startTime').html(moment(event.start).format('DD-MM-YYYY'));
+                $('#descripcion').html(event.descripcion);
+                $('#calendarModal').modal();
+            },
+            select: function (start, end, jsEvent, view) {
+                var title = prompt('Titulo del Evento:');
+                var descripcion = prompt ('Descripcion del Evento');
 
                 if (title) {
                     calendar.fullCalendar('renderEvent',
                             {
                                 title: title,
+                                descripcion: descripcion,
                                 start: start,
                                 end: end
                             },
                             true // make the event "stick"
                     );
 
-                    var fechaInicio = $.fullCalendar.formatDate(start, "yyyy-MM-dd");
+                    var fechaInicio = $.fullCalendar.formatDate(start, 'YYYY-MM-DD');
 
                     var fechaFin = $.fullCalendar.formatDate(end, "yyyy-MM-dd");
 
-                    saveEvent(title, fechaInicio);
-
+                    saveEvent(title, fechaInicio, descripcion);
                 }
-            }
-    });
 
-    function saveEvent(title,startdate){
-        $.ajax({
-            url: "../agendaRest/save?title=" + title + "&startdate=" + startdate
+            }
         });
-    }
+
+        function saveEvent(title, startdate, descripcion) {
+            $.ajax({
+                url: "../agendaRest/save?title=" + title + "&startdate=" + startdate + "&descripcion=" + descripcion
+            });
+        }
     });
 
 </script>
-
 
 
 </html>

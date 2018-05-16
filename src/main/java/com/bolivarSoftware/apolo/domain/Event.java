@@ -22,6 +22,9 @@ public class Event {
     @Column(name = "EVE_TITULO")
     private String title;
 
+    @Column(name = "EVE_DESCRIPCION")
+    private String description;
+
     @Column(name = "EVE_INICIO")
     private Date inicio;
 
@@ -79,8 +82,9 @@ public class Event {
     @Transient
     private String textColor;
 
-    public Event(String titulo, String inicio, String fin) throws ParseException {
+    public Event(String titulo, String inicio, String fin, String descripcion) throws ParseException {
         title = titulo;
+        description = descripcion;
         this.inicio = UtilDate.convertToDate(inicio);
         this.fin = UtilDate.convertToDate(fin);
     }
@@ -104,6 +108,14 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescripcion() {
+        return description;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.description = descripcion;
     }
 
     public boolean isAllDay() {

@@ -26,12 +26,10 @@ public class HomeController {
         return "index";
     }
 
-
-    @RequestMapping("/login")
+    @RequestMapping(value = {"/login" ,"logout-success"} )
     public String login(){
         return "login";
     }
-
 
     @ModelAttribute("eventosProximos")
     private List<Evento> eventosProximos(){

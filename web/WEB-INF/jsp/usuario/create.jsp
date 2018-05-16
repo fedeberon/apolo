@@ -61,6 +61,12 @@
                                                 <form:input cssClass="form-control" path="username"/>
                                             </div>
                                         </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Password</label>
+                                                <form:input cssClass="form-control" path="password" type="password"/>
+                                            </div>
+                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>

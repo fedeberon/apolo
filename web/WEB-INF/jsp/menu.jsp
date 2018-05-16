@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     <nav class="navbar navbar-transparent navbar-absolute">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -38,7 +39,14 @@
                             <p class="hidden-lg hidden-md">Profile</p>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+                            <sec:authorize access="isAuthenticated()">
+                                 <li><a href="#"><sec:authentication property="principal.username" /></a></li>
+                                 <li><a href="<c:url value="/logout" />">Logout</a></li>
+                            </sec:authorize>
+
+                            <sec:authorize access="!isAuthenticated()">
+                                <li><a href="<c:url value="/login" />">Login</a></li>
+                            </sec:authorize>
                         </ul>
                     </li>
                 </ul>

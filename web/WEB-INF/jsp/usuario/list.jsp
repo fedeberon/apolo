@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Nuevo Evento </title>
+    <title>Lista de Usuarios</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -24,8 +24,9 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
-          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+
 </head>
 
 <body>
@@ -54,21 +55,29 @@
                                 <table class="table">
                                     <thead class="text-warning">
                                     <th>Username</th>
+                                    <th>Contrase&ntildea</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
+                                    <th></th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
 
                                     <c:forEach items="${usuarios}" var="bo">
                                         <tr>
-                                            <td><a href="/apolo/evento/show?id=${bo.username}">${bo.username}</a></td>
+                                            <td><a href="/apolo/usuario/show?username=${bo.username}">${bo.username}</a></td>
+                                            <td>${bo.password}</td>
                                             <td>${bo.nombre}</td>
                                             <td>${bo.apellido}</td>
+                                            <td><button  style="float:right" type="button" id="${bo.username}" class="btn btn-primary btn-usuario" data-toggle="modal" data-target="#modal-documentos">Asociar un Evento</button></td>
+                                            <td><a href="../../eventoUsuario/show?username=${bo.username}"><button  style="float:right" type="button" id="${bo.username}" class="btn btn-primary btn-usuario">Ver eventos asociados</button></a></td>
                                         </tr>
                                     </c:forEach>
 
                                     </tbody>
                                 </table>
+
+
 
                             </div>
                         </div>
@@ -95,10 +104,51 @@
     </div>
 
 </div>
+
+<div id="modal-documentos" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Asociar evento</h4>
+            </div>
+
+            <form:form action="../../eventoUsuario/save" modelAttribute="eventoUsuario" method="post">
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label">Usuario</label>
+                            <form:input cssClass="form-control" id="username-evento" path="usuario.username"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Ingresar Cod Int del Evento</label>
+                            <form:input cssClass="form-control" path="evento.id"/>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-default">Asociar</button>
+                </div>
+            </form:form>
+
+        </div>
+    </div>
+</div>
+
 </body>
 
 
 <jsp:include page="../buttom.jsp"/>
+
+<script>
+    $( ".btn-usuario" ).click(function() {
+            var id = $( this ).attr('id');
+
+        $('#username-evento').val(id);
+
+        $('#lbl-username-evento').html(id);
+
+    });
+</script>
 
 
 </html>

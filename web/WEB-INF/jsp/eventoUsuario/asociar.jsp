@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Lista de Eventos</title>
+    <title>Nuevo Evento </title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -47,50 +47,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Eventos</h4>
+                                <h4 class="title">Eventos Usuarios</h4>
                                 <p class="category">Lista</p>
                             </div>
-                            <div class="card-content table-responsive">
-                                <table class="table">
-                                    <thead class="text-warning">
-                                    <th>Cod Int</th>
-                                    <th>Nombre</th>
-                                    <th>Lugar</th>
-                                    <th>Fecha</th>
-                                    </thead>
-                                    <tbody>
-
-                                    <c:forEach items="${eventos}" var="evento">
-                                        <tr>
-                                            <td><a href="/apolo/evento/show?id=${evento.id}">${evento.id}</a></td>
-                                            <td>${evento.nombre}</td>
-                                            <td>${evento.lugar}</td>
-                                            <td>${evento.fechaDeEvento}</td>
-                                        </tr>
-                                    </c:forEach>
-
-                                    </tbody>
-                                </table>
-
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-
-            <div class="col-xs-12">
-                <div class="col-xs-2">
-                    <a href="/apolo/evento/list?page=${page - 1}" class="btn btn-block btn-primary">Atras</a>
-                </div>
-                <div class="col-xs-2">
-                    <a href="/apolo/evento/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
-                </div>
-                <div class="col-xs-2">
-                    <a href="<c:url value='/evento/create'/>" class="btn btn-block btn-primary">Nuevo</a>
-                </div>
-            </div>
-
         </div>
         <jsp:include page="../footer.jsp"/>
 

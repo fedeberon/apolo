@@ -9,9 +9,9 @@ import java.util.List;
  * Created by Fede Beron on 8/8/2017.
  */
 public interface IServicioContratadoRepository  {
-    ServicioContratado save(ServicioContratado servicio);
+    ServicioContratado updateOrder(ServicioContratado servicio);
 
-    List<ServicioContratado> save(List<ServicioContratado> servicio);
+    List<ServicioContratado> updateOrder(List<ServicioContratado> servicio);
 
     ServicioContratado get(Long aLong);
 

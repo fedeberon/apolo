@@ -2,6 +2,7 @@ package com.bolivarSoftware.apolo.web.evento;
 
 import com.bolivarSoftware.apolo.domain.Evento;
 import com.bolivarSoftware.apolo.domain.Servicio;
+import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
@@ -64,6 +65,7 @@ public class EventoController {
         return "evento/show";
     }
 
+
     @RequestMapping("list")
     public String list(@RequestParam(defaultValue = "1" , required = false) Integer page,Model model) {
         model.addAttribute("eventos", eventoService.findAllPageable(page));
@@ -89,6 +91,15 @@ public class EventoController {
     @ModelAttribute("servicios")
     public List<Servicio> getServicios() {
         return servicioService.findAll();
+    }
+
+
+    @RequestMapping("saveServiciosContratados")
+    public String saveServiciosContratados(@ModelAttribute Evento evento, RedirectAttributes redirectAttributes) {
+        servicioContratadoService.save(evento.getServicios());
+        redirectAttributes.addAttribute("id", evento.getId());
+
+        return "redirect:show";
     }
 
 

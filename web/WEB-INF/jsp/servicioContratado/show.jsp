@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Nuevo Evento </title>
+    <title>Detalles Servicio Contratado</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -82,12 +82,17 @@
                                         </thead>
                                         <tbody>
 
-                                        <c:forEach items="${servicioContratado.etapas}" var="etapa" varStatus="status">
-                                            <form:hidden path="etapas[${status.index}].id"/>
-                                            <form:hidden path="etapas[${status.index}].servicioContratado.id"/>
-                                            <form:hidden path="etapas[${status.index}].etapa.id"/>
 
+                                        <c:forEach items="${servicioContratado.etapas}" var="etapa" varStatus="status">
                                             <tr>
+
+                                                <td colspan="7" style="display: none">
+                                                    <form:hidden path="etapas[${status.index}].id"/>
+                                                    <form:hidden path="etapas[${status.index}].servicioContratado.id"/>
+                                                    <form:hidden path="etapas[${status.index}].etapa.id"/>
+                                                    <form:hidden cssClass="orden" path="etapas[${status.index}].orden"/>
+                                                </td>
+
                                                 <td>${etapa.etapa.nombre}</td>
                                                 <td>
                                                     <div class="checkbox">
@@ -131,10 +136,8 @@
 
                                         </tbody>
                                     </table>
-
-
                                     <a href="<c:url value='/servicioContratado/delete?id=${servicioContratado.id}&idEvento=${servicioContratado.evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
-                                    <button type="submit" class="btn btn-primary pull-right" >Guardar</button>
+                                    <button type="submit" class="btn btn-primary pull-right">Guardar</button>
 
 
                                 </form:form>
@@ -186,7 +189,21 @@
         $("#valor-"+id).val(ui.value);
     }
 
+    $( function() {
+        $( ".table" ).sortable({
+            items: 'tr',
+            stop: function(event, ui) {
 
+                $(".table tr").each(function(i, el){
+                    var inputOrden = $(this).find("td [class='orden']");
+                        inputOrden.val($(el).index());
+                });
+            }
+        });
+        $( ".table" ).disableSelection();
+    } );
 </script>
+
+
 
 </html>

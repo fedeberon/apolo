@@ -13,11 +13,12 @@ public interface IEventoRepository {
 
     List<Evento> findAll();
 
-    Evento get(Integer integer);
+    Evento get(Integer id);
 
     List<ServicioContratado> getServiciosContratados(Evento evento);
 
     List<Evento> findAllPageable(Integer page);
 
     void remove(Integer id);
+
 }

@@ -18,7 +18,7 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
 
 
     @Override
-    public ServicioContratado save(ServicioContratado servicio) {
+    public ServicioContratado updateOrder(ServicioContratado servicio) {
         Transaction tx = null;
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             tx = session.delegate().getTransaction();
@@ -35,12 +35,14 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
     }
 
     @Override
-    public List<ServicioContratado> save(List<ServicioContratado> servicio) {
+    public List<ServicioContratado> updateOrder(List<ServicioContratado> servicio) {
         Transaction tx = null;
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             tx = session.delegate().getTransaction();
             tx.begin();
-            servicio.forEach(servicioContratado -> session.delegate().save(servicio));
+            servicio.forEach(servicioContratado -> session.delegate().createQuery("update ServicioContratado set orden = :orden where id =:id ")
+                                                                     .setParameter("id", servicioContratado.getId())
+                                                                     .setParameter("orden", servicioContratado.getOrden()).executeUpdate());
             tx.commit();
 
             return servicio;

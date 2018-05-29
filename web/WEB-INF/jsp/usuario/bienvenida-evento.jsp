@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>
-        Imminent - The most spectacular coming soon template!
+        Bienvenido - ${evento.nombre}!
     </title><!-- Behavioral Meta Data -->
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"><!-- Core Meta Data -->
@@ -54,6 +54,8 @@
 
 <div class="wrapper">
 
+    <input type="hidden" id="eventoDate" value="${evento.fechaDeEvento}"/>
+
     <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
         <li class="layer" data-depth="0.00">
         </li>
@@ -71,15 +73,15 @@
                 <h2>
                     GLAM EVENTOS
                 </h2>
-                <span class="line"></span>
+                <%--<span class="line"></span>--%>
             </div>
         </li>
 
-        <li class="layer" data-depth="0.25">
-            <div class="sphere">
-                <img alt="sphere" src="images/sphere.png">
-            </div>
-        </li>
+        <%--<li class="layer" data-depth="0.25">--%>
+        <%--<div class="sphere">--%>
+        <%--<img alt="sphere" src="images/sphere.png">--%>
+        <%--</div>--%>
+        <%--</li>--%>
 
         <li class="layer" data-depth="0.30">
             <div class="hero">
@@ -158,23 +160,27 @@
             <div class="contact">
                 <ul class="icons">
                     <li>
-                        <a class="behance" href="#"><i class="fa fa-behance"></i></a>
+                        <a class="behance" href="https://www.instagram.com/Glam.ok/" target="_blank"><i class="fa fa-instagram"></i></a>
                     </li>
 
                     <li>
-                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="twitter" href="" target="_blank"><i class="fa fa-twitter"></i></a>
                     </li>
 
                     <li>
-                        <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                        <a class="dribbble" href="https://www.facebook.com/Glam.ok" target="_blank"><i class="fa fa-facebook"></i></a>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <a class="mail" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles del evento</a>
                     </li>
                 </ul>
 
                 <br/>
-                    <iframe style="float:right; bottom: 0; " src="https://open.spotify.com/embed?uri=spotify:album:1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe  style="float:right; bottom: 0; margin-top:200px;" src="https://open.spotify.com/embed?uri=spotify:album:1DFixLWuPkv3KT3TnV35m3" width="300" height="180" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 <br/>
-                <%--Theme by <a href="<c:url value='#'/>" target="_blank">ThemeWagon</a>--%>
-                <%--<a class="mail" href="<c:url value='#'/>">MAS DETALLES DEL EVENTO</a>--%>
 
             </div>
         </li>
@@ -186,6 +192,10 @@
 <script src="<c:url value='/resources/bienvenida/js/plugins.js'/>"></script>
 <script src="<c:url value='/resources/bienvenida/js/jquery.countdown.min.js'/>"></script>
 <script src="<c:url value='/resources/bienvenida/js/main.js'/>"></script>
+
+<script>
+
+</script>
 
 </body>
 </html>

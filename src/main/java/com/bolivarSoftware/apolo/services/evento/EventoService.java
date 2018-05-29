@@ -9,8 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Collections.reverseOrder;
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.Comparator.comparingLong;
 
 
 @Service
@@ -54,8 +61,13 @@ public class EventoService implements IEventoService{
 
     @Override
     public List<ServicioContratado> getServiciosContratados(Evento evento) {
-        return dao.getServiciosContratados(evento);
+        List<ServicioContratado>  servicioContratados = dao.getServiciosContratados(evento);
+        servicioContratados.sort(comparing(ServicioContratado::getOrden));
+
+        return servicioContratados;
     }
+
+
 
     @Override
     public List<Evento> findAllPageable(Integer page) {

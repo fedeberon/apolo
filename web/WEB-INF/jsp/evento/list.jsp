@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -65,7 +67,7 @@
                                             <td><a href="/apolo/evento/show?id=${evento.id}">${evento.id}</a></td>
                                             <td>${evento.nombre}</td>
                                             <td>${evento.lugar}</td>
-                                            <td>${evento.fechaDeEvento}</td>
+                                            <td><fmt:formatDate type="both" timeStyle = "short" value="${evento.fechaDeEvento}"/></td>
                                         </tr>
                                     </c:forEach>
 

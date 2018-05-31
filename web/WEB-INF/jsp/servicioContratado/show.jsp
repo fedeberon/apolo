@@ -31,7 +31,7 @@
 
     <style>
         #custom-handle {
-            width: 3em;
+            width: 1.8em;
             height: 1.6em;
             top: 50%;
             margin-top: -.8em;

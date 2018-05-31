@@ -70,7 +70,7 @@
                                             <td>${bo.nombre}</td>
                                             <td>${bo.apellido}</td>
                                             <td><button  style="float:right" type="button" id="${bo.username}" class="btn btn-primary btn-usuario" data-toggle="modal" data-target="#modal-documentos">Asociar un Evento</button></td>
-                                            <td><a href="../../eventoUsuario/show?username=${bo.username}"><button  style="float:right" type="button" id="${bo.username}" class="btn btn-primary btn-usuario">Ver eventos asociados</button></a></td>
+                                            <td><a href="../../eventoUsuario/show?username=${bo.username}"><button  type="button" id="${bo.username}" class="btn btn-success btn-usuario">Ver eventos asociados</button></a></td>
                                         </tr>
                                     </c:forEach>
 
@@ -88,10 +88,10 @@
 
             <div class="col-xs-12">
                 <div class="col-xs-2">
-                    <a href="/apolo/evento/list?page=${page - 1}" class="btn btn-block btn-primary">Atras</a>
+                    <a href="/apolo/usuario/list?page=${page - 1}" class="btn btn-block btn-primary">Atras</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="/apolo/evento/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
+                    <a href="/apolo/usuario/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
                 </div>
                 <div class="col-xs-2">
                     <a href="<c:url value='/usuario/create'/>" class="btn btn-block btn-primary">Nuevo</a>

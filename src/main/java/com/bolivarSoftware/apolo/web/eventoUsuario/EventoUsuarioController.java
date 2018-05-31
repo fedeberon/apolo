@@ -38,7 +38,7 @@ public class EventoUsuarioController {
       eventoUsuarioService.save(eventoUsuario);
       redirectAttributes.addAttribute("username", eventoUsuario.getUsuario().getUsername());
 
-      return "redirect:/usuario/list";
+      return "redirect:/usuario/show";
     }
 
     @RequestMapping(value = "show")
@@ -48,6 +48,8 @@ public class EventoUsuarioController {
 
         return "eventoUsuario/show";
     }
+
+
 
     @ModelAttribute("eventoUsuario")
     public EventoUsuario eventoUsuario() {

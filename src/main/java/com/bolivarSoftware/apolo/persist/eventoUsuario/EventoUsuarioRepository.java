@@ -52,5 +52,18 @@ public class EventoUsuarioRepository implements IEventoUsuarioRepository {
         }
     }
 
+    @Override
+    public void removeAsociacion(Integer idEvento) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            Query query =  session.delegate().createQuery("delete from EventoUsuario where evento.id = :idEvento");
+            query.setParameter("idEvento", idEvento);
+            query.executeUpdate();
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
 
 }

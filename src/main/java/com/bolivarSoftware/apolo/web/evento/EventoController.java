@@ -6,6 +6,7 @@ import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
+import com.bolivarSoftware.apolo.services.interfaces.IEventoUsuarioService;
 import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class EventoController {
 
     @Autowired
     private IServicioContratadoService servicioContratadoService;
+
+    @Autowired
+    private IEventoUsuarioService eventoUsuarioService;
 
     @RequestMapping("create")
     public String nuevoEvento() {
@@ -111,6 +115,7 @@ public class EventoController {
 
     @RequestMapping("delete")
     public String delete(@RequestParam Integer id){
+
         eventoService.delete(id);
 
         return "redirect:list";

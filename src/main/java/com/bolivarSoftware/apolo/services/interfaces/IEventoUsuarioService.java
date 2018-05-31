@@ -15,4 +15,6 @@ public interface IEventoUsuarioService {
     List<EventoUsuario> findAllByUsername(String username);
 
     EventoUsuario getUltimoEventoCargado(String username);
+
+    void removeAsociacion (Integer idEvento);
 }

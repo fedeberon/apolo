@@ -61,12 +61,14 @@
                                         <thead class="text-primary">
                                         <th>Username</th>
                                         <th>Nombre y Apellido</th>
+                                        <th>Rol</th>
                                         <th>Eventos Asociados</th>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>${usuario.username}</td>
                                         <td>${usuario.nombre} - ${usuario.apellido}</td>
+                                        <td>${usuario.rol.nombre} </td>
                                         <td><a href="../eventoUsuario/show?username=${usuario.username}">Ver eventos asociados</a></td>
                                     </tr>
                                     </tbody>

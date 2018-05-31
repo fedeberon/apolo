@@ -263,6 +263,7 @@
                                                                 <h4 class="timeline-title">Servicio: ${bo.servicioContratado.servicio.nombre}</h4>
                                                                 <h4 class="timeline-title">Etapa: ${bo.etapa.nombre}</h4>
                                                                     <%--representa a la fecha de la tarea--%>
+
                                                                 <p><small class="text-muted"><i class="material-icons">alarm on</i>${bo.fecha}</small></p>
                                                             </div>
                                                                 <%--representa al cuerpo de la tarea con las descripciones y los detalles--%>

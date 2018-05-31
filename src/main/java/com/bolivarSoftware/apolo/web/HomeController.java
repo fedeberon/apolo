@@ -57,7 +57,7 @@ public class HomeController {
         EventoUsuario eventoUsuario = eventoUsuarioService.getUltimoEventoCargado(usuario.getUsername());
 
         if(eventoUsuario == null){
-            return "index";
+            return "login";
         }
 
         else {

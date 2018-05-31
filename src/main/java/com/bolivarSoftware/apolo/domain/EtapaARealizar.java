@@ -41,7 +41,6 @@ public class EtapaARealizar implements Comparable<EtapaARealizar>  {
     @Column(name = "ETR_ORDEN")
     private Integer orden = 0;
 
-
     public EtapaARealizar() {
     }
 

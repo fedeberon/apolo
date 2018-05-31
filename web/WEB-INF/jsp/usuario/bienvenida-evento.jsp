@@ -70,7 +70,7 @@
 
         <li class="layer" data-depth="0.20">
             <div class="title">
-                <h2>
+                <h2 class="titleGlam">
                     GLAM EVENTOS
                 </h2>
                 <%--<span class="line"></span>--%>
@@ -86,11 +86,11 @@
         <li class="layer" data-depth="0.30">
             <div class="hero">
                 <h1 id="countdown">
-                    The most spectacular coming soon template!
+                    <a class="mail" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles del evento</a>
                 </h1>
 
                 <p class="sub-title">
-                    The most spectacular coming soon template!
+                    <a class="mail" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles del evento</a>
                 </p>
             </div>
         </li>
@@ -164,25 +164,27 @@
                     </li>
 
                     <li>
-                        <a class="twitter" href="" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a class="twitter" href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
                     </li>
 
                     <li>
                         <a class="dribbble" href="https://www.facebook.com/Glam.ok" target="_blank"><i class="fa fa-facebook"></i></a>
                     </li>
-                </ul>
 
+                </ul>
                 <ul>
                     <li>
-                        <a class="mail" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles del evento</a>
+                        <a style="color:white" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles de tu evento</a>
                     </li>
                 </ul>
 
                 <br/>
-                <iframe  style="float:right; bottom: 0; margin-top:200px;" src="https://open.spotify.com/embed?uri=spotify:album:1DFixLWuPkv3KT3TnV35m3" width="300" height="180" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 <br/>
 
             </div>
+
+            <iframe style="float:right; bottom: 0; margin-top: 22.5%;" src="https://open.spotify.com/embed?uri=spotify:${evento.playlist}" width="220" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
         </li>
 
     </ul>

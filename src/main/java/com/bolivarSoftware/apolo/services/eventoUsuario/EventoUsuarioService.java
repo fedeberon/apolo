@@ -36,4 +36,10 @@ public class EventoUsuarioService implements IEventoUsuarioService{
         else return null;
     }
 
+    @Override
+    public void removeAsociacion(Integer idEvento) {
+        dao.removeAsociacion(idEvento);
+    }
+
+
 }

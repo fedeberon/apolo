@@ -12,4 +12,6 @@ public interface IEventoUsuarioRepository {
     EventoUsuario save(EventoUsuario eventoUsuario);
 
     List<EventoUsuario> findAllByUsername(String username);
+
+    void removeAsociacion (Integer idEvento);
 }

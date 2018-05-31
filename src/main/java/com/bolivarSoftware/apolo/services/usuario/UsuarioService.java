@@ -34,5 +34,10 @@ public class UsuarioService implements IUsuarioService {
         return dao.save(usuario);
     }
 
+    @Override
+    public Usuario get(String username) {
+        return dao.get(username);
+    }
+
 
 }

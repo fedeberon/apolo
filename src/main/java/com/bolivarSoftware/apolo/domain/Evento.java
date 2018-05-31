@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "EVENTOS")
-public class    Evento {
+public class Evento {
 
     @Id
     @Column(name = "EVE_ID")
@@ -54,6 +54,9 @@ public class    Evento {
 
     @OneToMany(cascade =  { CascadeType.PERSIST}, mappedBy = "evento")
     private List<ServicioContratado> servicios;
+
+    @Column(name = "EVE_PLAYLIST")
+    private String playlist;
 
     public Integer getId() {
         return id;
@@ -157,5 +160,13 @@ public class    Evento {
 
     public void setLongitud(BigDecimal longitud) {
         this.longitud = longitud;
+    }
+
+    public String getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(String playlist) {
+        this.playlist = playlist;
     }
 }

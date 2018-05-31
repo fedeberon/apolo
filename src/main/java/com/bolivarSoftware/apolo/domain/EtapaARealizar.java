@@ -38,6 +38,8 @@ public class EtapaARealizar implements Comparable<EtapaARealizar>  {
     @Column(name = "ETR_CANT_DESCRIPCION")
     private String descripcion;
 
+    @Column(name = "ETR_ORDEN")
+    private Integer orden = 0;
 
     public EtapaARealizar() {
     }
@@ -116,5 +118,13 @@ public class EtapaARealizar implements Comparable<EtapaARealizar>  {
     public int compareTo(EtapaARealizar o) {
         if(fecha == null || o.getFecha() == null) return 0;
         return getFecha().compareTo(o.getFecha());
+    }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 }

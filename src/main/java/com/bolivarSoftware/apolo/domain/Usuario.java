@@ -3,10 +3,7 @@ package com.bolivarSoftware.apolo.domain;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -28,6 +25,10 @@ public class Usuario implements UserDetails {
 
     @Column(name = "APELLIDO")
     private String apellido;
+
+    @ManyToOne
+    @JoinColumn(name = "USU_ROL_ID")
+    private Rol rol;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -86,5 +87,13 @@ public class Usuario implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

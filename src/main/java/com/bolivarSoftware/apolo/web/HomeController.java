@@ -2,12 +2,16 @@ package com.bolivarSoftware.apolo.web;
 
 import com.bolivarSoftware.apolo.domain.EtapaARealizar;
 import com.bolivarSoftware.apolo.domain.Evento;
+import com.bolivarSoftware.apolo.domain.EventoUsuario;
 import com.bolivarSoftware.apolo.domain.Usuario;
 import com.bolivarSoftware.apolo.services.interfaces.IEtapaService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
+import com.bolivarSoftware.apolo.services.interfaces.IEventoUsuarioService;
 import com.bolivarSoftware.apolo.services.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,9 +31,19 @@ public class HomeController {
     @Autowired
     private IUsuarioService usuarioService;
 
+    @Autowired
+    private IEventoUsuarioService eventoUsuarioService;
+
     @RequestMapping(value = {"/home", "/"})
     public String index(){
-        return "index";
+        Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (usuario.getRol().getId() == 1){
+            return "index";
+        }
+
+        else return "redirect:bienvenida";
+
     }
 
     @RequestMapping(value = {"/login" ,"logout-success"} )
@@ -38,8 +52,19 @@ public class HomeController {
     }
 
     @RequestMapping(value = {"/bienvenida"} )
-    public String bienvenida(){
-        return "bienvenida-evento";
+    public String bienvenida(Model modal){
+        Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        EventoUsuario eventoUsuario = eventoUsuarioService.getUltimoEventoCargado(usuario.getUsername());
+
+        if(eventoUsuario == null){
+            return "login";
+        }
+
+        else {
+            modal.addAttribute("evento", eventoUsuario.getEvento());
+
+            return "usuario/bienvenida-evento";
+        }
     }
 
     @ModelAttribute("eventosProximos")
@@ -51,7 +76,6 @@ public class HomeController {
     private List<EtapaARealizar> tareasProximas(){
         return etapaService.tareasProximas();
     }
-
 
 
 

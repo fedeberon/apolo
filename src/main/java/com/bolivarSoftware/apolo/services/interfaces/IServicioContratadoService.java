@@ -17,4 +17,6 @@ public interface IServicioContratadoService extends ICommonService<ServicioContr
     List<ServicioContratado> getBy(Proveedor proveedor);
 
     List<EtapaARealizar> getEtapasDelEvento(Evento evento);
+
+    void save(List<ServicioContratado> servicios);
 }

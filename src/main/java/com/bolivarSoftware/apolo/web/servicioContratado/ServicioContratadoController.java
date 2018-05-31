@@ -43,9 +43,9 @@ public class ServicioContratadoController {
     @RequestMapping("save")
     public String save(@ModelAttribute ServicioContratado servicioContratado, RedirectAttributes redirectAttributes) {
         servicioContratadoService.saveEtapasDelServicio(servicioContratado);
-        redirectAttributes.addAttribute("id", servicioContratado.getEvento().getId());
+        redirectAttributes.addAttribute("id", servicioContratado.getId());
 
-        return "redirect:/evento/show";
+        return "redirect:/servicioContratado/show";
     }
 
     @RequestMapping("delete")

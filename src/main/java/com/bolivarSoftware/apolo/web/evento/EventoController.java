@@ -2,9 +2,11 @@ package com.bolivarSoftware.apolo.web.evento;
 
 import com.bolivarSoftware.apolo.domain.Evento;
 import com.bolivarSoftware.apolo.domain.Servicio;
+import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
+import com.bolivarSoftware.apolo.services.interfaces.IEventoUsuarioService;
 import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,9 @@ public class EventoController {
     @Autowired
     private IServicioContratadoService servicioContratadoService;
 
+    @Autowired
+    private IEventoUsuarioService eventoUsuarioService;
+
     @RequestMapping("create")
     public String nuevoEvento() {
         return "evento/create";
@@ -63,6 +68,7 @@ public class EventoController {
 
         return "evento/show";
     }
+
 
     @RequestMapping("list")
     public String list(@RequestParam(defaultValue = "1" , required = false) Integer page,Model model) {
@@ -92,6 +98,15 @@ public class EventoController {
     }
 
 
+    @RequestMapping("saveServiciosContratados")
+    public String saveServiciosContratados(@ModelAttribute Evento evento, RedirectAttributes redirectAttributes) {
+        servicioContratadoService.save(evento.getServicios());
+        redirectAttributes.addAttribute("id", evento.getId());
+
+        return "redirect:show";
+    }
+
+
     @InitBinder
     public final void initBinderUsuariosFormValidator(final WebDataBinder binder, final Locale locale) {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm", locale);
@@ -100,6 +115,7 @@ public class EventoController {
 
     @RequestMapping("delete")
     public String delete(@RequestParam Integer id){
+
         eventoService.delete(id);
 
         return "redirect:list";

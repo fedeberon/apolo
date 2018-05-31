@@ -30,6 +30,9 @@ public class ServicioContratado {
     @Column(name = "ETR_CANT_COMENTARIO")
     private String comentario;
 
+    @Column (name = "SEC_ORDEN")
+    private Integer orden = 0;
+
     public Long getId() {
         return id;
     }
@@ -78,4 +81,13 @@ public class ServicioContratado {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
+    }
+
 }

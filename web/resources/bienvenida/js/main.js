@@ -45,7 +45,6 @@ function initializeSite() {
 /* =Document Ready Trigger
 -------------------------------------------------------------- */
 $(window).load(function(){
-
 	initializeSite();
 	(function() {
 		setTimeout(function(){window.scrollTo(0,0);},0);
@@ -56,7 +55,8 @@ $(window).load(function(){
 
 
 $('#countdown').countdown({
-	date: "December 14, 2019 18:03:26",
+	// date: "December 14, 2019 18:03:26",
+	date: $('#eventoDate').val(),
 	render: function(data) {
 	  var el = $(this.el);
 	  el.empty()

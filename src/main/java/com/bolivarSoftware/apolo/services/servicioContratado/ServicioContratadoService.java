@@ -6,12 +6,9 @@ import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.persist.interfaces.IServicioContratadoRepository;
 import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
-import org.apache.commons.collections.ArrayStack;
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -31,7 +28,7 @@ public class ServicioContratadoService  implements IServicioContratadoService{
 
     @Override
     public ServicioContratado save(ServicioContratado servicioContratado) {
-        return dao.save(servicioContratado);
+        return dao.updateOrder(servicioContratado);
     }
 
     @Override
@@ -66,6 +63,11 @@ public class ServicioContratadoService  implements IServicioContratadoService{
         Collections.sort(etapasDelEvento);
 
         return etapasDelEvento;
+    }
+
+    @Override
+    public void save(List<ServicioContratado> servicios) {
+        dao.updateOrder(servicios);
     }
 
     public void calcularDiasRestantesParaCumplirTarea(Evento evento, List<EtapaARealizar>  etapasDelEvento){

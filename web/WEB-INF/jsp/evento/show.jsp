@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Nuevo Evento </title>
+    <title>Detalles Evento | ${evento.nombre} </title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -28,6 +29,7 @@
 
     <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
 
+
     <style>
         .modal-content {
             width: 645px;
@@ -37,6 +39,7 @@
             margin-top: -8%;
         }
     </style>
+
 
 </head>
 
@@ -109,6 +112,7 @@
                                         <td>${evento.lugar}</td>
                                     </tr>
 
+                                    <%--<sec:authorize access="hasRole('ADMINISTRADOR')">--%>
                                     <tr>
                                         <th>Contratos</th>
                                         <td>
@@ -135,6 +139,7 @@
                                             </c:forEach>
                                         </td>
                                     </tr>
+                                    <%--</sec:authorize>--%>
 
                                     </tbody>
                                 </table>
@@ -146,13 +151,23 @@
 
                                     <div class="row">
 
-                                        <c:forEach items="${serviciosContratados}" var="bo">
-                                            <div class="col-xs-3 col-md-3 text-center">
-                                                <input type="text" class="knob" value="${bo.porcentajeCompletado}" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-skin="tron" data-thickness="0.2" data-readonly="true">
-                                                <div class="knob-label"><a href="<c:url value='/servicioContratado/show?id=${bo.id}'/>">${bo.servicio.nombre}</a></div>
+                                        <form:form action="saveServiciosContratados" modelAttribute="evento">
+                                            <form:hidden path="id"/>
+                                            <ul id="sortable">
+                                                <c:forEach items="${serviciosContratados}" var="bo" varStatus="status">
+                                                    <form:hidden path="servicios[${status.index}].id"/>
+                                                    <form:hidden path="servicios[${status.index}].servicio.id"/>
+                                                    <div class="col-xs-3 col-md-3 text-center" id="div-orden-servicios" >
+                                                        <input type="text" class="knob" value="${bo.porcentajeCompletado}" data-width="90" data-height="90" data-fgColor="#3c8dbc" data-skin="tron" data-thickness="0.2" data-readonly="true">
+                                                        <form:hidden path="servicios[${status.index}].orden" cssClass="orden"/>
+                                                        <div class="knob-label"><a href="<c:url value='/servicioContratado/show?id=${bo.id}'/>">${bo.servicio.nombre}</a></div>
+                                                    </div>
+                                                </c:forEach>
+                                            </ul>
+                                            <div class="col-xs-12 col-md-12">
+                                                <input type="submit" class="btn btn-primary pull-right" value="Ordenar">
                                             </div>
-                                        </c:forEach>
-
+                                        </form:form>
                                     </div>
                                     <!-- /.row -->
                                 </div>
@@ -184,7 +199,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Ubicaci&oacute;n del Evento</h4>
                     </div>
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=&quot${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=&${evento.latitud},${evento.longitud}&quot&size=700x436&key=AIzaSyCtrCwwfYZPctgU4nsQLCFKa1ZB3SFMa1A&maptype=roadmap&markers=color:red%7Clabel:%7C${evento.latitud},${evento.longitud}"/>
                     <a href="<c:url value='https://www.google.com/maps/search/?api=1&query=${evento.latitud},${evento.longitud}'/>" target="_blank" class="btn btn-primary pull-right ir-mapa">Ir al Mapa</a>
                 </div>
             </div>
@@ -214,6 +229,7 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-default">Guadar</button>
                         </div>
+
                     </form:form>
 
                 </div>
@@ -224,6 +240,9 @@
 
 
 <jsp:include page="../buttom.jsp"/>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- jQuery Knob -->
 <script src="<c:url value='/resources/plugins/knob/jquery.knob.js'/>"></script>
@@ -237,4 +256,20 @@
 
 </script>
 
-</html>git commit
+
+<script>
+    $( function() {
+        $( "#sortable" ).sortable({
+            stop: function(event, ui) {
+                var $list = $('#div-orden-servicios input[class="orden"]');
+                $list.each(function(i, el){
+                    var inputOrden = $(this);
+                    inputOrden.val(i + 1);
+                });
+            }
+        });
+        $( "#sortable" ).disableSelection();
+    } );
+</script>
+
+</html>

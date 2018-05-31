@@ -15,4 +15,6 @@ public interface IEventoService extends ICommonService<Evento, Integer>{
     List<Evento> findAllPageable(Integer page);
 
     void delete (Integer id);
+
+    Evento get(Integer id);
 }

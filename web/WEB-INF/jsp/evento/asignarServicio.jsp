@@ -101,16 +101,22 @@
 
                                     <div class="row">
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contratado por</label>
                                                 <form:input cssClass="date form-control" path="contratadoPor"/>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
                                                 <form:input cssClass="form-control" path="mail"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Playlist</label>
+                                                <form:input cssClass="form-control" path="playlist"/>
                                             </div>
                                         </div>
                                     </div>

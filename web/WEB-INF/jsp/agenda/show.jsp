@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Apolo</title>
+    <title>Agenda</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -171,7 +171,7 @@
 
         function saveEvent(title, startdate, descripcion) {
             $.ajax({
-                url: "../agendaRest/save?title=" + title + "&startdate=" + startdate + "&descripcion=" + descripcion
+                url: "../agendaRest/updateOrder?title=" + title + "&startdate=" + startdate + "&descripcion=" + descripcion
             });
         }
     });

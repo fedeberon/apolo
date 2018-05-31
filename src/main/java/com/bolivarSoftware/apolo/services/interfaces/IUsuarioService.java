@@ -13,4 +13,6 @@ public interface IUsuarioService extends UserDetailsService {
     List<Usuario> findAll();
 
     Usuario save(Usuario usuario);
+
+    Usuario get(String username);
 }

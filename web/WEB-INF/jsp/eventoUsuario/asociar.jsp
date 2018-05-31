@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Nuevo Servicio </title>
+    <title>Nuevo Evento </title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -38,43 +38,25 @@
 
         <jsp:include page="../menu.jsp"/>
 
+
         <div class="content">
+
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Nuevo Servicio</h4>
-                                <p class="category">Complete los datos</p>
+                                <h4 class="title">Eventos Usuarios</h4>
+                                <p class="category">Lista</p>
                             </div>
-
-                            <div class="card-content">
-                                <form:form action="/apolo/servicio/save" modelAttribute="servicio">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
-                                            </div>
-
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Proveedor</label>
-                                                <form:select path="proveedor.id" items="${proveedores}" itemValue="id" itemLabel="nombre"/>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary pull-right">Guadar</button>
-                                    <div class="clearfix"></div>
-                                </form:form>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
         <jsp:include page="../footer.jsp"/>
 
     </div>

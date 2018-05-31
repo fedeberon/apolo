@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Material Dashboard by Creative Tim</title>
+    <title>Nuevo Usuario</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -64,7 +64,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Password</label>
-                                                <form:input cssClass="form-control" path="password" type="password"/>
+                                                <form:input cssClass="form-control" path="password"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">

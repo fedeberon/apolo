@@ -36,6 +36,11 @@ public class HomeController {
 
     @RequestMapping(value = {"/home", "/"})
     public String index(){
+
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            return "login";
+        }
+
         Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (usuario.getRol().getId() == 1){
@@ -57,12 +62,11 @@ public class HomeController {
         EventoUsuario eventoUsuario = eventoUsuarioService.getUltimoEventoCargado(usuario.getUsername());
 
         if(eventoUsuario == null){
-            return "login";
+            return "redirect:home";
         }
 
         else {
             modal.addAttribute("evento", eventoUsuario.getEvento());
-
             return "usuario/bienvenida-evento";
         }
     }

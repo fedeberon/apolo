@@ -171,7 +171,7 @@
 
         function saveEvent(title, startdate, descripcion) {
             $.ajax({
-                url: "../agendaRest/updateOrder?title=" + title + "&startdate=" + startdate + "&descripcion=" + descripcion
+                url: "../agendaRest/save?title="+ title + "&startdate=" + startdate + "&descripcion=" + descripcion
             });
         }
     });

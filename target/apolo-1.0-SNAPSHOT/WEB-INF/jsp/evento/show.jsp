@@ -28,7 +28,15 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
     <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
+    <!-- CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,900' rel='stylesheet' type='text/css'>
+    <!-- Styles -->
+    <link href="<c:url value='/resources/bienvenida/css/normalize.css'/>" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<c:url value='/resources/bienvenida/css/font-awesome.min.css'/>">
 
+
+    <script src="/resources/js/jquery-3.1.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
         .modal-content {
@@ -37,6 +45,29 @@
         }
         .btn.btn-primary.pull-right.ir-mapa {
             margin-top: -8%;
+        }
+
+        h3 {
+            font-size: 60px;
+            font-weight: 600;
+            line-height: 60px;
+            letter-spacing: -0.08em;
+            color: #161a1b;
+        }
+
+        #countdown div span {
+            display:block;
+            font-size: 30px;
+            line-height: 30px;
+            letter-spacing: initial;
+            font-weight: 100;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        #countdown div {
+            display:inline-block;
+            margin: 0 34px;
         }
     </style>
 
@@ -48,11 +79,8 @@
 <div class="wrapper">
 
     <jsp:include page="../sidebar.jsp"/>
-
     <div class="main-panel">
-
         <jsp:include page="../menu.jsp"/>
-
 
         <div class="content">
 
@@ -62,9 +90,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header" data-background-color="purple">
-                                <h4 class="title">Evento</h4>
+                                <h4 class="title">Evento ${evento.nombre}</h4>
                                 <%--<p class="category">lista</p>--%>
                             </div>
+
                             <div class="card-content table-responsive">
                                 <table class="table">
                                     <thead class="text-primary">
@@ -112,7 +141,6 @@
                                         <td>${evento.lugar}</td>
                                     </tr>
 
-                                    <%--<sec:authorize access="hasRole('ADMINISTRADOR')">--%>
                                     <tr>
                                         <th>Contratos</th>
                                         <td>
@@ -139,11 +167,8 @@
                                             </c:forEach>
                                         </td>
                                     </tr>
-                                    <%--</sec:authorize>--%>
-
                                     </tbody>
                                 </table>
-
                                 <hr>
 
                                 <!-- /.box-header -->
@@ -185,9 +210,7 @@
 
                 </div>
             </div>
-
-            <jsp:include page="../footer.jsp"/>
-
+                <jsp:include page="../footer.jsp"/>
     </div>
 
 </div>
@@ -217,12 +240,15 @@
                         <div class="modal-body">
 
                             <input type="hidden" name="idEvento" value="${evento.id}"/>
-
+                            <input type="hidden" name="urlRedirect" value="evento/show?id=${evento.id}"/>
                             <input type="file" name="file"/>
+                            <input type="hidden" name="subCarpeta" value="EVENTOS-${evento.id}">
 
                             <input type="radio" name="carpeta" value="CONTRATOS">Contrato
                             <input type="radio" name="carpeta" value="FACTURAS">Factura
                             <input type="radio" name="carpeta" value="DOCUMENTOS">Documento
+                            <input type="radio" name="carpeta" value="IMAGENES">Imagenes
+
 
                         </div>
                         <div class="modal-footer">
@@ -271,5 +297,12 @@
         $( "#sortable" ).disableSelection();
     } );
 </script>
+
+<!-- Javascript -->
+<script src="<c:url value='/resources/bienvenida/js/plugins.js'/>"></script>
+<script src="<c:url value='/resources/bienvenida/js/jquery.countdown.min.js'/>"></script>
+<script src="<c:url value='/resources/bienvenida/js/main.js'/>"></script>
+
+
 
 </html>

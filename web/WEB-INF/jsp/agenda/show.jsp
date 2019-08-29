@@ -53,9 +53,6 @@
                             </div>
                             <div class="card-content table-responsive">
                                 <div id='calendar'></div>
-
-
-
                             </div>
                         </div>
                     </div>

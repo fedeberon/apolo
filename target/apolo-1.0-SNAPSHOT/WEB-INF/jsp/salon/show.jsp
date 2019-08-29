@@ -142,7 +142,7 @@
                     <h4 class="modal-title">Imagenes</h4>
                 </div>
 
-                <form:form  action="/apolo/documento/uploadFile" modelAttribute="documento" method="post" enctype="multipart/form-data">
+                <form:form  action="/apolo/documento/uploadFile" modelAttribute="documento" enctype="multipart/form-data">
                     <div class="modal-body">
 
                         <input type="hidden" name="subCarpeta" value="${salon.id}"/>
@@ -170,16 +170,13 @@
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
-
                                 <c:forEach items="${imagenes}" var="imagen" varStatus="status">
-                                <div class="item   <c:if test="${status.first}">active</c:if>">
-                                    <img class="img-responsive" src="http://glameventos.com.ar/${imagen.url}" style="width: 100%; height: auto; margin:auto;" alt="...">
-                                    <div class="carousel-caption">
-                                        One Image
+                                    <div class="item   <c:if test="${status.first}">active</c:if>">
+                                        <img class="img-responsive" src="http://glameventos.com.ar/${imagen.url}" style="width: 100%; height: auto; margin:auto;" alt="...">
+                                        <div class="carousel-caption">
+                                        </div>
                                     </div>
-                                </div>
                                 </c:forEach>
-
                             </div>
 
                             <!-- Controls -->
@@ -211,4 +208,4 @@
 
 </script>
 
-</html>git commit
+</html>

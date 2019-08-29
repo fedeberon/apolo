@@ -39,8 +39,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin").authenticated()
                 .and().formLogin().loginPage("/login")
                 .loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password").and()
-                .csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied")
-                .and()
                 .logout()
                 .deleteCookies("remove")
                 .invalidateHttpSession(true)
@@ -48,6 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/logout-success")
                 .permitAll();
+
+        http.authorizeRequests().and().csrf().disable();
     }
 
 

@@ -64,9 +64,23 @@ public class EventoController {
         model.addAttribute("contratos" , documentoService.getDocumentos(evento, Carpeta.CONTRATOS));
         model.addAttribute("facturas" , documentoService.getDocumentos(evento, Carpeta.FACTURAS));
         model.addAttribute("documentos" , documentoService.getDocumentos(evento, Carpeta.DOCUMENTOS));
+        model.addAttribute("imagenes" , documentoService.getDocumentos(evento, Carpeta.IMAGENES));
         model.addAttribute("serviciosContratados", eventoService.getServiciosContratados(evento));
 
         return "evento/show";
+    }
+
+    @RequestMapping("showCliente")
+    public String showCliente(@RequestParam Integer id, Model model) {
+        Evento evento = eventoService.get(id);
+        model.addAttribute("evento", evento);
+        model.addAttribute("contratos" , documentoService.getDocumentos(evento, Carpeta.CONTRATOS));
+        model.addAttribute("facturas" , documentoService.getDocumentos(evento, Carpeta.FACTURAS));
+        model.addAttribute("documentos" , documentoService.getDocumentos(evento, Carpeta.DOCUMENTOS));
+        model.addAttribute("imagenes" , documentoService.getDocumentos(evento, Carpeta.IMAGENES));
+        model.addAttribute("serviciosContratados", eventoService.getServiciosContratados(evento));
+
+        return "evento/showCliente";
     }
 
 

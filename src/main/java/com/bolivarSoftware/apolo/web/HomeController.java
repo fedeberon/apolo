@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,7 +39,7 @@ public class HomeController {
     public String index(){
 
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
-            return "login";
+            return "welcome";
         }
 
         Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -54,6 +55,11 @@ public class HomeController {
     @RequestMapping(value = {"/login" ,"logout-success"} )
     public String login(){
         return "login";
+    }
+
+    @RequestMapping(value = {"/welcome"} )
+    public String welcome(){
+        return "welcome";
     }
 
     @RequestMapping(value = {"/bienvenida"} )
@@ -80,6 +86,7 @@ public class HomeController {
     private List<EtapaARealizar> tareasProximas(){
         return etapaService.tareasProximas();
     }
+
 
 
 

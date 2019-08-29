@@ -24,6 +24,7 @@ public class UsuarioRepository implements IUsuarioRepository {
             return (Usuario) session.delegate().get(Usuario.class, username);
 
         } catch (HibernateException e) {
+
             throw e;
         }
     }

@@ -35,10 +35,7 @@
     <link href="<c:url value='/resources/bienvenida/css/normalize.css'/>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<c:url value='/resources/bienvenida/css/font-awesome.min.css'/>">
     <link href="<c:url value='/resources/bienvenida/css/style.css'/>" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/bienvenida/css/ie.css'/>" />
-    <![endif]-->
-    <!-- Javascript -->
+
 
     <script src="<c:url value='/resources/bienvenida/js/jquery.js'/>"></script>
 </head>
@@ -86,11 +83,11 @@
         <li class="layer" data-depth="0.30">
             <div class="hero">
                 <h1 id="countdown">
-                    <a class="mail" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles del evento</a>
+                    <%--<a class="mail" href="<c:url value='/evento/showCliente?id=${evento.id}'/>">Mira mas detalles del evento</a>--%>
                 </h1>
 
                 <p class="sub-title">
-                    <a class="mail" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles del evento</a>
+                    <%--<a class="mail" href="<c:url value='/evento/showCliente?id=${evento.id}'/>">Mira mas detalles del evento</a>--%>
                 </p>
             </div>
         </li>
@@ -174,7 +171,7 @@
                 </ul>
                 <ul>
                     <li>
-                        <a style="color:white" href="<c:url value='/evento/show?id=${evento.id}'/>">Mira mas detalles de tu evento</a>
+                        <a style="color:white" href="<c:url value='/evento/showCliente?id=${evento.id}'/>">Mira mas detalles de tu evento</a>
                     </li>
                 </ul>
 

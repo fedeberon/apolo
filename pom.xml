@@ -16,7 +16,7 @@
         <hibernate.version>3.6.10.Final</hibernate.version>
         <log4j.version>2.5</log4j.version>
         <javassist.version>3.4.GA</javassist.version>
-        <jackson.version>2.7.5</jackson.version>
+        <jackson.version>2.12.1</jackson.version>
     </properties>
 
     <dependencies>

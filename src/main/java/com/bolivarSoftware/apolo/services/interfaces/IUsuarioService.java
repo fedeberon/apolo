@@ -15,4 +15,5 @@ public interface IUsuarioService extends UserDetailsService {
     Usuario save(Usuario usuario);
 
     Usuario get(String username);
+
 }

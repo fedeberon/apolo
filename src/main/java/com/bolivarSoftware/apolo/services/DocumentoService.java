@@ -5,6 +5,7 @@ import com.bolivarSoftware.apolo.domain.Evento;
 import com.bolivarSoftware.apolo.domain.Salon;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -21,8 +22,8 @@ import java.util.List;
 @Service
 public class DocumentoService implements IDocumentoService {
 
-    //@Value("${filePathFolder}")
-    private String filePathFolder = "/documento";
+    @Value("${filePathFolder}")
+    private String filePathFolder;
 
     @Override
     public void upload(Documento documento) {

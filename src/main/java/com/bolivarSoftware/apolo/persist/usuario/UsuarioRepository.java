@@ -54,7 +54,7 @@ public class UsuarioRepository implements IUsuarioRepository {
         Transaction tx = null;
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             tx = session.delegate().beginTransaction();
-            session.delegate().saveOrUpdate(usuario);
+            session.delegate().save(usuario);
             tx.commit();
 
             return usuario;

@@ -70,7 +70,7 @@
                                             <td>${bo.nombre}</td>
                                             <td>${bo.apellido}</td>
                                             <td><button  style="float:right" type="button" id="${bo.username}" class="btn btn-primary btn-usuario" data-toggle="modal" data-target="#modal-documentos">Asociar un Evento</button></td>
-                                            <td><a href="../../eventoUsuario/show?username=${bo.username}"><button  type="button" id="${bo.username}" class="btn btn-success btn-usuario">Ver eventos asociados</button></a></td>
+                                            <td><a href="/apolo/eventoUsuario/show?username=${bo.username}"><button  type="button" id="${bo.username}" class="btn btn-success btn-usuario">Ver eventos asociados</button></a></td>
                                         </tr>
                                     </c:forEach>
 

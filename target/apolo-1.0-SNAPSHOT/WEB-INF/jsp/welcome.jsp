@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Glam - Inicio</title>
+    <title>Eventos - Inicio</title>
 
     <!-- Bootstrap core CSS     -->
     <link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet" />
@@ -16,10 +16,11 @@
 <body>
 <div>
 
-    <div class="container-fluid" style="background-color:#ffffff;">
-        <button> login </button>
+    <div class="container-fluid">
         <div class="text-center">
-            <img class="img-fluid m-auto" src="<c:url value='/resources/logo/glamLogo.png'/>">
+            <a href="<c:url value='/login'/>">
+                <img class="img-fluid m-auto" src="<c:url value='/resources/logo/logo.png'/>">
+            </a>
         </div>
     </div>
 

@@ -18,7 +18,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <context:component-scan base-package="com.bolivarSoftware.apolo.services">
+    <context:component-scan base-package="com.bolivarSoftware.apolo.services.*">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
 
@@ -68,9 +68,9 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/apolo"/>
-        <property name="user" value="apolo"/>
-        <property name="password" value="apolo"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/apolo"/>
+        <property name="user" value="user"/>
+        <property name="password" value="password"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean">

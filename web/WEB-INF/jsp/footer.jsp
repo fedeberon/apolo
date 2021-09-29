@@ -25,7 +25,7 @@
             </ul>
         </nav>
         <p class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.glam-eventos.com.ar">Glam Eventos</a>.
+            &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.eventos.com.ar">Eventos</a>.
         </p>
     </div>
 </footer>

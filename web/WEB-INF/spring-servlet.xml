@@ -68,9 +68,9 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/apolo"/>
-        <property name="user" value="user"/>
-        <property name="password" value="password"/>
+        <property name="jdbcUrl" value="jdbc:mysql://66.97.46.194:3306/apolo_5wBuMb7H?useSSL=false"/>
+        <property name="user" value="apolo_3U4JSLbQ"/>
+        <property name="password" value="apolo_66gC5kbe"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean">

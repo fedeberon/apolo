@@ -68,7 +68,7 @@
         <li class="layer" data-depth="0.20">
             <div class="title">
                 <h2 class="titleGlam">
-                    GLAM EVENTOS
+                    EVENTOS
                 </h2>
                 <%--<span class="line"></span>--%>
             </div>

@@ -40,7 +40,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = {"/home", "/"})
-    public String index(){
+    public String index(Model modal){
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
             return "welcome";
         }

@@ -1,22 +1,48 @@
 package com.bolivarSoftware.apolo.domain;
 
-import org.springframework.web.multipart.MultipartFile;
+
+import com.bolivarSoftware.apolo.enums.Carpeta;
 
 /**
  * Created by Damian on 15/03/2018.
  */
+
 public class Imagen {
 
-    private String filePathFolder = "/documento";
+    private String url;
+    private boolean isMain;
+    private String link;
 
-    private String carpeta;
+    public Imagen(String url, boolean isMain) {
+        this.url = url;
+        this.isMain = isMain;
+    }
 
-    private Integer idSalon;
+    public Imagen(String url) {
+        this.url = url;
+    }
 
-    private String nombre;
+    public String getUrl() {
+        return url;
+    }
 
-    private MultipartFile file;
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
+    public boolean isMain() {
+        return isMain;
+    }
 
+    public void setMain(boolean main) {
+        isMain = main;
+    }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 }

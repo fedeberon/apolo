@@ -2,14 +2,19 @@ package com.bolivarSoftware.apolo.services;
 
 import com.bolivarSoftware.apolo.domain.Documento;
 import com.bolivarSoftware.apolo.domain.Evento;
+import com.bolivarSoftware.apolo.domain.Imagen;
 import com.bolivarSoftware.apolo.domain.Salon;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
@@ -76,14 +81,14 @@ public class DocumentoService implements IDocumentoService {
 
     @SuppressWarnings("Duplicates")
     @Override
-    public List<Documento> getDocumentos(Evento evento, Carpeta carpeta){
-        final List<Documento> documentos = new ArrayList<>();
+    public List<Imagen> getDocumentos(Evento evento, Carpeta carpeta){
+        final List<Imagen> documentos = new ArrayList<>();
         try {
             Files.walkFileTree(Paths.get(filePathFolder + File.separator + carpeta + File.separator + evento.getId()), new SimpleFileVisitor<Path>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     try {
-                        documentos.add(new Documento(carpeta, evento.getId().toString(), file.getFileName().toString()));
+                        documentos.add(new Imagen(file.getFileName().toString()));
                     }
                     finally {
                         return FileVisitResult.CONTINUE;
@@ -100,14 +105,14 @@ public class DocumentoService implements IDocumentoService {
 
     @SuppressWarnings("Duplicates")
     @Override
-    public List<Documento> getDocumentos(Salon salon, Carpeta carpeta){
-        final List<Documento> documentos = new ArrayList<>();
+    public List<Imagen> getDocumentos(Salon salon, Carpeta carpeta){
+        final List<Imagen> imagens = new ArrayList<>();
         try {
             Files.walkFileTree(Paths.get(filePathFolder + File.separator + carpeta + File.separator + salon.getId()), new SimpleFileVisitor<Path>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     try {
-                        documentos.add(new Documento(carpeta, salon.getId().toString(), file.getFileName().toString()));
+                        imagens.add(new Imagen(file.getFileName().toString()));
                     }
                     finally {
                         return FileVisitResult.CONTINUE;
@@ -117,6 +122,21 @@ public class DocumentoService implements IDocumentoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return documentos;
+        return imagens;
+    }
+
+
+    public Resource loadFileAsResource(String folder, String fileName) {
+        try {
+            Path filePath = Paths.get(this.filePathFolder + folder.concat("/").concat(fileName));
+            Resource resource = new UrlResource(filePath.toUri());
+            if(resource.exists()) {
+                return resource;
+            } else {
+                return null;
+            }
+        } catch (MalformedURLException ex) {
+            return null;
+        }
     }
  }

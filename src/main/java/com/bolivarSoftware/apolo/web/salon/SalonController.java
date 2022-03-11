@@ -7,6 +7,7 @@ import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
 import com.bolivarSoftware.apolo.services.interfaces.ISalonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +29,9 @@ public class SalonController {
     @Autowired
     private IDocumentoService documentoService;
 
+    @Value("${urlContextImages}")
+    private String urlContextImages;
+
     @RequestMapping("create")
     public String nuevoSalon() {
         return "salon/create";
@@ -38,6 +42,7 @@ public class SalonController {
         Salon salon = salonService.get(id);
         model.addAttribute("salon", salon);
         model.addAttribute("imagenes" , documentoService.getDocumentos(salon, Carpeta.IMAGENES));
+        model.addAttribute("urlContextImages", urlContextImages);
 
         return "salon/show";
     }

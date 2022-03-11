@@ -163,20 +163,17 @@
     </div>
 
             <!-- Large modal -->
-            <div id="carousel-img" class="modal fade bs-example-modal-lg item active" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class = "item active">
-                <div class="modal-dialog modal-lg">
+            <div id="carousel-img" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" style="margin-top: auto;">
                     <div class="modal-content-img">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
                             <!-- Wrapper for slides -->
-                            <div class="carousel-inner" >
-                                <div class="carousel item active">
+                            <div class="carousel-inner">
                                 <c:forEach items="${imagenes}" var="imagen" varStatus="status">
-                                    <div class="item   <c:if test="${status.first}">active</c:if>">
-                                        <img class="img-responsive" src="http://localhost:8080/apolo/documento/data/IMAGENES/${imagen.url}" style="width: 100%; height: auto; margin:auto;" alt="...">
-                                        <div class="carousel-caption">
-                                        </div>
+                                    <div class="d-flex justify-content-between  item   <c:if test="${status.first}">active</c:if>">
+                                        <img class="d-block w-100" src="http://localhost/IMAGENES/1/${imagen.url}" style="height:100vh; margin:auto ;" alt="...">
+                                        <div class="carousel-caption"></div>
                                     </div>
                                 </c:forEach>
                                 

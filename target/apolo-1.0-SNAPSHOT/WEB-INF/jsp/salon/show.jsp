@@ -14,25 +14,25 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <!-- Bootstrap core CSS     -->
-    <link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet"/>
-
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!--  Material Dashboard CSS    -->
     <link href="<c:url value='/resources/css/material-dashboard.css'/>" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="<c:url value='/resources/css/demo.css'/>" rel="stylesheet"/>
+    
+    <!-- Bootstrap core CSS     -->
+    <link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet"/>
+
+
 
     <!--     Fonts and icons     -->
+    <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-    <link href="<c:url value='/resources/plugins/knob/jquery.knob.js'/>" rel="stylesheet"/>
-
-
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+   
     <style>
         .modal-content {
             width: 645px;
@@ -154,7 +154,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-default">Guadar</button>
+                        <button type="submit" class="btn btn-default">Guardar</button>
                     </div>
                 </form:form>
 
@@ -164,23 +164,23 @@
 
             <!-- Large modal -->
             <div id="carousel-img" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg" style="margin-top: auto;">
                     <div class="modal-content-img">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                                 <c:forEach items="${imagenes}" var="imagen" varStatus="status">
-                                    <div class="item   <c:if test="${status.first}">active</c:if>">
-                                        <img class="img-responsive" src="http://glameventos.com.ar/${imagen.url}" style="width: 100%; height: auto; margin:auto;" alt="...">
-                                        <div class="carousel-caption">
-                                        </div>
+                                    <div class="d-flex justify-content-between  item   <c:if test="${status.first}">active</c:if>">
+                                        <img class="d-block w-100" src="http://localhost/IMAGENES/1/${imagen.url}" style="height:100vh; margin:auto ;" alt="...">
+                                        <div class="carousel-caption"></div>
                                     </div>
                                 </c:forEach>
+                                
                             </div>
 
                             <!-- Controls -->
-                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <a class="left carousel-control" href="#carousel-example-generic"  role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
                             <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">

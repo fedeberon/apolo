@@ -59,15 +59,17 @@
                                     <th>Nombre</th>
                                     <th>Lugar</th>
                                     <th>Fecha</th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
 
                                     <c:forEach items="${eventos}" var="evento">
                                         <tr>
-                                            <td><a href="/apolo/evento/show?id=${evento.id}">${evento.id}</a></td>
+                                            <td>${evento.id}</td>
                                             <td>${evento.nombre}</td>
                                             <td>${evento.lugar}</td>
                                             <td><fmt:formatDate type="both" timeStyle = "short" value="${evento.fechaDeEvento}"/></td>
+                                            <td><a href="/apolo/evento/show?id=${evento.id}" class="btn btn-info btn-sm">Ver detalles</a></td>
                                         </tr>
                                     </c:forEach>
 
@@ -89,7 +91,7 @@
                     <a href="/apolo/evento/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="<c:url value='/evento/create'/>" class="btn btn-block btn-primary">Nuevo</a>
+                    <a href="<c:url value='/evento/create'/>" class="btn btn-block btn-success">Nuevo</a>
                 </div>
             </div>
 

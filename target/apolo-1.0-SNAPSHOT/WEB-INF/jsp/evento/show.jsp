@@ -200,8 +200,9 @@
 
                             </div>
                         </div>
-                        <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
-                        <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-primary pull-right">Editar</a>
+                        <a href="<c:url value='/evento/list'/>" class="btn btn-default pull-left">Volver</a>
+                        <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-danger pull-right">Eliminar</a>
+                        <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-warning pull-right">Editar</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos">Documentos</button>
                         <a href="<c:url value='/evento/timeline?id=${evento.id}'/>" class="btn btn-primary">Linea de tiempo</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-mapa">Ver Mapa</button>

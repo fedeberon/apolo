@@ -51,17 +51,30 @@ public class UsuarioRepository implements IUsuarioRepository {
 
     @Override
     public Usuario save(Usuario usuario) {
+        Session session = null;
         Transaction tx = null;
-        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
-            tx = session.delegate().beginTransaction();
-            session.delegate().save(usuario);
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+            session.save(usuario);
             tx.commit();
 
             return usuario;
         }
         catch (HibernateException e){
-            tx.rollback();
+            e.printStackTrace();
+            if (tx != null) {
+                try {
+                    tx.rollback();
+                } catch (Exception ignored) {
+                }
+            }
             throw e;
+        }
+        finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
         }
     }
 

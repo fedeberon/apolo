@@ -56,14 +56,16 @@
                                     <th>Cod Int</th>
                                     <th>Nombre</th>
                                     <th>Direccion</th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
 
                                     <c:forEach items="${salones}" var="salon">
                                         <tr>
-                                            <td><a href="/apolo/salon/show?id=${salon.id}">${salon.id}</a></td>
+                                            <td>${salon.id}</td>
                                             <td>${salon.nombre}</td>
                                             <td>${salon.direccion}</td>
+                                            <td><a href="/apolo/salon/show?id=${salon.id}" class="btn btn-info btn-sm">Ver detalles</a></td>
                                         </tr>
                                     </c:forEach>
 
@@ -85,7 +87,7 @@
                     <a href="/apolo/salon/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="<c:url value='/salon/create'/>" class="btn btn-block btn-primary">Nuevo</a>
+                    <a href="<c:url value='/salon/create'/>" class="btn btn-block btn-success">Nuevo</a>
                 </div>
             </div>
 

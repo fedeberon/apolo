@@ -64,6 +64,7 @@
                                     </tbody>
                                 </table>
 
+                                <a href="<c:url value='/servicio/list'/>" class="btn btn-default pull-left">Volver</a>
                                 <a data-toggle="modal" data-target="#myModal" style="cursor: pointer" class="btn btn-primary pull-right">Nueva Etapa</a>
                             </div>
                         </div>

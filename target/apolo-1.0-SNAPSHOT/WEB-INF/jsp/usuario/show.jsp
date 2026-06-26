@@ -69,7 +69,7 @@
                                         <td>${usuario.username}</td>
                                         <td>${usuario.nombre} - ${usuario.apellido}</td>
                                         <td>${usuario.rol.nombre} </td>
-                                        <td><a href="../eventoUsuario/show?username=${usuario.username}">Ver eventos asociados</a></td>
+                                        <td><a href="../eventoUsuario/show?username=${usuario.username}" class="btn btn-info btn-sm">Ver eventos asociados</a></td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -36,12 +36,14 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="material-icons">person</i>
+                            <span class="hidden-xs"><sec:authentication property="principal.username" /></span>
                             <p class="hidden-lg hidden-md">Profile</p>
                         </a>
                         <ul class="dropdown-menu">
                             <sec:authorize access="isAuthenticated()">
-                                 <li><a href="#"><sec:authentication property="principal.username" /></a></li>
-                                 <li><a href="<c:url value="/logout" />">Logout</a></li>
+                                 <li class="dropdown-header"><sec:authentication property="principal.username" /></li>
+                                 <li class="divider"></li>
+                                 <li><a href="<c:url value="/logout" />">Cerrar sesion</a></li>
                             </sec:authorize>
 
                             <sec:authorize access="!isAuthenticated()">

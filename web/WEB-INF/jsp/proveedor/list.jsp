@@ -55,19 +55,21 @@
                                     <thead class="text-primary">
                                     <th>Cod Int</th>
                                     <th>Nombre</th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
 
                                     <c:forEach items="${proveedores}" var="bo">
                                         <tr>
-                                            <td><a href="/apolo/proveedor/show?id=${bo.id}">${bo.id}</a></td>
+                                            <td>${bo.id}</td>
                                             <td>${bo.nombre}</td>
+                                            <td><a href="/apolo/proveedor/show?id=${bo.id}" class="btn btn-info btn-sm">Ver detalles</a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
 
-                                <a href="<c:url value='/proveedor/create'/>" class="btn btn-primary pull-right">Nuevo</a>
+                                <a href="<c:url value='/proveedor/create'/>" class="btn btn-success pull-right">Nuevo</a>
 
                             </div>
                         </div>

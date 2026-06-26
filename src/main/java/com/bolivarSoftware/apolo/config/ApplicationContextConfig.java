@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @PropertySource("classpath:application.properties")
-@PropertySource(value = "file:${apolo.config.prop.folder}/application.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "file:${apolo.config.prop.folder:./config}/application.properties", ignoreResourceNotFound = true)
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 
     @Override

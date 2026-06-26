@@ -3,36 +3,27 @@ package com.bolivarSoftware.apolo.domain;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-/**
- * Created by Damian on 07/03/2018.
- */
-@Entity
-@Table(name = "USUARIOS")
-public class Usuario implements UserDetails {
+public class UsuarioDetails implements UserDetails {
 
-    @Id
-    @Column(name = "USERNAME")
     private String username;
-
-    @Column(name = "PASSWORD")
     private String password;
-
-    @Column(name = "NOMBRE")
     private String nombre;
-
-    @Column(name = "APELLIDO")
     private String apellido;
 
-    @ManyToOne
-    @JoinColumn(name = "USU_ROL_ID")
-    private Rol rol;
+    public UsuarioDetails(Usuario usuario) {
+        this.username = usuario.getUsername();
+        this.password = usuario.getPassword();
+        this.nombre = usuario.getNombre();
+        this.apellido = usuario.getApellido();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new java.util.ArrayList<>();
+        return new ArrayList<>();
     }
 
     @Override
@@ -65,35 +56,15 @@ public class Usuario implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getApellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public String getNombreCompleto() {
+        return nombre + " " + apellido;
     }
 }

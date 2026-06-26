@@ -32,7 +32,7 @@ public class UsuarioService implements IUsuarioService {
         Usuario usuario = dao.get(username);
         if(Objects.isNull(usuario)) throw new UsernameNotFoundException("User not authorized.");
 
-        return usuario;
+        return new com.bolivarSoftware.apolo.domain.UsuarioDetails(usuario);
     }
 
     @Override

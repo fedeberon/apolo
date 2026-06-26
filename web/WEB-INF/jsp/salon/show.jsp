@@ -119,7 +119,8 @@
 
                             </div>
                         </div>
-                        <a href="<c:url value='/salon/edit?id=${salon.id}'/>" class="btn btn-primary pull-right">Editar</a>
+                        <a href="<c:url value='/salon/list'/>" class="btn btn-default pull-left">Volver</a>
+                        <a href="<c:url value='/salon/edit?id=${salon.id}'/>" class="btn btn-warning pull-right">Editar</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos">Cargar Imagenes</button>
                         <button class="btn btn-default" data-toggle="modal" data-target="#carousel-img">Ver Imagenes</button>
                     </div>

@@ -55,32 +55,54 @@
                                 <div class="card-content">
 
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Username</label>
-                                                <form:input cssClass="form-control" path="username"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Password</label>
-                                                <form:input cssClass="form-control" path="password"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label">Apellido</label>
-                                                <form:input cssClass="form-control" path="apellido"/>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="material-icons">person</i></span>
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Username</label>
+                                                    <form:input cssClass="form-control" path="username"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="material-icons">lock</i></span>
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Password</label>
+                                                    <form:input cssClass="form-control" path="password"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="material-icons">face</i></span>
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Nombre</label>
+                                                    <form:input cssClass="form-control" path="nombre"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="material-icons">badge</i></span>
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Apellido</label>
+                                                    <form:input cssClass="form-control" path="apellido"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="<c:url value='/usuario/list'/>" class="btn btn-default pull-left">Volver</a>
                                     <button type="submit" class="btn btn-primary pull-right">Crear</button>
                                     <div class="clearfix"></div>
 

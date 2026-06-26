@@ -101,6 +101,7 @@
 
                             </div>
                         </div>
+                        <a href="<c:url value='/proveedor/list'/>" class="btn btn-default pull-left">Volver</a>
                         <a href="<c:url value='/servicioContratado/comentariosDeProveedor?id=${proveedor.id}'/>" class="btn btn-primary pull-right">Comentarios</a>
                     </div>
 

@@ -136,7 +136,8 @@
 
                                         </tbody>
                                     </table>
-                                    <a href="<c:url value='/servicioContratado/delete?id=${servicioContratado.id}&idEvento=${servicioContratado.evento.id}'/>" class="btn btn-primary pull-right">Eliminar</a>
+                                    <a href="<c:url value='/evento/show?id=${servicioContratado.evento.id}'/>" class="btn btn-default pull-left">Volver</a>
+                                    <a href="<c:url value='/servicioContratado/delete?id=${servicioContratado.id}&idEvento=${servicioContratado.evento.id}'/>" class="btn btn-danger pull-right">Eliminar</a>
                                     <button type="submit" class="btn btn-primary pull-right">Guardar</button>
 
 

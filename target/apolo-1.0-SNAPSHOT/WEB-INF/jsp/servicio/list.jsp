@@ -61,14 +61,14 @@
                                         <tr>
                                             <td>${bo.nombre}</td>
                                             <td>${bo.proveedor.nombre}</td>
-                                            <td class="text-primary"><a href="<c:url value='/servicio/show?id=${bo.id}'/>"> ver etapas</a></td>
+                                            <td><a href="<c:url value='/servicio/show?id=${bo.id}'/>" class="btn btn-info btn-sm">Ver etapas</a></td>
                                         </tr>
                                     </c:forEach>
 
                                     </tbody>
                                 </table>
 
-                                <a href="<c:url value='/servicio/create'/>" class="btn btn-primary pull-right">Nuevo</a>
+                                <a href="<c:url value='/servicio/create'/>" class="btn btn-success pull-right">Nuevo</a>
                             </div>
 
 

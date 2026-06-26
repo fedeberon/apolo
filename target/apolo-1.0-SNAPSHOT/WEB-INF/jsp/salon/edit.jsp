@@ -109,6 +109,7 @@
                                     </div>
                                 </div>
 
+                                <a href="<c:url value='/salon/list'/>" class="btn btn-default pull-left">Volver</a>
                                 <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
                                 <div class="clearfix"></div>
 

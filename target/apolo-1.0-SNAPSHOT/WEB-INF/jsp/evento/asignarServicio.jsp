@@ -123,6 +123,7 @@
 
 
 
+                                    <a href="<c:url value='/evento/list'/>" class="btn btn-default pull-left">Volver</a>
                                     <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Geolocalizar</button>
                                     <div class="clearfix"></div>

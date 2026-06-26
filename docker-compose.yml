@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: apolo-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: apolo_5wBuMb7H
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+
+  tomcat:
+    image: tomcat:9-jdk8
+    container_name: apolo-tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/apolo-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/apolo.war
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql-data:

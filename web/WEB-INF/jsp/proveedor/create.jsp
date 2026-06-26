@@ -75,6 +75,7 @@
                                         </div>
                                     </div>
 
+                                    <a href="<c:url value='/proveedor/list'/>" class="btn btn-default pull-left">Volver</a>
                                     <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
                                     <div class="clearfix"></div>
                                 </form:form>

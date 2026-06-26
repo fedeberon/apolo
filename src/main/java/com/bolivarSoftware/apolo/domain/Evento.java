@@ -53,7 +53,7 @@ public class Evento {
     private TipoDeEvento tipoDeEvento;
 
     @OneToMany(cascade =  { CascadeType.PERSIST}, mappedBy = "evento")
-    private List<ServicioContratado> servicios;
+    private List<ServicioContratado> servicios = new ArrayList<>();
 
     @Column(name = "EVE_PLAYLIST")
     private String playlist;

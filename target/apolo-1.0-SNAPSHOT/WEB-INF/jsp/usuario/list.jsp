@@ -94,7 +94,7 @@
                     <a href="/apolo/usuario/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="<c:url value='/usuario/create'/>" class="btn btn-block btn-primary">Nuevo</a>
+                    <a href="<c:url value='/usuario/create'/>" class="btn btn-block btn-success">Nuevo</a>
                 </div>
             </div>
 

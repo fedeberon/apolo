@@ -65,6 +65,7 @@
                                         </div>
                                     </div>
 
+                                    <a href="<c:url value='/servicio/list'/>" class="btn btn-default pull-left">Volver</a>
                                     <button type="submit" class="btn btn-primary pull-right">Guadar</button>
                                     <div class="clearfix"></div>
                                 </form:form>

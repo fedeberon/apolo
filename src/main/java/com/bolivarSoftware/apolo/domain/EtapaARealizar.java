@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "etapaARealizar")
-public class EtapaARealizar {
+public class EtapaARealizar implements Comparable<EtapaARealizar>  {
 
     @Id
     @Column(name = "ETR_ID")
@@ -34,6 +34,12 @@ public class EtapaARealizar {
 
     @Column(name = "ETR_CANT_DIAS_LIMITE")
     private Integer cantidadDiasLimiteDeResolucion;
+
+    @Column(name = "ETR_CANT_DESCRIPCION")
+    private String descripcion;
+
+    @Column(name = "ETR_ORDEN")
+    private Integer orden = 0;
 
     public EtapaARealizar() {
     }
@@ -97,5 +103,28 @@ public class EtapaARealizar {
 
     public void setCantidadDiasLimiteDeResolucion(Integer cantidadDiasLimiteDeResolucion) {
         this.cantidadDiasLimiteDeResolucion = cantidadDiasLimiteDeResolucion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+
+    @Override
+    public int compareTo(EtapaARealizar o) {
+        if(fecha == null || o.getFecha() == null) return 0;
+        return getFecha().compareTo(o.getFecha());
+    }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 }

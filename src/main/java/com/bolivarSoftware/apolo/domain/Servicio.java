@@ -3,6 +3,7 @@ package com.bolivarSoftware.apolo.domain;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "SERVICIOS")
@@ -22,6 +23,10 @@ public class Servicio {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "PRO_ID")
     private Proveedor proveedor;
+
+    @ManyToOne
+    @JoinColumn(name = "SER_CREADO_POR")
+    private Usuario creadoPor;
 
     @OneToMany(mappedBy = "servicio", fetch = FetchType.EAGER)
     private List<Etapa> etapas;
@@ -66,4 +71,21 @@ public class Servicio {
         this.etapas = etapas;
     }
 
+    public Usuario getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Usuario creadoPor) {
+        this.creadoPor = creadoPor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Servicio)) {
+            return false;
+        }
+        Servicio servicio = (Servicio) o;
+        return id == servicio.id;
+    }
 }

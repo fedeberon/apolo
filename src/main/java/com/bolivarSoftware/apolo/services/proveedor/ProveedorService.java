@@ -29,4 +29,9 @@ public class ProveedorService implements IProveedorService {
     public List<Proveedor> findAll() {
         return dao.findAll();
     }
+
+    @Override
+    public List<Proveedor> findAllByCreadoPor(String username) {
+        return dao.findAllByCreadoPor(username);
+    }
 }

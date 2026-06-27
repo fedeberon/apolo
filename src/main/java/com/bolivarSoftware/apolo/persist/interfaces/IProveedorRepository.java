@@ -12,4 +12,6 @@ public interface IProveedorRepository {
     Proveedor save(Proveedor proveedor);
 
     List<Proveedor> findAll();
+
+    List<Proveedor> findAllByCreadoPor(String username);
 }

@@ -1,24 +1,20 @@
 package com.bolivarSoftware.apolo.domain;
 
 import com.bolivarSoftware.apolo.enums.Carpeta;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
-/**
- * Created by Federico_Veron on 26/10/2017.
- */
+
 @Component
 public class Documento {
 
-    @Value("${filePathFolder}")
-    private String filePathFolder;
+    private String filePathFolder = "/documento";
 
     private String carpeta;
 
-    private Integer idEvento;
+    private String subCarpeta;
 
     private String nombre;
 
@@ -27,18 +23,26 @@ public class Documento {
     public Documento() {
     }
 
-    public Documento(Carpeta carpeta, Integer idEvento, String nombre) {
+    public Documento(Carpeta carpeta, String subCarpeta, String nombre) {
         this.nombre = nombre;
         this.carpeta = carpeta.name();
-        this.idEvento = idEvento;
+        this.subCarpeta = subCarpeta;
     }
 
-    public Integer getIdEvento() {
-        return idEvento;
+    public String getFilePathFolder() {
+        return filePathFolder;
     }
 
-    public void setIdEvento(Integer idEvento) {
-        this.idEvento = idEvento;
+    public void setFilePathFolder(String filePathFolder) {
+        this.filePathFolder = filePathFolder;
+    }
+
+    public String getSubCarpeta() {
+        return subCarpeta;
+    }
+
+    public void setSubCarpeta(String subCarpeta) {
+        this.subCarpeta = subCarpeta;
     }
 
     public String getNombre() {
@@ -66,6 +70,6 @@ public class Documento {
     }
 
     public String getUrl() {
-        return filePathFolder + File.separator + carpeta + File.separator + idEvento + File.separator + nombre;
+        return filePathFolder + File.separator + carpeta + File.separator + subCarpeta + File.separator + nombre;
     }
 }

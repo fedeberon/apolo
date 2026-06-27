@@ -12,6 +12,8 @@ public interface IServicioRepository {
 
     List<Servicio> findAll();
 
+    List<Servicio> findAllByCreadoPor(String username);
+
     Servicio save(Servicio servicio);
 
     Servicio get(Integer integer);

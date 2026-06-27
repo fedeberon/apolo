@@ -27,6 +27,12 @@ public class ServicioContratado {
     @JoinColumn(name = "SEC_EVE_ID")
     private Evento evento;
 
+    @Column(name = "ETR_CANT_COMENTARIO")
+    private String comentario;
+
+    @Column (name = "SEC_ORDEN")
+    private Integer orden = 0;
+
     public Long getId() {
         return id;
     }
@@ -67,4 +73,21 @@ public class ServicioContratado {
 
         return Math.round(result);
     }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
+    }
+
 }

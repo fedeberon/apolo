@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Fede Beron on 8/8/2017.
- */
+
 @Repository
 public class EventoRepository implements IEventoRepository{
 
@@ -47,6 +45,25 @@ public class EventoRepository implements IEventoRepository{
             return query.list();
         }
         catch (HibernateException e){
+            throw e;
+        }
+    }
+
+    @Override
+    public void remove(Integer id) {
+        Transaction tx = null;
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            tx = session.delegate().getTransaction();
+            tx.begin();
+            Evento evento = (Evento) session.delegate().get(Evento.class, id);
+            Hibernate.initialize(evento.getServicios());
+            evento.getServicios().forEach(servicioContratado -> servicioContratado.getEtapas().forEach(etapaARealizar -> session.delegate().delete(etapaARealizar)));
+            evento.getServicios().forEach(servicioContratado -> session.delegate().delete(servicioContratado));
+            session.delegate().delete(evento);
+            tx.commit();
+        }
+        catch (HibernateException e){
+            tx.rollback();
             throw e;
         }
     }

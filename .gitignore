@@ -4,7 +4,12 @@
 ### Java template
 *.class
 
+<<<<<<< HEAD
+# BlueJ
+
+=======
 # BlueJ files
+>>>>>>> origin/GLAM-3
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
@@ -224,3 +229,4 @@ TSWLatexianTemp*
 /auto/*
 
 */target/**
+

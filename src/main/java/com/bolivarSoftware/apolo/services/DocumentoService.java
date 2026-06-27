@@ -2,24 +2,23 @@ package com.bolivarSoftware.apolo.services;
 
 import com.bolivarSoftware.apolo.domain.Documento;
 import com.bolivarSoftware.apolo.domain.Evento;
+import com.bolivarSoftware.apolo.domain.Salon;
 import com.bolivarSoftware.apolo.enums.Carpeta;
 import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
  * Created by Federico_Veron on 26/10/2017.
  */
+
 @Service
 public class DocumentoService implements IDocumentoService {
 
@@ -30,7 +29,7 @@ public class DocumentoService implements IDocumentoService {
     public void upload(Documento documento) {
         if (documento.getFile().isEmpty()) return;
         try {
-            File theDir  = new File(filePathFolder + File.separator + documento.getCarpeta() + File.separator  + documento.getIdEvento());
+            File theDir  = new File(filePathFolder + File.separator + documento.getCarpeta() + File.separator  + documento.getSubCarpeta());
             File theDirWithFile = new File(theDir.getAbsolutePath() + File.separator + documento.getFile().getOriginalFilename());
             theDirWithFile = this.getVersionFile(theDir, theDirWithFile);
 
@@ -75,15 +74,16 @@ public class DocumentoService implements IDocumentoService {
     }
 
 
+    @SuppressWarnings("Duplicates")
     @Override
     public List<Documento> getDocumentos(Evento evento, Carpeta carpeta){
-        final List<Documento> imagenes = new ArrayList<>();
+        final List<Documento> documentos = new ArrayList<>();
         try {
             Files.walkFileTree(Paths.get(filePathFolder + File.separator + carpeta + File.separator + evento.getId()), new SimpleFileVisitor<Path>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     try {
-                        imagenes.add(new Documento(carpeta, evento.getId(), file.getFileName().toString()));
+                        documentos.add(new Documento(carpeta, evento.getId().toString(), file.getFileName().toString()));
                     }
                     finally {
                         return FileVisitResult.CONTINUE;
@@ -94,7 +94,29 @@ public class DocumentoService implements IDocumentoService {
             e.printStackTrace();
         }
 
-        return imagenes;
+        return documentos;
     }
 
+
+    @SuppressWarnings("Duplicates")
+    @Override
+    public List<Documento> getDocumentos(Salon salon, Carpeta carpeta){
+        final List<Documento> documentos = new ArrayList<>();
+        try {
+            Files.walkFileTree(Paths.get(filePathFolder + File.separator + carpeta + File.separator + salon.getId()), new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    try {
+                        documentos.add(new Documento(carpeta, salon.getId().toString(), file.getFileName().toString()));
+                    }
+                    finally {
+                        return FileVisitResult.CONTINUE;
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return documentos;
+    }
  }

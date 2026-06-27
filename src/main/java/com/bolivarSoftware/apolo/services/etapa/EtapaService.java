@@ -28,4 +28,9 @@ public class EtapaService implements IEtapaService {
         return dao.tareasProximas();
     }
 
+    @Override
+    public List<EtapaARealizar> tareasProximasByUsername(String username) {
+        return dao.tareasProximasByUsername(username);
+    }
+
 }

@@ -47,4 +47,23 @@ public class EtapaRepository implements IEtapaRepository {
             throw e;
         }
     }
+
+    @Override
+    public List<EtapaARealizar> tareasProximasByUsername(String username) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            Query query = session.delegate().createQuery(
+                "select ear from EtapaARealizar ear " +
+                "where ear.completada = false and ear.servicioContratado.evento.id in " +
+                "(select eu.evento.id from EventoUsuario eu where eu.usuario.username = :username) " +
+                "order by ear.fecha asc, ear.pesoEspecifico desc");
+            query.setParameter("username", username);
+            query.setFirstResult(Pagination.ONE_ROW);
+            query.setMaxResults(Pagination.MAX_PAGE);
+
+            return query.list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
 }

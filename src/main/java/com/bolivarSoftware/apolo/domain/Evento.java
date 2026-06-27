@@ -4,6 +4,7 @@ import com.bolivarSoftware.apolo.beans.TipoDeEvento;
 import com.bolivarSoftware.apolo.domain.Servicio;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,27 +17,46 @@ public class Evento {
     @Column(name = "EVE_ID")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "EVE_NOMBRE")
     private String nombre;
+
     @Column(name = "EVE_CIUDAD")
     private String ciudad;
+
     @Column(name = "EVE_DOMICILIO")
     private String domicilio;
+
     @Column(name = "EVE_TELEFONO")
     private String telefono;
+
     @Column(name = "EVE_MAIL")
     private String mail;
+
+    @Column(name = "EVE_LULAR")
+    private String lugar;
+
     @Column(name = "EVE_FECHA_EVENTO")
     private Date fechaDeEvento;
+
     @Column(name = "EVE_CONTRATADO_POR")
     private String contratadoPor;
-    @Enumerated(EnumType.STRING)
 
+    @Column(name = "EVE_LATITUD")
+    private BigDecimal latitud;
+
+    @Column(name = "EVE_LONGITUD")
+    private BigDecimal longitud;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "EVE_TIPO")
     private TipoDeEvento tipoDeEvento;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "evento")
-    private List<ServicioContratado> servicios;
+    @OneToMany(cascade =  { CascadeType.PERSIST}, mappedBy = "evento")
+    private List<ServicioContratado> servicios = new ArrayList<>();
+
+    @Column(name = "EVE_PLAYLIST")
+    private String playlist;
 
     public Integer getId() {
         return id;
@@ -118,5 +138,35 @@ public class Evento {
         this.servicios = servicios;
     }
 
+    public String getLugar() {
+        return lugar;
+    }
 
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public BigDecimal getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        this.latitud = latitud;
+    }
+
+    public BigDecimal getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(BigDecimal longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(String playlist) {
+        this.playlist = playlist;
+    }
 }

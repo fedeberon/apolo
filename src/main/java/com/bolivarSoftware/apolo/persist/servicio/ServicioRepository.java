@@ -12,9 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Fede Beron on 14/7/2017.
- */
+
 @Repository
 public class ServicioRepository implements IServicioRepository {
 
@@ -25,6 +23,17 @@ public class ServicioRepository implements IServicioRepository {
     public List<Servicio> findAll(){
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             return session.delegate().createQuery("from Servicio").list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
+
+    @Override
+    public List<Servicio> findAllByCreadoPor(String username) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            return session.delegate().createQuery("from Servicio where creadoPor.username = :username")
+                    .setParameter("username", username).list();
         }
         catch (HibernateException e){
             throw e;

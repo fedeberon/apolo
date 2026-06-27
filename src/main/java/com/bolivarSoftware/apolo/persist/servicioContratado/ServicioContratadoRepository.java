@@ -1,5 +1,6 @@
 package com.bolivarSoftware.apolo.persist.servicioContratado;
 
+import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.domain.ServicioContratado;
 import com.bolivarSoftware.apolo.persist.CloseableSession;
 import com.bolivarSoftware.apolo.persist.interfaces.IServicioContratadoRepository;
@@ -17,7 +18,7 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
 
 
     @Override
-    public ServicioContratado save(ServicioContratado servicio) {
+    public ServicioContratado updateOrder(ServicioContratado servicio) {
         Transaction tx = null;
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             tx = session.delegate().getTransaction();
@@ -34,12 +35,14 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
     }
 
     @Override
-    public List<ServicioContratado> save(List<ServicioContratado> servicio) {
+    public List<ServicioContratado> updateOrder(List<ServicioContratado> servicio) {
         Transaction tx = null;
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             tx = session.delegate().getTransaction();
             tx.begin();
-            servicio.forEach(servicioContratado -> session.delegate().save(servicio));
+            servicio.forEach(servicioContratado -> session.delegate().createQuery("update ServicioContratado set orden = :orden where id =:id ")
+                                                                     .setParameter("id", servicioContratado.getId())
+                                                                     .setParameter("orden", servicioContratado.getOrden()).executeUpdate());
             tx.commit();
 
             return servicio;
@@ -83,6 +86,7 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
             tx = session.delegate().getTransaction();
             tx.begin();
             servicio.getEtapas().forEach(etapaARealizar -> session.delegate().saveOrUpdate(etapaARealizar));
+            session.delegate().update(servicio);
             tx.commit();
 
             return servicio;
@@ -92,5 +96,39 @@ public class ServicioContratadoRepository implements IServicioContratadoReposito
             throw e;
         }
     }
+
+    @Override
+    public void remove(Long id) {
+        Transaction tx = null;
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            tx = session.delegate().getTransaction();
+            tx.begin();
+            ServicioContratado servicioContratado = (ServicioContratado) session.delegate().get(ServicioContratado.class, id);
+            Hibernate.initialize(servicioContratado.getEtapas());
+            servicioContratado.getEtapas().forEach(etapaARealizar -> session.delegate().delete(etapaARealizar));
+            session.delegate().delete(servicioContratado);
+            tx.commit();
+        }
+        catch (HibernateException e){
+            tx.rollback();
+            throw e;
+        }
+    }
+
+    @Override
+    public List<ServicioContratado> getBy(Proveedor proveedor) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            Query query = session.delegate().createQuery("from ServicioContratado where servicio.proveedor = :proveedor");
+            query.setParameter("proveedor", proveedor);
+            List<ServicioContratado> servicioContratados = query.list();
+            servicioContratados.forEach(servicioContratado -> Hibernate.initialize(servicioContratado.getEtapas()));
+
+            return servicioContratados;
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
+
 
 }

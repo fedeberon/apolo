@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -15,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @PropertySource("classpath:application.properties")
-@PropertySource(value = "file:${apolo.config.prop.folder}/application.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "file:${apolo.config.prop.folder:./config}/application.properties", ignoreResourceNotFound = true)
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -38,6 +40,11 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

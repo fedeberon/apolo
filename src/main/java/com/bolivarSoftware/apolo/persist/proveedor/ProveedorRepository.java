@@ -3,7 +3,9 @@ package com.bolivarSoftware.apolo.persist.proveedor;
 import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.persist.CloseableSession;
 import com.bolivarSoftware.apolo.persist.interfaces.IProveedorRepository;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +21,10 @@ public class ProveedorRepository implements IProveedorRepository{
     @Override
     public Proveedor get(Integer id) {
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
-            return (Proveedor) session.delegate().get(Proveedor.class, id);
+            Proveedor proveedor = (Proveedor) session.delegate().get(Proveedor.class, id);
+            Hibernate.initialize(proveedor.getServicios());
+
+            return proveedor;
         }
         catch (HibernateException e){
             throw e;
@@ -42,6 +47,17 @@ public class ProveedorRepository implements IProveedorRepository{
     public List<Proveedor> findAll() {
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
             return session.delegate().createQuery("from Proveedor").list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
+
+    @Override
+    public List<Proveedor> findAllByCreadoPor(String username) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            return session.delegate().createQuery("from Proveedor where creadoPor.username = :username")
+                    .setParameter("username", username).list();
         }
         catch (HibernateException e){
             throw e;

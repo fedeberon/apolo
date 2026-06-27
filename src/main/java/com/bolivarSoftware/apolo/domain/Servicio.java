@@ -24,6 +24,10 @@ public class Servicio {
     @JoinColumn(name = "PRO_ID")
     private Proveedor proveedor;
 
+    @ManyToOne
+    @JoinColumn(name = "SER_CREADO_POR")
+    private Usuario creadoPor;
+
     @OneToMany(mappedBy = "servicio", fetch = FetchType.EAGER)
     private List<Etapa> etapas;
 
@@ -65,6 +69,14 @@ public class Servicio {
 
     public void setEtapas(List<Etapa> etapas) {
         this.etapas = etapas;
+    }
+
+    public Usuario getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Usuario creadoPor) {
+        this.creadoPor = creadoPor;
     }
 
     @Override

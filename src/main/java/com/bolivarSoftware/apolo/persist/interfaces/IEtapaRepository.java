@@ -12,4 +12,6 @@ public interface IEtapaRepository {
     Etapa save(Etapa etapa);
 
     List<EtapaARealizar> tareasProximas();
+
+    List<EtapaARealizar> tareasProximasByUsername(String username);
 }

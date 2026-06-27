@@ -36,6 +36,11 @@ public class ServicioService implements IServicioService {
     }
 
     @Override
+    public List<Servicio> findAllByCreadoPor(String username) {
+        return dao.findAllByCreadoPor(username);
+    }
+
+    @Override
     public List<Servicio> findAll(Evento evento) {
         List<Servicio> servicios = this.findAll();
         servicios.removeIf(servicio -> this.existServicio(servicio, evento));

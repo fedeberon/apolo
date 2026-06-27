@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface IServicioService extends ICommonService<Servicio, Integer>{
     List<Servicio> findAll(Evento evento);
+    List<Servicio> findAllByCreadoPor(String username);
 }

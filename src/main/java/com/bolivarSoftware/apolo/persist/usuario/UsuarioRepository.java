@@ -50,6 +50,19 @@ public class UsuarioRepository implements IUsuarioRepository {
     }
 
     @Override
+    public List<Usuario> findAllByCreadoPor(String username){
+        try (CloseableSession session = new CloseableSession(sessionFactory.openSession())) {
+            Query query = session.delegate().createQuery("from Usuario where creadoPor.username = :username");
+            query.setParameter("username", username);
+
+            return query.list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
+
+    @Override
     public Usuario save(Usuario usuario) {
         Session session = null;
         Transaction tx = null;

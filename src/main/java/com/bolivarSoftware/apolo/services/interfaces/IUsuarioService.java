@@ -5,15 +5,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-/**
- * Created by Damian on 07/03/2018.
- */
 public interface IUsuarioService extends UserDetailsService {
 
     List<Usuario> findAll();
 
+    List<Usuario> findAllByCreadoPor(String username);
+
     Usuario save(Usuario usuario);
 
     Usuario get(String username);
+
+    Usuario registrar(Usuario usuario);
 
 }

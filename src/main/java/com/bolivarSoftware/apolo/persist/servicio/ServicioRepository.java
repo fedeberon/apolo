@@ -30,6 +30,17 @@ public class ServicioRepository implements IServicioRepository {
     }
 
     @Override
+    public List<Servicio> findAllByCreadoPor(String username) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            return session.delegate().createQuery("from Servicio where creadoPor.username = :username")
+                    .setParameter("username", username).list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
+
+    @Override
     public Servicio save(Servicio servicio) {
         Transaction tx = null;
         try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){

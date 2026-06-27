@@ -3,11 +3,13 @@ package com.bolivarSoftware.apolo.web;
 import com.bolivarSoftware.apolo.domain.EtapaARealizar;
 import com.bolivarSoftware.apolo.domain.Evento;
 import com.bolivarSoftware.apolo.domain.EventoUsuario;
+import com.bolivarSoftware.apolo.domain.UsuarioDetails;
 import com.bolivarSoftware.apolo.services.interfaces.IEtapaService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoUsuarioService;
 import com.bolivarSoftware.apolo.services.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping
@@ -87,11 +90,32 @@ public class HomeController {
 
     @ModelAttribute("eventosProximos")
     private List<Evento> eventosProximos(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UsuarioDetails) {
+            UsuarioDetails userDetails = (UsuarioDetails) auth.getPrincipal();
+            boolean isAdmin = userDetails.getAuthorities().stream()
+                    .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+            if (isAdmin) {
+                return eventoService.findAllPageable(1);
+            }
+            List<EventoUsuario> eventosDeUsuario = eventoUsuarioService.findAllByUsername(userDetails.getUsername());
+            return eventosDeUsuario.stream().map(EventoUsuario::getEvento).collect(Collectors.toList());
+        }
         return eventoService.findAllPageable(1);
     }
 
     @ModelAttribute("tareasProximas")
     private List<EtapaARealizar> tareasProximas(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UsuarioDetails) {
+            UsuarioDetails userDetails = (UsuarioDetails) auth.getPrincipal();
+            boolean isAdmin = userDetails.getAuthorities().stream()
+                    .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+            if (isAdmin) {
+                return etapaService.tareasProximas();
+            }
+            return etapaService.tareasProximasByUsername(userDetails.getUsername());
+        }
         return etapaService.tareasProximas();
     }
 

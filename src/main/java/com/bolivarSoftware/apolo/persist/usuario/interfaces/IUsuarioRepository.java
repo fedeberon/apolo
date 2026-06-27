@@ -12,5 +12,7 @@ public interface IUsuarioRepository {
 
     List<Usuario> findAll();
 
+    List<Usuario> findAllByCreadoPor(String username);
+
     Usuario save(Usuario usuario);
 }

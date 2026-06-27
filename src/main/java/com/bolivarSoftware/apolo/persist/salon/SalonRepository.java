@@ -70,6 +70,16 @@ public class SalonRepository implements ISalonRepository {
         }
     }
 
+    @Override
+    public List<Salon> findAllByCreadoPor(String username) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            return session.delegate().createQuery("from Salon where creadoPor.username = :username")
+                    .setParameter("username", username).list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
 }
 
 

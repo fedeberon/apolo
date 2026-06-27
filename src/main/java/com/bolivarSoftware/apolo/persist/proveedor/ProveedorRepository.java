@@ -52,4 +52,15 @@ public class ProveedorRepository implements IProveedorRepository{
             throw e;
         }
     }
+
+    @Override
+    public List<Proveedor> findAllByCreadoPor(String username) {
+        try(CloseableSession session = new CloseableSession(sessionFactory.openSession())){
+            return session.delegate().createQuery("from Proveedor where creadoPor.username = :username")
+                    .setParameter("username", username).list();
+        }
+        catch (HibernateException e){
+            throw e;
+        }
+    }
 }

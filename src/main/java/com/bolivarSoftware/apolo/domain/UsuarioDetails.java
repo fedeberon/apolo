@@ -1,59 +1,30 @@
 package com.bolivarSoftware.apolo.domain;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class UsuarioDetails implements UserDetails {
+public class UsuarioDetails extends User {
 
-    private String username;
-    private String password;
     private String nombre;
     private String apellido;
 
     public UsuarioDetails(Usuario usuario) {
-        this.username = usuario.getUsername();
-        this.password = usuario.getPassword();
+        super(usuario.getUsername(), usuario.getPassword(), getAuthoritiesFromRol(usuario));
         this.nombre = usuario.getNombre();
         this.apellido = usuario.getApellido();
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+    private static Collection<? extends GrantedAuthority> getAuthoritiesFromRol(Usuario usuario) {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        if (usuario.getRol() != null && usuario.getRol().getNombre() != null) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre()));
+        }
+        return authorities;
     }
 
     public String getNombre() {

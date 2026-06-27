@@ -11,11 +11,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-/**
- * Created by Damian Saez on 7/5/2018.
- */
 
 @Configuration
 @EnableWebSecurity
@@ -25,21 +22,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private IUsuarioService usuarioService;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("fede").password("fede").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
         auth.userDetailsService(usuarioService);
         auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/apolo/**", "/apolo/login").permitAll()
-                .antMatchers("/admin").authenticated()
+        http.authorizeRequests()
+                .antMatchers("/login", "/registro", "/guardarRegistro", "/welcome", "/logout-success", "/resources/**", "/webjars/**").permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login")
-                .loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password").and()
-                .logout()
+                .loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password")
+                .defaultSuccessUrl("/home")
+                .and().logout()
                 .deleteCookies("remove")
                 .invalidateHttpSession(true)
                 .logoutUrl("/logout")
@@ -50,14 +49,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().and().csrf().disable();
     }
 
-
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(usuarioService);
+        authenticationProvider.setPasswordEncoder(passwordEncoder);
         return authenticationProvider;
     }
-
 
     @Bean
     public AuthenticationTrustResolver getAuthenticationTrustResolver() {

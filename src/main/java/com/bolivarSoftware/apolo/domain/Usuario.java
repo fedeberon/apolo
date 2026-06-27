@@ -30,6 +30,10 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "USU_ROL_ID")
     private Rol rol;
 
+    @ManyToOne
+    @JoinColumn(name = "USU_CREADO_POR")
+    private Usuario creadoPor;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return new java.util.ArrayList<>();
@@ -95,5 +99,13 @@ public class Usuario implements UserDetails {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    public Usuario getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Usuario creadoPor) {
+        this.creadoPor = creadoPor;
     }
 }

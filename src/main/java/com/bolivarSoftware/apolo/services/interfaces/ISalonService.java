@@ -15,5 +15,7 @@ public interface ISalonService {
 
     List<Salon> findAllPageable(Integer page);
 
+    List<Salon> findAllByCreadoPor(String username);
+
     Salon get(Integer id);
 }

@@ -5,27 +5,22 @@ import com.bolivarSoftware.apolo.domain.Usuario;
 import com.bolivarSoftware.apolo.persist.usuario.interfaces.IUsuarioRepository;
 import com.bolivarSoftware.apolo.services.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Damian on 07/03/2018.
- */
 @Service
 public class UsuarioService implements IUsuarioService {
 
     @Autowired
     private IUsuarioRepository dao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -41,6 +36,11 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
+    public List<Usuario> findAllByCreadoPor(String username) {
+        return dao.findAllByCreadoPor(username);
+    }
+
+    @Override
     public Usuario save(Usuario usuario) {
         if(usuario.getRol() == null) {
             usuario.setRol(new Rol(Rol.ROL_CLIENTE));
@@ -51,6 +51,13 @@ public class UsuarioService implements IUsuarioService {
     @Override
     public Usuario get(String username) {
         return dao.get(username);
+    }
+
+    @Override
+    public Usuario registrar(Usuario usuario) {
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        usuario.setRol(new Rol(Rol.ROL_CLIENTE));
+        return dao.save(usuario);
     }
 
 }

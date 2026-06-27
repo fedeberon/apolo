@@ -174,8 +174,8 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
         </form><!-- /form -->
-        <a href="#" class="forgot-password">
-            Forgot the password?
+        <a href="<c:url value='/registro'/>" class="forgot-password">
+            ¿No tienes cuenta? Registrate
         </a>
     </div><!-- /card-container -->
 </div><!-- /container -->

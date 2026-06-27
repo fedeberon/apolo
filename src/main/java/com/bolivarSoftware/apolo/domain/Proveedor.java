@@ -24,6 +24,10 @@ public class Proveedor {
     @Column(name = "PRO_DIRECCION")
     private String direccion;
 
+    @ManyToOne
+    @JoinColumn(name = "PRO_CREADO_POR")
+    private Usuario creadoPor;
+
     @OneToMany(mappedBy = "proveedor")
     private List<Servicio> servicios;
 
@@ -73,5 +77,13 @@ public class Proveedor {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Usuario getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Usuario creadoPor) {
+        this.creadoPor = creadoPor;
     }
 }

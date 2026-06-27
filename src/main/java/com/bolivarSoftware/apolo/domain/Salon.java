@@ -34,6 +34,10 @@ public class Salon {
     @Column(name = "SAL_TELEFONO")
     private String telefono;
 
+    @ManyToOne
+    @JoinColumn(name = "SAL_CREADO_POR")
+    private Usuario creadoPor;
+
     @Transient
     private List<Imagen> imagenes;
 
@@ -91,5 +95,13 @@ public class Salon {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Usuario getCreadoPor() {
+        return creadoPor;
+    }
+
+    public void setCreadoPor(Usuario creadoPor) {
+        this.creadoPor = creadoPor;
     }
 }

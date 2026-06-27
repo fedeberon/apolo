@@ -33,6 +33,11 @@ public class SalonService implements ISalonService{
     }
 
     @Override
+    public List<Salon> findAllByCreadoPor(String username) {
+        return dao.findAllByCreadoPor(username);
+    }
+
+    @Override
     public Salon get(Integer id) {
         return dao.get(id);
     }

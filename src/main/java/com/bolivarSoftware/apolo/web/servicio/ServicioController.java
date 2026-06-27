@@ -3,9 +3,14 @@ package com.bolivarSoftware.apolo.web.servicio;
 import com.bolivarSoftware.apolo.domain.Etapa;
 import com.bolivarSoftware.apolo.domain.Proveedor;
 import com.bolivarSoftware.apolo.domain.Servicio;
+import com.bolivarSoftware.apolo.domain.Usuario;
+import com.bolivarSoftware.apolo.domain.UsuarioDetails;
 import com.bolivarSoftware.apolo.services.interfaces.IProveedorService;
+import com.bolivarSoftware.apolo.services.interfaces.IUsuarioService;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,15 +29,30 @@ public class ServicioController {
     @Autowired
     private IProveedorService proveedorService;
 
+    @Autowired
+    private IUsuarioService usuarioService;
+
     @RequestMapping("list")
     public String list(Model model) {
-        model.addAttribute("servicios", servicioService.findAll());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UsuarioDetails) {
+            UsuarioDetails userDetails = (UsuarioDetails) auth.getPrincipal();
+            model.addAttribute("servicios", servicioService.findAllByCreadoPor(userDetails.getUsername()));
+        } else {
+            model.addAttribute("servicios", servicioService.findAll());
+        }
 
         return "servicio/list";
     }
 
     @RequestMapping("save")
     public String save(@ModelAttribute Servicio servicio) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UsuarioDetails) {
+            UsuarioDetails userDetails = (UsuarioDetails) auth.getPrincipal();
+            Usuario admin = usuarioService.get(userDetails.getUsername());
+            servicio.setCreadoPor(admin);
+        }
         servicioService.save(servicio);
 
         return "redirect:list";
@@ -40,6 +60,11 @@ public class ServicioController {
 
     @ModelAttribute("proveedores")
     private List<Proveedor> getProveedores() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof UsuarioDetails) {
+            UsuarioDetails userDetails = (UsuarioDetails) auth.getPrincipal();
+            return proveedorService.findAllByCreadoPor(userDetails.getUsername());
+        }
         return proveedorService.findAll();
     }
 

@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<c:url value='/resources/assets/img/favicon.png'/>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Material Dashboard by Creative Tim</title>
+    <title>Editar Evento</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -50,7 +50,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Nuevo Evento</h4>
+                                    <h4 class="title">Editar Evento</h4>
                                     <p class="category">Complete los datos</p>
                                 </div>
 
@@ -61,19 +61,19 @@
                                             <form:hidden  path="id"/>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
+                                                <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Fecha</label>
-                                                <form:input cssClass="form-control fecha" path="fechaDeEvento"/>
+                                                <form:input cssClass="form-control fecha" path="fechaDeEvento" placeholder="Fecha"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Ciudad</label>
-                                                <form:input cssClass="form-control" path="ciudad"/>
+                                                <form:input cssClass="form-control" path="ciudad" placeholder="Ciudad"/>
                                             </div>
                                         </div>
                                     </div>
@@ -82,19 +82,19 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Domicilio</label>
-                                                <form:input cssClass="form-control" path="domicilio"/>
+                                                <form:input cssClass="form-control" path="domicilio" placeholder="Domicilio"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Telefono</label>
-                                                <form:input cssClass="date form-control" path="telefono"/>
+                                                <form:input cssClass="date form-control" path="telefono" placeholder="Telefono"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Lugar</label>
-                                                <form:input cssClass="form-control" path="lugar"/>
+                                                <form:input cssClass="form-control" path="lugar" placeholder="Lugar"/>
                                             </div>
                                         </div>
                                     </div>
@@ -104,28 +104,28 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contratado por</label>
-                                                <form:input cssClass="date form-control" path="contratadoPor"/>
+                                                <form:input cssClass="date form-control" path="contratadoPor" placeholder="Contratado por"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
-                                                <form:input cssClass="form-control" path="mail"/>
+                                                <form:input cssClass="form-control" path="mail" placeholder="Email"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Playlist</label>
-                                                <form:input cssClass="form-control" path="playlist"/>
+                                                <form:input cssClass="form-control" path="playlist" placeholder="Playlist"/>
                                             </div>
                                         </div>
                                     </div>
 
 
 
-                                    <a href="<c:url value='/evento/list'/>" class="btn btn-default pull-left">Volver</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Geolocalizar</button>
+                                    <a href="<c:url value='/evento/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">check</i> Aceptar</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="material-icons">map</i> Geolocalizar</button>
                                     <div class="clearfix"></div>
 
                                 </div>
@@ -172,8 +172,8 @@
             <div id="map" style="width:100%;height:500px;margin-top: 1px;"></div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Seleccionar Ubicaci&oacute;n</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="material-icons">close</i> Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="material-icons">check</i> Seleccionar Ubicaci&oacute;n</button>
             </div>
         </div>
     </div>
@@ -199,3 +199,4 @@
 
 
 </html>
+

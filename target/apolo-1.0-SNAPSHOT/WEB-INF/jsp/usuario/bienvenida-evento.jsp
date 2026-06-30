@@ -38,6 +38,38 @@
 
 
     <script src="<c:url value='/resources/bienvenida/js/jquery.js'/>"></script>
+
+    <style>
+        .playlist-section { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 999; text-align: left; max-height: 90vh; overflow-y: auto; padding: 4px; }
+        .playlist-section input {
+            background: rgba(22,33,62,0.85) !important;
+            color: white !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            width: 100% !important;
+            padding: 8px 10px !important;
+            border-radius: 4px !important;
+            box-sizing: border-box !important;
+            font-size: 13px !important;
+            outline: none !important;
+        }
+        .playlist-section input::placeholder {
+            color: #999 !important;
+            opacity: 1 !important;
+        }
+        .playlist-section .btn-sugerir {
+            background: #1DB954 !important;
+            color: white !important;
+            border: none !important;
+            padding: 7px 16px !important;
+            border-radius: 4px !important;
+            font-size: 13px !important;
+            cursor: pointer !important;
+        }
+        .playlist-section .btn-abrir {
+            display: inline-block; color: #1DB954 !important; text-decoration: none !important; font-size: 13px !important;
+        }
+        .playlist-section .btn-abrir:hover { text-decoration: underline !important; }
+    </style>
 </head>
 <body>
 <div class="preloader">
@@ -180,11 +212,44 @@
 
             </div>
 
-            <iframe style="float:right; bottom: 0; margin-top: 22.5%;" src="https://open.spotify.com/embed?uri=spotify:${evento.playlist}" width="220" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
         </li>
 
     </ul>
+</div>
+
+<div class="playlist-section">
+
+    <div style="margin-bottom: 8px;">
+        <span style="color: #1DB954; font-size: 13px; font-weight: 500;"><i class="fa fa-spotify"></i> Playlist del Evento</span>
+    </div>
+
+    <c:if test="${not empty evento.playlist}">
+        <div style="margin-bottom: 8px;">
+            <iframe src="https://open.spotify.com/embed?uri=spotify:${evento.playlist}" width="260" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius: 6px;"></iframe>
+        </div>
+    </c:if>
+
+    <div style="margin-bottom: 8px;">
+        <input type="text" name="nombreCancion" form="sug-form" placeholder="Canci&oacute;n" required/>
+    </div>
+    <div style="margin-bottom: 8px;">
+        <input type="text" name="artista" form="sug-form" placeholder="Artista" required/>
+    </div>
+    <div>
+        <button type="submit" form="sug-form" class="btn-sugerir"><i class="fa fa-plus"></i> Sugerir</button>
+        <c:if test="${not empty evento.playlist}">
+            <a href="${evento.playlistWebUrl}" target="_blank" class="btn-abrir" style="margin-left: 6px;"><i class="fa fa-spotify"></i> Abrir</a>
+        </c:if>
+    </div>
+
+    <c:if test="${empty evento.playlist}">
+        <p style="color: #888; font-size: 12px; margin: 4px 0 0;">Sin playlist por ahora &mdash; tus sugerencias se guardan igual.</p>
+    </c:if>
+
+    <form id="sug-form" action="<c:url value='/sugerenciaCancion/save'/>" method="post">
+        <input type="hidden" name="eventoId" value="${evento.id}"/>
+    </form>
+
 </div>
 
 <!-- Javascript -->

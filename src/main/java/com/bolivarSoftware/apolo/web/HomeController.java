@@ -7,6 +7,7 @@ import com.bolivarSoftware.apolo.domain.UsuarioDetails;
 import com.bolivarSoftware.apolo.services.interfaces.IEtapaService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoUsuarioService;
+import com.bolivarSoftware.apolo.services.interfaces.ISugerenciaCancionService;
 import com.bolivarSoftware.apolo.services.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -30,16 +31,19 @@ public class HomeController {
     private IEtapaService etapaService;
     private IUsuarioService usuarioService;
     private IEventoUsuarioService eventoUsuarioService;
+    private ISugerenciaCancionService sugerenciaCancionService;
 
     @Autowired
     public HomeController(final IEventoService eventoService,
                           final IEtapaService etapaService,
                           final IUsuarioService usuarioService,
-                          final IEventoUsuarioService eventoUsuarioService) {
+                          final IEventoUsuarioService eventoUsuarioService,
+                          final ISugerenciaCancionService sugerenciaCancionService) {
         this.eventoService = eventoService;
         this.etapaService = etapaService;
         this.usuarioService = usuarioService;
         this.eventoUsuarioService = eventoUsuarioService;
+        this.sugerenciaCancionService = sugerenciaCancionService;
     }
 
     @RequestMapping(value = {"/home", "/"})
@@ -48,13 +52,13 @@ public class HomeController {
             return "welcome";
         }
         User user =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (containRol(user.getAuthorities(), "ADMIN")) {
-            return "index";
-        } if (containRol(user.getAuthorities(), "USER")) {
-            return "usuario/bienvenida-evento";
-        } else {
+        if (containRol(user.getAuthorities(), "ADMIN") || containRol(user.getAuthorities(), "GESTOR")) {
             return "index";
         }
+        if (containRol(user.getAuthorities(), "CLIENTE")) {
+            return "redirect:bienvenida";
+        }
+        return "index";
     }
 
     private boolean containRol(Collection<GrantedAuthority> roles, final String rol) {
@@ -78,12 +82,18 @@ public class HomeController {
 
     @RequestMapping(value = {"/bienvenida"} )
     public String bienvenida(Model modal){
-        User user =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof String) {
+            return "redirect:welcome";
+        }
+        User user = (User) principal;
         EventoUsuario eventoUsuario = eventoUsuarioService.getUltimoEventoCargado(user.getUsername());
         if(eventoUsuario == null) {
-            return "redirect:home";
+            return "usuario/bienvenida-sin-evento";
         } else {
-            modal.addAttribute("evento", eventoUsuario.getEvento());
+            Evento evento = eventoUsuario.getEvento();
+            modal.addAttribute("evento", evento);
+            modal.addAttribute("sugerenciasCancion", sugerenciaCancionService.findAllByEventoId(evento.getId()));
             return "usuario/bienvenida-evento";
         }
     }

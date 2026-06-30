@@ -55,7 +55,6 @@
                                 <table class="table">
                                     <thead class="text-warning">
                                     <th>Username</th>
-                                    <th>Contrase&ntildea</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th></th>
@@ -66,11 +65,10 @@
                                     <c:forEach items="${usuarios}" var="bo">
                                         <tr>
                                             <td><a href="/apolo/usuario/show?username=${bo.username}">${bo.username}</a></td>
-                                            <td>${bo.password}</td>
                                             <td>${bo.nombre}</td>
                                             <td>${bo.apellido}</td>
-                                            <td><button  style="float:right" type="button" id="${bo.username}" class="btn btn-primary btn-usuario" data-toggle="modal" data-target="#modal-documentos">Asociar un Evento</button></td>
-                                            <td><a href="/apolo/eventoUsuario/show?username=${bo.username}"><button  type="button" id="${bo.username}" class="btn btn-success btn-usuario">Ver eventos asociados</button></a></td>
+                                            <td><button type="button" id="${bo.username}" class="btn btn-primary btn-usuario" data-toggle="modal" data-target="#modal-documentos"><i class="material-icons">link</i> Asociar Evento</button></td>
+                                            <td><a href="/apolo/eventoUsuario/show?username=${bo.username}" class="btn btn-success btn-sm"><i class="material-icons">event</i> Eventos asociados</a></td>
                                         </tr>
                                     </c:forEach>
 
@@ -88,13 +86,13 @@
 
             <div class="col-xs-12">
                 <div class="col-xs-2">
-                    <a href="/apolo/usuario/list?page=${page - 1}" class="btn btn-block btn-primary">Atras</a>
+                    <a href="/apolo/usuario/list?page=${page - 1}" class="btn btn-block btn-primary"><i class="material-icons">chevron_left</i> Atras</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="/apolo/usuario/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
+                    <a href="/apolo/usuario/list?page=${page + 1}" class="btn btn-block btn-primary"><i class="material-icons">chevron_right</i> Siguiente</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="<c:url value='/usuario/create'/>" class="btn btn-block btn-success">Nuevo</a>
+                    <a href="<c:url value='/usuario/create'/>" class="btn btn-block btn-success"><i class="material-icons">person_add</i> Nuevo</a>
                 </div>
             </div>
 
@@ -120,8 +118,10 @@
                             <form:input cssClass="form-control" id="username-evento" path="usuario.username"/>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Ingresar Cod Int del Evento</label>
-                            <form:input cssClass="form-control" path="evento.id"/>
+                            <label class="control-label">Evento</label>
+                            <form:select cssClass="form-control" path="evento.id">
+                                <form:options items="${eventos}" itemValue="id" itemLabel="nombre"/>
+                            </form:select>
                         </div>
                 </div>
                 <div class="modal-footer">

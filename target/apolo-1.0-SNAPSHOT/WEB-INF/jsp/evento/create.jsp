@@ -69,19 +69,19 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
+                                                <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Fecha</label>
-                                                <form:input cssClass="form-control fecha" path="fechaDeEvento"/>
+                                                <form:input cssClass="form-control fecha" path="fechaDeEvento" placeholder="Fecha"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Ciudad</label>
-                                                <form:input cssClass="form-control" path="ciudad"/>
+                                                <form:input cssClass="form-control" path="ciudad" placeholder="Ciudad"/>
                                             </div>
                                         </div>
                                     </div>
@@ -90,19 +90,19 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Domicilio</label>
-                                                <form:input cssClass="form-control" path="domicilio"/>
+                                                <form:input cssClass="form-control" path="domicilio" placeholder="Domicilio"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Telefono</label>
-                                                <form:input cssClass="date form-control" path="telefono"/>
+                                                <form:input cssClass="date form-control" path="telefono" placeholder="Telefono"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Lugar</label>
-                                                <form:input cssClass="form-control" path="lugar"/>
+                                                <form:input cssClass="form-control" path="lugar" placeholder="Lugar"/>
                                             </div>
                                         </div>
                                     </div>
@@ -112,25 +112,25 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Contratado por</label>
-                                                <form:input cssClass="date form-control" path="contratadoPor"/>
+                                                <form:input cssClass="date form-control" path="contratadoPor" placeholder="Contratado por"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
-                                                <form:input cssClass="form-control" path="mail"/>
+                                                <form:input cssClass="form-control" path="mail" placeholder="Email"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Playlist</label>
-                                                <form:input cssClass="form-control" path="playlist"/>
+                                                <form:input cssClass="form-control" path="playlist" placeholder="Playlist"/>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Geolocalizar</button>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">check</i> Aceptar</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="material-icons">map</i> Geolocalizar</button>
                                     <div class="clearfix"></div>
                             </div>
                         </div>
@@ -207,3 +207,4 @@
 
 
 </html>
+

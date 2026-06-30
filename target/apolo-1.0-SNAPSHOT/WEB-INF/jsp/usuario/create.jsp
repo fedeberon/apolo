@@ -60,7 +60,7 @@
                                                 <span class="input-group-addon"><i class="material-icons">person</i></span>
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Username</label>
-                                                    <form:input cssClass="form-control" path="username"/>
+                                                    <form:input cssClass="form-control" path="username" placeholder="Username"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                                 <span class="input-group-addon"><i class="material-icons">lock</i></span>
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Password</label>
-                                                    <form:input cssClass="form-control" path="password"/>
+                                                    <form:input cssClass="form-control" path="password" placeholder="Password"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,7 +84,7 @@
                                                 <span class="input-group-addon"><i class="material-icons">face</i></span>
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Nombre</label>
-                                                    <form:input cssClass="form-control" path="nombre"/>
+                                                    <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,14 +96,14 @@
                                                 <span class="input-group-addon"><i class="material-icons">badge</i></span>
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Apellido</label>
-                                                    <form:input cssClass="form-control" path="apellido"/>
+                                                    <form:input cssClass="form-control" path="apellido" placeholder="Apellido"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <a href="<c:url value='/usuario/list'/>" class="btn btn-default pull-left">Volver</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Crear</button>
+                                    <a href="<c:url value='/usuario/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">person_add</i> Crear</button>
                                     <div class="clearfix"></div>
 
                                 </div>
@@ -139,3 +139,4 @@
 
 
 </html>
+

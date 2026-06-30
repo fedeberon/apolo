@@ -11,6 +11,7 @@ import java.util.List;
 public class Rol {
 
     public static Long ROL_CLIENTE = 2l;
+    public static Long ROL_GESTOR = 4l;
 
     @Id
     @Column(name = "ROL_ID")

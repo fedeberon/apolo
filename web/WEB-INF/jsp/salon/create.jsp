@@ -28,7 +28,6 @@
 
     <link href="<c:url value='/webjarslocator/bootstrap-datetimepicker/2.4.2/css/bootstrap-datetimepicker.css'/>" rel="stylesheet"/>
 
-
     <style>
         .modal {
             margin: -60px auto 0px auto
@@ -66,19 +65,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
+                                                <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Direccion</label>
-                                                <form:input cssClass="form-control" path="direccion"/>
+                                                <form:input cssClass="form-control" path="direccion" placeholder="Direccion"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Telefono</label>
-                                                <form:input cssClass="form-control" path="telefono"/>
+                                                <form:input cssClass="form-control" path="telefono" placeholder="Telefono"/>
                                             </div>
                                         </div>
                                     </div>
@@ -87,14 +86,14 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
-                                                <form:input cssClass="form-control" path="email"/>
+                                                <form:input cssClass="form-control" path="email" placeholder="Email"/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Comentario</label>
-                                                <form:input cssClass="form-control" path="comentario"/>
+                                                <form:input cssClass="form-control" path="comentario" placeholder="Comentario"/>
                                             </div>
                                         </div>
                                     </div>
@@ -103,13 +102,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Descripcion</label>
-                                                <form:textarea cssClass="form-control" path="descripcion"/>
+                                                <form:textarea cssClass="form-control" path="descripcion" placeholder="Descripcion"/>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <a href="<c:url value='/salon/list'/>" class="btn btn-default pull-left">Volver</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Crear</button>
+                                    <a href="<c:url value='/salon/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">check</i> Crear</button>
                                     <div class="clearfix"></div>
 
                                 </div>
@@ -164,3 +163,4 @@
 
 
 </html>
+

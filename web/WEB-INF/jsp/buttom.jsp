@@ -28,6 +28,9 @@
         // Javascript method's body can be found in assets/com.bolivarSoftware.apolo.web.js/demos.com.bolivarSoftware.apolo.web.js
         demo.initDashboardPageCharts();
 
+        // Initialize Material Bootstrap components (floating labels, etc.)
+        if ($.material) $.material.init();
+
     });
 </script>
 

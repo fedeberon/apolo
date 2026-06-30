@@ -54,7 +54,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
+                                                <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                                             </div>
 
                                             <div class="form-group label-floating">
@@ -65,8 +65,8 @@
                                         </div>
                                     </div>
 
-                                    <a href="<c:url value='/servicio/list'/>" class="btn btn-default pull-left">Volver</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Guadar</button>
+                                    <a href="<c:url value='/servicio/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">check</i> Guardar</button>
                                     <div class="clearfix"></div>
                                 </form:form>
                             </div>
@@ -88,3 +88,4 @@
 
 
 </html>
+

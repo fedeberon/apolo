@@ -119,10 +119,10 @@
 
                             </div>
                         </div>
-                        <a href="<c:url value='/salon/list'/>" class="btn btn-default pull-left">Volver</a>
-                        <a href="<c:url value='/salon/edit?id=${salon.id}'/>" class="btn btn-warning pull-right">Editar</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos">Cargar Imagenes</button>
-                        <button class="btn btn-default" data-toggle="modal" data-target="#carousel-img">Ver Imagenes</button>
+                        <a href="<c:url value='/salon/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                        <a href="<c:url value='/salon/edit?id=${salon.id}'/>" class="btn btn-info pull-right"><i class="material-icons">edit</i> Editar</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos"><i class="material-icons">add_photo_alternate</i> Cargar Imagenes</button>
+                        <button class="btn btn-default" data-toggle="modal" data-target="#carousel-img"><i class="material-icons">photo_library</i> Ver Imagenes</button>
                     </div>
 
 

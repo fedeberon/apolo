@@ -190,7 +190,7 @@
                                                 </c:forEach>
                                             </ul>
                                             <div class="col-xs-12 col-md-12">
-                                                <input type="submit" class="btn btn-primary pull-right" value="Ordenar">
+                                                <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">reorder</i> Ordenar</button>
                                             </div>
                                         </form:form>
                                     </div>
@@ -199,13 +199,40 @@
                                 <!-- /.box-body -->
 
                             </div>
+                    </div>
+
+                    <c:if test="${not empty sugerenciasCancion}">
+                        <div class="card">
+                            <div class="card-header" data-background-color="green">
+                                <h4 class="title"><i class="material-icons">music_note</i> Canciones sugeridas</h4>
+                            </div>
+                            <div class="card-content table-responsive">
+                                <table class="table">
+                                    <thead class="text-warning">
+                                    <th>Canci&oacute;n</th>
+                                    <th>Artista</th>
+                                    <th>Sugerido por</th>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${sugerenciasCancion}" var="sug">
+                                        <tr>
+                                            <td>${sug.nombreCancion}</td>
+                                            <td>${sug.artista}</td>
+                                            <td>${sug.sugeridoPor.nombre}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <a href="<c:url value='/evento/list'/>" class="btn btn-default pull-left">Volver</a>
-                        <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-danger pull-right">Eliminar</a>
-                        <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-warning pull-right">Editar</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos">Documentos</button>
-                        <a href="<c:url value='/evento/timeline?id=${evento.id}'/>" class="btn btn-primary">Linea de tiempo</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-mapa">Ver Mapa</button>
+                    </c:if>
+
+                    <a href="<c:url value='/evento/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                        <a href="<c:url value='/evento/delete?id=${evento.id}'/>" class="btn btn-danger"><i class="material-icons">delete</i> Eliminar</a>
+                        <a href="<c:url value='/evento/asignarServicio?id=${evento.id}'/>" class="btn btn-info"><i class="material-icons">edit</i> Editar</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-documentos"><i class="material-icons">description</i> Documentos</button>
+                        <a href="<c:url value='/evento/timeline?id=${evento.id}'/>" class="btn btn-primary"><i class="material-icons">timeline</i> Linea de tiempo</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-mapa"><i class="material-icons">map</i> Ver Mapa</button>
                     </div>
 
 
@@ -253,8 +280,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-default">Guadar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="material-icons">close</i> Cerrar</button>
+                            <button type="submit" class="btn btn-primary"><i class="material-icons">upload</i> Subir</button>
                         </div>
 
                     </form:form>

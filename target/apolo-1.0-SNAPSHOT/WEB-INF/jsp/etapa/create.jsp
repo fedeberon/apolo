@@ -13,14 +13,14 @@
                         <div class="col-md-5">
                             <div class="form-group label-floating">
                                 <label class="control-label">Nombre</label>
-                                <form:input cssClass="form-control" path="nombre"/>
+                                <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                             </div>
                         </div>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="material-icons">close</i> Cerrar</button>
+                <button type="submit" class="btn btn-primary"><i class="material-icons">check</i> Guardar</button>
             </div>
             </form:form>
         </div>

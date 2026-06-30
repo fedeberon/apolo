@@ -136,9 +136,9 @@
 
                                         </tbody>
                                     </table>
-                                    <a href="<c:url value='/evento/show?id=${servicioContratado.evento.id}'/>" class="btn btn-default pull-left">Volver</a>
-                                    <a href="<c:url value='/servicioContratado/delete?id=${servicioContratado.id}&idEvento=${servicioContratado.evento.id}'/>" class="btn btn-danger pull-right">Eliminar</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+                                    <a href="<c:url value='/evento/show?id=${servicioContratado.evento.id}'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                                    <a href="<c:url value='/servicioContratado/delete?id=${servicioContratado.id}&idEvento=${servicioContratado.evento.id}'/>" class="btn btn-danger pull-right"><i class="material-icons">delete</i> Eliminar</a>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">save</i> Guardar</button>
 
 
                                 </form:form>

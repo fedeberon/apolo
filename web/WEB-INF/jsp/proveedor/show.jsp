@@ -101,8 +101,8 @@
 
                             </div>
                         </div>
-                        <a href="<c:url value='/proveedor/list'/>" class="btn btn-default pull-left">Volver</a>
-                        <a href="<c:url value='/servicioContratado/comentariosDeProveedor?id=${proveedor.id}'/>" class="btn btn-primary pull-right">Comentarios</a>
+                        <a href="<c:url value='/proveedor/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                        <a href="<c:url value='/servicioContratado/comentariosDeProveedor?id=${proveedor.id}'/>" class="btn btn-primary pull-right"><i class="material-icons">comment</i> Comentarios</a>
                     </div>
 
                 </div>

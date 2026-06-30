@@ -65,7 +65,7 @@
                                             <td>${salon.id}</td>
                                             <td>${salon.nombre}</td>
                                             <td>${salon.direccion}</td>
-                                            <td><a href="/apolo/salon/show?id=${salon.id}" class="btn btn-info btn-sm">Ver detalles</a></td>
+                                            <td><a href="/apolo/salon/show?id=${salon.id}" class="btn btn-info btn-sm"><i class="material-icons">visibility</i> Ver detalles</a></td>
                                         </tr>
                                     </c:forEach>
 
@@ -81,13 +81,13 @@
 
             <div class="col-xs-12">
                 <div class="col-xs-2">
-                    <a href="/apolo/salon/list?page=${page - 1}" class="btn btn-block btn-primary">Atras</a>
+                    <a href="/apolo/salon/list?page=${page - 1}" class="btn btn-block btn-primary"><i class="material-icons">chevron_left</i> Atras</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="/apolo/salon/list?page=${page + 1}" class="btn btn-block btn-primary">Siguiente</a>
+                    <a href="/apolo/salon/list?page=${page + 1}" class="btn btn-block btn-primary"><i class="material-icons">chevron_right</i> Siguiente</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="<c:url value='/salon/create'/>" class="btn btn-block btn-success">Nuevo</a>
+                    <a href="<c:url value='/salon/create'/>" class="btn btn-block btn-success"><i class="material-icons">add</i> Nuevo</a>
                 </div>
             </div>
 

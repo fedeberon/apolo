@@ -10,6 +10,7 @@ import com.bolivarSoftware.apolo.services.interfaces.IDocumentoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoService;
 import com.bolivarSoftware.apolo.services.interfaces.IEventoUsuarioService;
 import com.bolivarSoftware.apolo.services.interfaces.IServicioContratadoService;
+import com.bolivarSoftware.apolo.services.interfaces.ISugerenciaCancionService;
 import com.bolivarSoftware.apolo.services.interfaces.IUsuarioService;
 import com.bolivarSoftware.apolo.web.servicio.interfaces.IServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,9 @@ public class EventoController {
     @Autowired
     private IUsuarioService usuarioService;
 
+    @Autowired
+    private ISugerenciaCancionService sugerenciaCancionService;
+
     @RequestMapping("create")
     public String nuevoEvento() {
         return "evento/create";
@@ -67,10 +71,14 @@ public class EventoController {
             UsuarioDetails userDetails = (UsuarioDetails) auth.getPrincipal();
             com.bolivarSoftware.apolo.domain.Usuario usuario = usuarioService.get(userDetails.getUsername());
             if (usuario != null) {
-                EventoUsuario eu = new EventoUsuario();
-                eu.setUsuario(usuario);
-                eu.setEvento(evento);
-                eventoUsuarioService.save(eu);
+                boolean yaAsociado = eventoUsuarioService.findAllByUsername(userDetails.getUsername())
+                        .stream().anyMatch(eu -> eu.getEvento().getId().equals(evento.getId()));
+                if (!yaAsociado) {
+                    EventoUsuario eu = new EventoUsuario();
+                    eu.setUsuario(usuario);
+                    eu.setEvento(evento);
+                    eventoUsuarioService.save(eu);
+                }
             }
         }
 
@@ -88,6 +96,7 @@ public class EventoController {
         model.addAttribute("documentos" , documentoService.getDocumentos(evento, Carpeta.DOCUMENTOS));
         model.addAttribute("imagenes" , documentoService.getDocumentos(evento, Carpeta.IMAGENES));
         model.addAttribute("serviciosContratados", eventoService.getServiciosContratados(evento));
+        model.addAttribute("sugerenciasCancion", sugerenciaCancionService.findAllByEventoId(id));
 
         return "evento/show";
     }

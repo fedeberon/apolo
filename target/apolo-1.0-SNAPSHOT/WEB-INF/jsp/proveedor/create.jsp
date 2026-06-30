@@ -54,29 +54,29 @@
                                         <div class="col-md-5">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Nombre</label>
-                                                <form:input cssClass="form-control" path="nombre"/>
+                                                <form:input cssClass="form-control" path="nombre" placeholder="Nombre"/>
                                             </div>
 
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Telefono</label>
-                                                <form:input cssClass="form-control" path="telefono"/>
+                                                <form:input cssClass="form-control" path="telefono" placeholder="Telefono"/>
                                             </div>
 
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Email</label>
-                                                <form:input cssClass="form-control" path="email"/>
+                                                <form:input cssClass="form-control" path="email" placeholder="Email"/>
                                             </div>
 
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Direccion</label>
-                                                <form:input cssClass="form-control" path="direccion"/>
+                                                <form:input cssClass="form-control" path="direccion" placeholder="Direccion"/>
                                             </div>
 
                                         </div>
                                     </div>
 
-                                    <a href="<c:url value='/proveedor/list'/>" class="btn btn-default pull-left">Volver</a>
-                                    <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
+                                    <a href="<c:url value='/proveedor/list'/>" class="btn btn-default pull-left"><i class="material-icons">arrow_back</i> Volver</a>
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="material-icons">check</i> Aceptar</button>
                                     <div class="clearfix"></div>
                                 </form:form>
                             </div>
@@ -98,3 +98,4 @@
 
 
 </html>
+

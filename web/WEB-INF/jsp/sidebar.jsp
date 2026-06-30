@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <div class="sidebar" data-color="purple" data-image="<c:url value='/resources/assets/img/sidebar-1.jpg'/>">
     <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -20,12 +21,14 @@
                     <p>Tablero de Actividades</p>
                 </a>
             </li>
+            <sec:authorize access="hasAnyRole('ADMIN','GESTOR')">
             <li>
                 <a href="<c:url value="/usuario/list/" />">
                     <i class="material-icons">person</i>
                     <p>Usuarios del Sistema</p>
                 </a>
             </li>
+            </sec:authorize>
             <li>
                 <a href="<c:url value="/servicio/list/" />">
                     <i class="material-icons">content_paste</i>

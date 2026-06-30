@@ -167,6 +167,32 @@ public class Evento {
     }
 
     public void setPlaylist(String playlist) {
-        this.playlist = playlist;
+        this.playlist = normalizePlaylist(playlist);
+    }
+
+    private String normalizePlaylist(String value) {
+        if (value == null || value.trim().isEmpty()) return null;
+        value = value.trim();
+        if (value.startsWith("https://open.spotify.com/playlist/")) {
+            String id = value.substring("https://open.spotify.com/playlist/".length());
+            int q = id.indexOf('?');
+            if (q >= 0) id = id.substring(0, q);
+            return "playlist:" + id;
+        }
+        if (value.startsWith("spotify:playlist:")) {
+            return "playlist:" + value.substring("spotify:playlist:".length());
+        }
+        if (value.startsWith("playlist:")) {
+            return value;
+        }
+        return "playlist:" + value;
+    }
+
+    public String getPlaylistWebUrl() {
+        if (playlist == null || playlist.isEmpty()) return null;
+        String id = playlist;
+        int idx = id.lastIndexOf(':');
+        if (idx >= 0) id = id.substring(idx + 1);
+        return "https://open.spotify.com/playlist/" + id;
     }
 }

@@ -31,10 +31,11 @@ public class EventoUsuarioController {
     @Autowired
     private IEventoService eventoService;
 
-  @RequestMapping("save")
+    @RequestMapping("save")
     public String save(@ModelAttribute EventoUsuario eventoUsuario, RedirectAttributes redirectAttributes){
       Evento evento = eventoService.get(eventoUsuario.getEvento().getId());
       if(evento == null) return "redirect:usuario/list";
+      eventoUsuario.setEvento(evento);
       eventoUsuarioService.save(eventoUsuario);
       redirectAttributes.addAttribute("username", eventoUsuario.getUsuario().getUsername());
 
